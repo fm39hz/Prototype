@@ -1,4 +1,5 @@
 using Godot;
+using Component.Animation;
 
 namespace Component{
     namespace StateMachine{
@@ -46,6 +47,7 @@ namespace Component{
         public partial class ControllableState : State{
             [Export]
                 public float Speed{get; set;}
+            public FrameComponent Frame{get; set;} = new FrameComponent(0, 0, 0);
             }
         public partial class UncontrollableState : State{
             [Export]

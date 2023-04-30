@@ -3,15 +3,12 @@ using System.Collections.Generic;
 
 namespace Component.StateMachine{
 	public partial class StateMachine : Node{
-		public ControllableState Current{get; set;}
+		[Export]
+			public ControllableState Current{get; set;}
 		protected List<State> States = new List<State>();
 		private bool Initialized = false;
 		public override void _Ready(){
 			Init();
-			SelectState();
-			}
-		public override void _PhysicsProcess(double delta){
-			GD.Print(Current.Name);
 			}
 		protected void Init(){
 			foreach (State selectedState in GetChildren(false)){
@@ -25,18 +22,17 @@ namespace Component.StateMachine{
 				}
 			}
 		protected void SelectState(){
-			if (!Initialized){
-				return;
-				}
-			foreach (ControllableState selected in States){
-				if (selected.Condition){
-					Current = selected;
-					return;
+			if (Initialized){
+				foreach (ControllableState selected in States){
+					if (selected.Condition){
+						Current = selected;
+						return;
+						}
 					}
 				}
 			}
 		private void SetStateUpdate(){
-			if (!Current.Condition){
+			if (Initialized && !Current.Condition){
 				Current.ExitState();
 				}
 			}

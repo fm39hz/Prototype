@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [debug]
 
 settings/stdout/print_fps=true
-settings/stdout/print_gpu_profile=true
 
 [display]
 
@@ -26,7 +25,8 @@ window/size/viewport_width=320
 window/size/viewport_height=180
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [dotnet]
 
