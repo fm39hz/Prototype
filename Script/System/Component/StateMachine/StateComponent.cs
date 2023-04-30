@@ -3,46 +3,44 @@ using Godot;
 namespace Component{
     namespace StateMachine{
         public partial class State : Node{
+            public StateMachine Machine{get; set;}
             public bool Condition{get; set;}
-            protected bool Initialized = false;
-            protected bool Running = false;
+            protected bool Initialized{get; set;}
         [Signal]
             public delegate void StateEnteredEventHandler();
         [Signal]
             public delegate void StateRunningEventHandler();
         [Signal]
             public delegate void StateExitedEventHandler();
-
+            public override void _EnterTree(){
+                Machine = this.GetParent<StateMachine>();
+                this.Init();
+                }
+            public override void _PhysicsProcess(double delta){
+                UpdateCondition(delta);
+                    if (Machine.Current == this){
+                        RunningState(delta);
+                        }
+                }
             public void Init(){
                 Initialized = true;
-                StateEntered += RunningState;
                 }
-            public virtual void EnterState(){
-                if (!Initialized){
-                    return;
-                    }
+            public virtual void EnteredMachine(){
+                if (Initialized){
                     EmitSignal(SignalName.StateEntered);
-                }
-            public virtual void RunningState(){
-                if (!Initialized){
-                    return;
                     }
-                Running = true;
-                    EmitSignal(SignalName.StateRunning);
-                    UpdateState();
                 }
-            public virtual void UpdateState(){
-                if (!Running){
-                    return;
+            public virtual void UpdateCondition(double delta){
+                }
+            public virtual void RunningState(double delta){
+                if (Initialized){
+                    EmitSignal(SignalName.StateRunning);
                     }
                 }
             public virtual void ExitState(){
-                if (!Initialized){
-                    return;
-                    }
-                Initialized = false;
-                Running = false;
+                if (Initialized){
                     EmitSignal(SignalName.StateExited);
+                    }
                 }
             }
         public partial class ControllableState : State{
