@@ -1,5 +1,3 @@
-using Godot;
-
 namespace Controll{
 	public partial class ControllInput : Node{
 		public override void _UnhandledInput(InputEvent @event){

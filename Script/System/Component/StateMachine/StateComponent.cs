@@ -1,4 +1,3 @@
-using Godot;
 using Component.Animation;
 
 namespace Component{

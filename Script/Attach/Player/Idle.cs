@@ -1,4 +1,3 @@
-using Godot;
 using Component.StateMachine;
 using Component.Animation;
 

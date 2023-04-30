@@ -1,5 +1,3 @@
-using Godot;
-
 namespace Component.Animation{
     public partial class SheetComponent : Sprite2D{
         private int targetDirection;

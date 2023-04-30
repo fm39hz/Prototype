@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 namespace Component.Animation{
     public class FrameComponent{
         public FrameComponent(int _frameNumber, int _stateNumber, double _speed){

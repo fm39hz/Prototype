@@ -1,4 +1,7 @@
-using Godot;
+global using Godot;
+global using System;
+global using System.Collections.Generic;
+
 using Controll;
 using Component.StateMachine;
 using Component.Animation;

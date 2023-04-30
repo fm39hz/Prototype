@@ -1,5 +1,5 @@
 using Godot;
-using System.Collections.Generic;
+
 
 namespace Component.StateMachine{
 	public abstract partial class StateMachine : Node{
