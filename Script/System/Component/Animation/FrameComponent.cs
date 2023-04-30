@@ -20,7 +20,8 @@ public class FrameComponent{
         if (_input != Vector2.Zero){
             int _temp;
                 _temp = _angleNumb / 45;
-                    if (_temp >= 0 && _temp < 6){
+                    if (_temp is >= 0 and < 6)
+            {
                         Direction = _temp + 2;
                         }
                     else if (_temp > 5){

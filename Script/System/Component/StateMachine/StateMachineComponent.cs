@@ -3,7 +3,7 @@ namespace Component.StateMachine;
 	public abstract partial class StateMachine : Node{
 		[Export]
 			public ControllableState Current{get; set;}
-		public List<State> States = new List<State>();
+		public List<State> States = new();
 		private bool Initialized = false;
 		public override void _Ready(){
 			Init();
