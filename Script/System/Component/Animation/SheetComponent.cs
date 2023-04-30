@@ -5,25 +5,27 @@ namespace Component.Animation{
         private int targetDirection;
         private int currentFrame = 0;
         double frameCounter = 0;
-        delegate void animationFinished();
-        public void RunAnimation(FrameComponent _frame, double RelativeTimeResponse, bool _loop){
-            targetDirection = _frame.Direction;
-            int firstFrame = _frame.Length * targetDirection;
-            int nextFrame = _frame.Length * (targetDirection + 1);
-                if (firstFrame <= currentFrame && currentFrame < nextFrame){
+        [Signal]
+            public delegate void AnimationFinishedEventHandler();
+        public void RunAnimation(FrameComponent frame, double RelativeTimeResponse, bool loop){
+            targetDirection = frame.Direction;
+            int _firstFrame = frame.Length * targetDirection;
+            int _nextFrame = frame.Length * (targetDirection + 1);
+                if (_firstFrame <= currentFrame && currentFrame < _nextFrame){
                     frameCounter += RelativeTimeResponse;
                     }
-                if (frameCounter >= 60 * RelativeTimeResponse / _frame.Speed){
+                if (frameCounter >= 60 * RelativeTimeResponse / frame.Speed){
                     currentFrame++;
                     frameCounter = 0;
                     }
-                if (currentFrame < firstFrame || currentFrame >= nextFrame){
-                    // if (_loop){
-                    //     EmitSignal(nameof(animationFinished));
-                    //     }
-                    currentFrame = firstFrame;
+                if (currentFrame < _firstFrame || currentFrame >= _nextFrame){
+                    if (!loop){
+                        EmitSignal(SignalName.AnimationFinished);
+                        return;
+                        }
+                    currentFrame = _firstFrame;
                     }
-                FrameCoords = new Vector2I(currentFrame, _frame.State);
+            FrameCoords = new Vector2I(currentFrame, frame.State);
             }
         }
     }

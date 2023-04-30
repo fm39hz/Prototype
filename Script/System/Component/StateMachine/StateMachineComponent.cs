@@ -2,10 +2,10 @@ using Godot;
 using System.Collections.Generic;
 
 namespace Component.StateMachine{
-	public partial class StateMachine : Node{
+	public abstract partial class StateMachine : Node{
 		[Export]
 			public ControllableState Current{get; set;}
-		protected List<State> States = new List<State>();
+		public List<State> States = new List<State>();
 		private bool Initialized = false;
 		public override void _Ready(){
 			Init();
@@ -21,7 +21,7 @@ namespace Component.StateMachine{
 				selected.StateExited += SelectState;
 				}
 			}
-		protected void SelectState(){
+		public void SelectState(){
 			if (Initialized){
 				foreach (ControllableState selected in States){
 					if (selected.Condition){
@@ -36,7 +36,7 @@ namespace Component.StateMachine{
 				Current.ExitState();
 				}
 			}
-		public float getCurrentSpeed(){
+		public float GetCurrentSpeed(){
 			float targetSpeed = 0;
 				foreach (ControllableState i in States){
 					if (i.Speed > 0){

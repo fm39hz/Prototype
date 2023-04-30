@@ -3,16 +3,17 @@ using Component.Animation;
 
 namespace Component{
     namespace StateMachine{
-        public partial class State : Node{
+        public abstract partial class State : Node{
+            public bool Controllable;
             public StateMachine Machine{get; set;}
             public bool Condition{get; set;}
             protected bool Initialized{get; set;}
-        [Signal]
-            public delegate void StateEnteredEventHandler();
-        [Signal]
-            public delegate void StateRunningEventHandler();
-        [Signal]
-            public delegate void StateExitedEventHandler();
+            [Signal]
+                public delegate void StateEnteredEventHandler();
+            [Signal]
+                public delegate void StateRunningEventHandler();
+            [Signal]
+                public delegate void StateExitedEventHandler();
             public override void _EnterTree(){
                 Machine = this.GetParent<StateMachine>();
                 this.Init();
@@ -48,10 +49,16 @@ namespace Component{
             [Export]
                 public float Speed{get; set;}
             public FrameComponent Frame{get; set;} = new FrameComponent(0, 0, 0);
+            public ControllableState(){
+                Controllable = true;
+                }
             }
-        public partial class UncontrollableState : State{
+        public partial class UncontrollableState : ControllableState{
             [Export]
                 public Timer Time{get; set;}
+            public UncontrollableState(){
+                Controllable = false; 
+                }
             }
         }
     }
