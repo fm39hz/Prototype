@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "Launch Godot",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildGodot",
+            "program": "E:/Hienpham/Game_Engine/Godot/Godot_v4.0/Godot.exe",
+            "cwd": "${workspaceFolder}",
+            "console": "externalTerminal",
+            "stopAtEntry": false,
+            "requireExactSource": false,
+            "enableStepFiltering": false,
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://kgg7c4d2bawo"]
+
+[ext_resource type="Script" path="res://Script/Attach/Player/PlayerStateMachine.cs" id="1_bv5vi"]
+[ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="1_ety8i"]
+[ext_resource type="Script" path="res://Script/Player.cs" id="1_qb578"]
+[ext_resource type="Script" path="res://Script/Attach/Player/Idle.cs" id="3_bq5jw"]
+[ext_resource type="Script" path="res://Script/Attach/Player/Walk.cs" id="4_ato6u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_52075"]
+radius = 3.0
+height = 8.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_qb578")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("1_bv5vi")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+editor_description = "Idle State của Player"
+script = ExtResource("3_bq5jw")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+editor_description = "Walk State của Player"
+script = ExtResource("4_ato6u")
+Speed = 85.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, -13)
+texture = ExtResource("1_ety8i")
+hframes = 64
+vframes = 3
+frame = 24
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_52075")
+metadata/_edit_lock_ = true
