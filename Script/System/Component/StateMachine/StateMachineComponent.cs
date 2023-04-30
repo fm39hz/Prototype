@@ -1,7 +1,5 @@
-using Godot;
+namespace Component.StateMachine;
 
-
-namespace Component.StateMachine{
 	public abstract partial class StateMachine : Node{
 		[Export]
 			public ControllableState Current{get; set;}
@@ -50,4 +48,4 @@ namespace Component.StateMachine{
 			return targetSpeed;
 			}
 		}
-	}
+	

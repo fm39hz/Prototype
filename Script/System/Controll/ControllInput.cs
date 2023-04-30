@@ -1,4 +1,4 @@
-namespace Controll{
+namespace Controll;
 	public partial class ControllInput : Node{
 		public override void _UnhandledInput(InputEvent @event){
 			if (@event is InputEventKey eventKey){
@@ -16,4 +16,4 @@ namespace Controll{
 			return Velocity.Normalized();
 			}
 		}
-	}
+	
