@@ -34,6 +34,7 @@ Current = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_bq5jw")
+MovingSpeed = 85.0
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("4_ato6u")

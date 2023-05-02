@@ -9,9 +9,18 @@ namespace Game.Object.Player{
 			base._EnterTree();
 			Player = GetOwnerOrNull<CharacterBody2D>();
 			Frame = new FrameInfo(4, 0, 4.5);
+			IsLoop = true;
 			}
-		public override void _UpdateCondition(double delta){
-			Condition = (Player.Velocity.IsEqualApprox(Vector2.Zero) && Player.GetSlideCollisionCount() == 0);
+		public override void SetCondition(bool condition){
+            if (!this.Initialized){
+                return;
+                }
+			if (!condition){
+				Condition = true;
+				}
+			else if (condition){
+				Condition = false;
+				}
 			}
 		}
 	}

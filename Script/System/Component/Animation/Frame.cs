@@ -31,11 +31,8 @@ namespace Component.Animation{
                             }
                 }
             }
-        }
-        public static class ResponseTime{
-            public static double GetRelative(double delta){
+            public static double GetRelativeResponseTime(double delta){
                 return 60 * delta;
                 }
-
-            }
+        }
     }

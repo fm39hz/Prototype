@@ -12,8 +12,8 @@ namespace Component.StateMachine{
                 this.Machine = this.GetParent<StateMachine>();
                 }
             catch (NullReferenceException){
-                GD.Print("Failed to detect State Machine for State: \"" + this.Name + "\"");
-                GD.Print("This State's Parent is " + this.GetParent().GetType());
+                GD.Print("Failed to detect State Machine for State \"" + this.Name + "\"");
+                GD.Print("This State's Parent is \"" + this.GetParent().GetType() + "\"");
                 }
             }
         public override void _Ready(){
@@ -44,6 +44,12 @@ namespace Component.StateMachine{
             if (!this.Initialized){
                 return;
                 }
+            }
+        public virtual void SetCondition(bool condition){
+            if (!this.Initialized){
+                return;
+                }
+            Condition = condition;
             }
         public virtual void _UpdateCondition(double delta){
             if (!this.Initialized){
