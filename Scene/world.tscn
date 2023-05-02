@@ -21,6 +21,7 @@ position_smoothing_speed = 10.0
 position = Vector2(112, 56)
 
 [node name="Background" parent="." instance=ExtResource("3_pygs1")]
+z_index = -100
 
 [node name="InputControll" type="Node2D" parent="."]
 script = ExtResource("4_3dd6r")

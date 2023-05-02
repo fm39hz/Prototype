@@ -1,4 +1,6 @@
 using Component.StateMachine;
 
-public partial class PlayerStateMachine : StateMachine{
+namespace Game.Object.Player{
+	public partial class PlayerStateMachine : StateMachine{
+		}
 	}

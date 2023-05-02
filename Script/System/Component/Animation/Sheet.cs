@@ -7,7 +7,7 @@ namespace Component.Animation{
         double frameCounter = 0;
         [Signal]
             public delegate void AnimationFinishedEventHandler();
-        public void RunAnimation(FrameComponent frame, double RelativeTimeResponse, bool loop){
+        public void RunAnimation(FrameInfo frame, double RelativeTimeResponse, bool loop){
             targetDirection = frame.Direction;
             int _firstFrame = frame.Length * targetDirection;
             int _nextFrame = frame.Length * (targetDirection + 1);

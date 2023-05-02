@@ -2,8 +2,8 @@ using Godot;
 using System;
 
 namespace Component.Animation{
-    public class FrameComponent{
-        public FrameComponent(int _frameNumber, int _stateNumber, double _speed){
+    public class FrameInfo{
+        public FrameInfo(int _frameNumber, int _stateNumber, double _speed){
             Length = _frameNumber;
             State = _stateNumber;
             Speed = _speed;

@@ -9,12 +9,10 @@ namespace Controll{
 					}
 				}
 			}
-		public static Vector2 GetPlayerMovementVector(Vector2 _inputVector, bool Controllable){
+		public static Vector2 GetPlayerMovementVector(Vector2 _inputVector){
 			Vector2 Velocity = _inputVector;
-				if (Controllable){
-					Velocity.X = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
-					Velocity.Y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
-					}
+				Velocity.X = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
+				Velocity.Y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
 			return Velocity.Normalized();
 			}
 		}

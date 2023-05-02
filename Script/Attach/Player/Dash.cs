@@ -2,13 +2,13 @@ using Godot;
 using Component.StateMachine;
 using Component.Animation;
 
-public partial class Dash : UncontrollableState{
+public partial class Dash : DynamicState{
 	private bool Dashing = false;
 	private CharacterBody2D Player;
 	public override void _EnterTree(){
 		base._EnterTree();
 		Player = GetOwnerOrNull<CharacterBody2D>();
-		Frame = new FrameComponent(4, 2, 4.5);
+		Frame = new FrameInfo(4, 2, 4.5);
 		}
 	
 	public override void _PhysicsProcess(double delta){
@@ -18,10 +18,10 @@ public partial class Dash : UncontrollableState{
 			}
 		base._PhysicsProcess(delta);
 		}
-	public override void UpdateCondition(double delta){
+	public override void _UpdateCondition(double delta){
 		Condition = Dashing;
 		}
-	public override void RunningState(double delta){
+	public override void _RunningState(){
 		Dashing = false;
 		}
 	}
