@@ -29,9 +29,9 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_52075")
 metadata/_edit_lock_ = true
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("Current")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
 script = ExtResource("4_gbenw")
-Current = NodePath("Idle")
+CurrentState = NodePath("Idle")
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("5_6y4gu")

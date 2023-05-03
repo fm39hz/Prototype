@@ -6,7 +6,7 @@ namespace Component.StateMachine{
 	public abstract partial class StateMachine : Node{
 		[Signal] public delegate void StateEnteredEventHandler();
 		[Signal] public delegate void StateExitedEventHandler();
-		[Export] public State CurrentState{get; set;}
+		[Export] public State CurrentState{get; protected set;}
 		public State PreviousState{get; protected set;}
 		public List<State> States{get; protected set;} = new();
 		protected bool Initialized {get; set;}
@@ -39,8 +39,8 @@ namespace Component.StateMachine{
 		protected void CheckingCondition(){
 			if (this.Initialized && !CurrentState.Condition){
 				PreviousState = CurrentState;
-				this.EmitSignal(SignalName.StateExited);
-				this.SelectState();
+					this.EmitSignal(SignalName.StateExited);
+					this.SelectState();
 				}
 			}
 		}

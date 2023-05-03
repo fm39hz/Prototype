@@ -25,25 +25,20 @@ namespace Component.StateMachine{
                     _RunningState(delta);
                     }
             }
+        protected void Init(){
+            this.Initialized = true;
+            }
         public DynamicState ToDynamic(){
-            if (this is not State state){
+            if (this is not State || this is StaticState){
                 return null;
                 }
             return (DynamicState)this;
             }
         public StaticState ToStatic(){
-            if (this is not State state){
+            if (this is not State || this is DynamicState){
                 return null;
                 }
             return (StaticState)this;
-            }
-        protected void Init(){
-            this.Initialized = true;
-            }
-        public virtual void _EnteredMachine(){
-            if (!this.Initialized){
-                return;
-                }
             }
         public virtual void SetCondition(bool condition){
             if (!this.Initialized){
@@ -56,6 +51,11 @@ namespace Component.StateMachine{
                 return;
                 }
             Condition = false;
+            }
+        public virtual void _EnteredMachine(){
+            if (!this.Initialized){
+                return;
+                }
             }
         public virtual void _UpdateCondition(double delta){
             if (!this.Initialized){
