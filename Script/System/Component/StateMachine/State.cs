@@ -51,6 +51,12 @@ namespace Component.StateMachine{
                 }
             Condition = condition;
             }
+        public virtual void ResetCondition(){
+            if (!this.Initialized){
+                return;
+                }
+            Condition = false;
+            }
         public virtual void _UpdateCondition(double delta){
             if (!this.Initialized){
                 return;

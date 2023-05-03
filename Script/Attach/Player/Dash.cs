@@ -1,18 +1,30 @@
-using Godot;
-using Component.StateMachine;
 using Component.Animation;
+using Component.StateMachine;
+using Management.InputManager;
 
 namespace Game.Object.Player{
 	public partial class Dash : DynamicState{
-		private CharacterBody2D Player;
+		private Player player;
+		private PlayerInputManager inputManager;
+		private SpriteSheet spriteSheet;
 		public override void _EnterTree(){
 			base._EnterTree();
-			Player = GetOwnerOrNull<CharacterBody2D>();
+			player = GetOwnerOrNull<Player>();
+			inputManager = player.InputManager;
+			spriteSheet = player.Sheet;
 			Frame = new FrameInfo(4, 2, 4.5);
 			IsLoop = false;
 			}
-		public override void SetCondition(bool condition){
-			base.SetCondition(condition);
+		public override void _Ready(){
+			base._Ready();
+			inputManager.DashKeyPressed += this.SetCondition;
+			spriteSheet.AnimationFinished += this.ResetCondition;
+			}
+		public void SetCondition(){
+            if (!this.Initialized){
+                return;
+                }
+			Condition = true;
 			}
 		}
 	}

@@ -10,24 +10,24 @@ namespace Component.Animation{
             }
         public int Length{get; set;}
         public int State{get; set;}
-        public int Direction{get; set;}
+        public int Facing{get; set;}
         public double Speed{get; set;}
-        public void GetDirection(Vector2 _input){
-            int _angleNumb = Convert.ToInt32(Math.Round(_input.Angle() / Mathf.Pi * 180));
+        public void GetDirectionFacing(Vector2 input){
+            int _angleNumb = Convert.ToInt32(Math.Round(input.Angle() / Mathf.Pi * 180));
                 if (_angleNumb <= 0){
                     _angleNumb *= -1;
                     }
                 else{
                     _angleNumb = -(_angleNumb - 360);
                     }
-            if (_input != Vector2.Zero){
+            if (input != Vector2.Zero){
                 int _temp;
                     _temp = _angleNumb / 45;
                         if (_temp >= 0 && _temp < 6){
-                            Direction = _temp + 2;
+                            Facing = _temp + 2;
                             }
                         else if (_temp > 5){
-                            Direction = _temp - 6;
+                            Facing = _temp - 6;
                             }
                 }
             }

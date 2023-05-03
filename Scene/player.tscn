@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://kgg7c4d2bawo"]
+[gd_scene load_steps=9 format=3 uid="uid://kgg7c4d2bawo"]
 
 [ext_resource type="Script" path="res://Script/Attach/Player/PlayerStateMachine.cs" id="1_bv5vi"]
 [ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="1_ety8i"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Script/Attach/Player/Idle.cs" id="3_bq5jw"]
 [ext_resource type="Script" path="res://Script/Attach/Player/Walk.cs" id="4_ato6u"]
 [ext_resource type="Script" path="res://Script/Attach/Player/Sprite.cs" id="6_1wnvx"]
+[ext_resource type="Script" path="res://Script/Attach/Player/Dash.cs" id="7_u40ia"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_52075"]
 radius = 3.0
@@ -31,6 +32,10 @@ metadata/_edit_lock_ = true
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("Current")]
 script = ExtResource("1_bv5vi")
 Current = NodePath("Idle")
+
+[node name="Dash" type="Node" parent="StateMachine"]
+script = ExtResource("7_u40ia")
+MovingSpeed = 100.0
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_bq5jw")

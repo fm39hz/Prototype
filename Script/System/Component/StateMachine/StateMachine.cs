@@ -7,7 +7,7 @@ namespace Component.StateMachine{
 		[Signal] public delegate void StateEnteredEventHandler();
 		[Signal] public delegate void StateExitedEventHandler();
 		[Export] public State Current{get; set;}
-		public List<State> States{get; private set;} = new List<State>();
+		public List<State> States{get; private set;} = new();
 		private bool Initialized {get; set;}
 		public override void _Ready(){
 			foreach (State target in GetChildren().OfType<State>()){

@@ -1,25 +1,24 @@
 using Godot;
 
 namespace Component.Animation{
-    public partial class SheetComponent : Sprite2D{
+    public partial class SpriteSheet : Sprite2D{
+        [Signal] public delegate void AnimationFinishedEventHandler();
         private int targetDirection;
         private int currentFrame = 0;
-        double frameCounter = 0;
-        [Signal]
-            public delegate void AnimationFinishedEventHandler();
-        public void RunAnimation(FrameInfo frame, double RelativeTimeResponse, bool loop){
-            targetDirection = frame.Direction;
+        private double frameCounter = 0;
+        public void Animate(FrameInfo frame, double relativeResponseTime, bool isLoop){
+            targetDirection = frame.Facing;
             int _firstFrame = frame.Length * targetDirection;
             int _nextFrame = frame.Length * (targetDirection + 1);
                 if (_firstFrame <= currentFrame && currentFrame < _nextFrame){
-                    frameCounter += RelativeTimeResponse;
+                    frameCounter += relativeResponseTime;
                     }
-                if (frameCounter >= 60 * RelativeTimeResponse / frame.Speed){
+                if (frameCounter >= 60 * relativeResponseTime / frame.Speed){
                     currentFrame++;
                     frameCounter = 0;
                     }
                 if (currentFrame < _firstFrame || currentFrame >= _nextFrame){
-                    if (!loop){
+                    if (!isLoop){
                         EmitSignal(SignalName.AnimationFinished);
                         return;
                         }
