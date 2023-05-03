@@ -1,26 +1,26 @@
 [gd_scene load_steps=9 format=3 uid="uid://kgg7c4d2bawo"]
 
-[ext_resource type="Script" path="res://Script/Attach/Player/PlayerStateMachine.cs" id="1_bv5vi"]
 [ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="1_ety8i"]
-[ext_resource type="Script" path="res://Script/Player.cs" id="1_qb578"]
-[ext_resource type="Script" path="res://Script/Attach/Player/Idle.cs" id="3_bq5jw"]
-[ext_resource type="Script" path="res://Script/Attach/Player/Walk.cs" id="4_ato6u"]
-[ext_resource type="Script" path="res://Script/Attach/Player/Sprite.cs" id="6_1wnvx"]
-[ext_resource type="Script" path="res://Script/Attach/Player/Dash.cs" id="7_u40ia"]
+[ext_resource type="Script" path="res://Script/Attach/Player/Player.cs" id="1_fns8d"]
+[ext_resource type="Script" path="res://Script/Attach/Player/Component/Sheet.cs" id="3_dg1l7"]
+[ext_resource type="Script" path="res://Script/Attach/Player/Component/PlayerStateMachine.cs" id="4_gbenw"]
+[ext_resource type="Script" path="res://Script/Attach/Player/State/Dash.cs" id="5_6y4gu"]
+[ext_resource type="Script" path="res://Script/Attach/Player/State/Idle.cs" id="6_vojtc"]
+[ext_resource type="Script" path="res://Script/Attach/Player/State/Walk.cs" id="7_lb15a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_52075"]
 radius = 3.0
 height = 8.0
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_qb578")
+script = ExtResource("1_fns8d")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sheet" type="Sprite2D" parent="."]
 position = Vector2(-0.5, -13)
 texture = ExtResource("1_ety8i")
 hframes = 64
 vframes = 3
-script = ExtResource("6_1wnvx")
+script = ExtResource("3_dg1l7")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -30,16 +30,16 @@ shape = SubResource("CapsuleShape2D_52075")
 metadata/_edit_lock_ = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("Current")]
-script = ExtResource("1_bv5vi")
+script = ExtResource("4_gbenw")
 Current = NodePath("Idle")
 
 [node name="Dash" type="Node" parent="StateMachine"]
-script = ExtResource("7_u40ia")
+script = ExtResource("5_6y4gu")
 MovingSpeed = 100.0
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("3_bq5jw")
+script = ExtResource("6_vojtc")
 
 [node name="Walk" type="Node" parent="StateMachine"]
-script = ExtResource("4_ato6u")
+script = ExtResource("7_lb15a")
 MovingSpeed = 85.0

@@ -6,8 +6,8 @@ namespace Component.Animation{
         private int targetDirection;
         private int currentFrame = 0;
         private double frameCounter = 0;
-        public void Animate(FrameInfo frame, double relativeResponseTime, bool isLoop){
-            targetDirection = frame.Facing;
+        public void Animate(FrameInfo frame, int direction, double relativeResponseTime, bool isLoop){
+            targetDirection = direction;
             int _firstFrame = frame.Length * targetDirection;
             int _nextFrame = frame.Length * (targetDirection + 1);
                 if (_firstFrame <= currentFrame && currentFrame < _nextFrame){

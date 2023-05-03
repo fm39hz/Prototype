@@ -3,30 +3,23 @@ using Component.StateMachine;
 using Management.InputManager;
 
 namespace Game.Object.Player{
-	public partial class Dash : DynamicState{
-		private Player player;
+	public partial class Walk : DynamicState{
 		private PlayerInputManager inputManager;
-		private SpriteSheet spriteSheet;
+		private Player player;
 		public override void _EnterTree(){
 			base._EnterTree();
 			player = GetOwnerOrNull<Player>();
 			inputManager = player.InputManager;
-			spriteSheet = player.Sheet;
-			Frame = new FrameInfo(4, 2, 4.5);
-			IsLoop = false;
+			Frame = new FrameInfo(8, 1, 8.5);
+			IsLoop = true;
 			}
 		public override void _Ready(){
 			base._Ready();
-			inputManager.DashKeyPressed += this.SetCondition;
-			spriteSheet.AnimationFinished += this.ResetCondition;
-			}
-		public void SetCondition(){
-            if (!this.Initialized){
-                return;
-                }
-			Condition = true;
+			inputManager.MovementKeyPressed += this.SetCondition;
+			inputManager.DashKeyPressed += this.ResetCondition;
 			}
 		public override void _RunningState(double delta){
+			base._RunningState(delta);
 			player.Velocity = inputManager.GetPlayerMovementVector(player.Velocity) * this.MovingSpeed;
 			}
 		}

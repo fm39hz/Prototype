@@ -21,7 +21,7 @@ namespace Component.StateMachine{
             }
         public override void _PhysicsProcess(double delta){
             this._UpdateCondition(delta);
-                if (this.Machine.Current == this){
+                if (this.Machine.CurrentState == this){
                     _RunningState(delta);
                     }
             }

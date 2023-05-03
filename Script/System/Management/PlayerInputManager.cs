@@ -4,7 +4,7 @@ namespace Management.InputManager{
 	public partial class PlayerInputManager : Node{
 		[Signal] public delegate void MovementKeyPressedEventHandler(bool IsPressed);
 		[Signal] public delegate void DashKeyPressedEventHandler();
-		public override void _UnhandledInput(InputEvent @event){
+		public override void _UnhandledKeyInput(InputEvent @event){
 			if (@event is InputEventKey keyEscape){
 				if (keyEscape.IsPressed() && keyEscape.Keycode == Key.Escape){
 					GetTree().Quit();
@@ -16,15 +16,15 @@ namespace Management.InputManager{
 			bool _down = Input.IsActionPressed("ui_down");
 			bool _left = Input.IsActionPressed("ui_left");
 			bool _right = Input.IsActionPressed("ui_right");
-			if (Input.IsActionJustPressed("ui_dash")){
-				EmitSignal(SignalName.DashKeyPressed);
-				}
-			if (_up || _down || _left || _right){
-				EmitSignal(SignalName.MovementKeyPressed, true);
-				}
-			else if (!_up && !_down && !_left && !_right){
-				EmitSignal(SignalName.MovementKeyPressed, false);
-				}
+				if (Input.IsActionJustPressed("ui_dash")){
+					EmitSignal(SignalName.DashKeyPressed);
+					}
+				if (_up || _down || _left || _right){
+					EmitSignal(SignalName.MovementKeyPressed, true);
+					}
+				else if (!_up && !_down && !_left && !_right){
+					EmitSignal(SignalName.MovementKeyPressed, false);
+					}
 			}
 		public Vector2 GetPlayerMovementVector(Vector2 _inputVector){
 			Vector2 Velocity = _inputVector;

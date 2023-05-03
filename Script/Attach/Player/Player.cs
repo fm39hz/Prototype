@@ -3,9 +3,11 @@ using System;
 using Component.Animation;
 using Component.StateMachine;
 using Management.InputManager;
+using Management.Direction;
 
 namespace Game.Object.Player{
 	public partial class Player : CharacterBody2D{
+		private int DirectionNumber;
 		private bool isCollided;
 		private StateMachine PlayerSMC;
 		public SpriteSheet Sheet;
@@ -34,11 +36,13 @@ namespace Game.Object.Player{
 				}
 			}
 		public override void _PhysicsProcess(double delta){
-			var currentState = PlayerSMC.Current.ToDynamic();
+			var currentState = PlayerSMC.CurrentState.ToDynamic();
 			GD.Print(currentState.Name);
 			var Frame = currentState.Frame;
-				Frame.GetDirectionFacing(Velocity);
-				Sheet.Animate(Frame, FrameInfo.GetRelativeResponseTime(delta), currentState.IsLoop);
+				if (!Velocity.IsEqualApprox(Vector2.Zero)){
+					DirectionNumber = new DirectionManager().GetDirectionNumber(Velocity);
+					}
+				Sheet.Animate(Frame, DirectionNumber, FrameInfo.GetRelativeResponseTime(delta), currentState.IsLoop);
 			isCollided = MoveAndSlide();
 			}
 		}

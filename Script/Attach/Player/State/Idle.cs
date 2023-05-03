@@ -25,12 +25,7 @@ namespace Game.Object.Player{
             if (!this.Initialized){
                 return;
                 }
-			if (!condition){
-				Condition = true;
-				}
-			else if (condition){
-				Condition = false;
-				}
+			Condition = !condition;
 			}
 		}
 	}
