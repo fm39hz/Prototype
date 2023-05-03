@@ -37,7 +37,6 @@ namespace Game.Object.Player{
 			var currentState = PlayerSMC.Current.ToDynamic();
 			GD.Print(currentState.Name);
 			var Frame = currentState.Frame;
-			Velocity = InputManager.GetPlayerMovementVector(Velocity) * currentState.MovingSpeed;
 				Frame.GetDirectionFacing(Velocity);
 				Sheet.Animate(Frame, FrameInfo.GetRelativeResponseTime(delta), currentState.IsLoop);
 			isCollided = MoveAndSlide();

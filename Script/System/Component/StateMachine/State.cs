@@ -22,7 +22,7 @@ namespace Component.StateMachine{
         public override void _PhysicsProcess(double delta){
             this._UpdateCondition(delta);
                 if (this.Machine.Current == this){
-                    _RunningState();
+                    _RunningState(delta);
                     }
             }
         public DynamicState ToDynamic(){
@@ -62,7 +62,7 @@ namespace Component.StateMachine{
                 return;
                 }
             }
-        public virtual void _RunningState(){
+        public virtual void _RunningState(double delta){
             if (!this.Initialized){
                 return;
                 }

@@ -18,5 +18,8 @@ namespace Game.Object.Player{
 			inputManager.MovementKeyPressed += this.SetCondition;
 			inputManager.DashKeyPressed += this.ResetCondition;
 			}
+		public override void _RunningState(double delta){
+			player.Velocity = inputManager.GetPlayerMovementVector(player.Velocity) * this.MovingSpeed;
+			}
 		}
 	}

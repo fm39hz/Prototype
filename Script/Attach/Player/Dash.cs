@@ -26,5 +26,8 @@ namespace Game.Object.Player{
                 }
 			Condition = true;
 			}
+		public override void _RunningState(double delta){
+			player.Velocity = inputManager.GetPlayerMovementVector(player.Velocity) * this.MovingSpeed;
+			}
 		}
 	}
