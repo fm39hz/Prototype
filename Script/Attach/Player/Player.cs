@@ -1,49 +1,34 @@
 using Godot;
 using System;
-using Component.Animation;
-using Component.StateMachine;
 using Management.InputManager;
-using Management.Direction;
 
-namespace Game.Object.Player{
-	public partial class Player : CharacterBody2D{
-		private int DirectionNumber;
-		private bool isCollided;
-		private StateMachine PlayerSMC;
-		public SpriteSheet Sheet;
-		public PlayerInputManager InputManager;
+namespace Game.Object.Moving{
+	public partial class Player : DynamicObject{
+		public PlayerInputManager InputManager{get; protected set;}
 		public override void _EnterTree(){
-			try{
-				Sheet = GetChild<SpriteSheet>(0);
-				InputManager = GetParent().GetChild<PlayerInputManager>(0);
-				}
-			catch (InvalidCastException e){
-				GD.Print(e.Message);
-				}
-			catch (NullReferenceException e){
-				GD.Print(e.Message);
-				}
-			}
-		public override void _Ready(){
-			try{
-				PlayerSMC = GetChild<StateMachine>(2);
-				}
-			catch (InvalidCastException e){
-				GD.Print(e.Message);
-				}
-			catch (NullReferenceException e){
-				GD.Print(e.Message);
-				}
+			base._EnterTree();
+				try{
+					var _scene = GetParent();
+					for (int i = 0; i < _scene.GetChildCount(); i++){
+						if (_scene.GetChildOrNull<PlayerInputManager>(i) != null){
+							InputManager = _scene.GetChild<PlayerInputManager>(i);
+							}
+						}
+					}
+				catch (InvalidCastException e){
+					GD.Print(e.Message);
+					}
+				catch (NullReferenceException e){
+					GD.Print(e.Message);
+					}
 			}
 		public override void _PhysicsProcess(double delta){
-			var currentState = PlayerSMC.CurrentState.ToDynamic();
-			GD.Print(currentState.Name);
+			this.UpdateMetaData();
+			var currentState = ObjectedStateMachine.CurrentState.ToDynamic();
 			var Frame = currentState.Frame;
-				if (!Velocity.IsEqualApprox(Vector2.Zero)){
-					DirectionNumber = new DirectionManager().GetDirectionNumber(Velocity);
-					}
-				Sheet.Animate(Frame, DirectionNumber, FrameInfo.GetRelativeResponseTime(delta), currentState.IsLoop);
-			isCollided = MoveAndSlide();
+			GD.Print(currentState.Name + Velocity.X + Velocity.Y);
+				Sheet.Animate(Frame, Metadata, GetRelativeResponseTime(delta), Metadata.IsLoopingAnimation);
+			IsCollided = MoveAndSlide();
 			}
 		}
 	}

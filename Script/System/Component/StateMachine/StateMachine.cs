@@ -9,7 +9,7 @@ namespace Component.StateMachine{
 		[Export] public State CurrentState{get; protected set;}
 		public State PreviousState{get; protected set;}
 		public List<State> States{get; protected set;} = new();
-		protected bool Initialized {get; set;}
+		protected bool IsInitialized {get; set;}
 		public override void _Ready(){
 			foreach (State target in GetChildren().OfType<State>()){
 				this.States.Add(target);
@@ -17,7 +17,7 @@ namespace Component.StateMachine{
 			this.Init();
 			}
 		protected void Init(){
-			Initialized = true;
+			IsInitialized = true;
 				foreach (State selected in States){
 					this.StateEntered += selected._EnteredMachine;
 					selected.StateRunning += this.CheckingCondition;
@@ -26,18 +26,19 @@ namespace Component.StateMachine{
 			this.SelectState();
 			}
 		protected void SelectState(){
-			if (this.Initialized){
-				foreach (State selected in States){
-					if (selected.Condition){
-						this.CurrentState = selected;
-						this.EmitSignal(SignalName.StateEntered);
-						return;
-						}
-					}
+			if (!this.IsInitialized){
+				return;
 				}
+			foreach (State selected in States){
+				if (selected.Condition){
+					this.CurrentState = selected;
+					this.EmitSignal(SignalName.StateEntered);
+					return;
+					}
+					}
 			}
 		protected void CheckingCondition(){
-			if (this.Initialized && !CurrentState.Condition){
+			if (this.IsInitialized && !CurrentState.Condition){
 				PreviousState = CurrentState;
 					this.EmitSignal(SignalName.StateExited);
 					this.SelectState();

@@ -2,15 +2,16 @@ using Component.Animation;
 using Component.StateMachine;
 using Management.InputManager;
 
-namespace Game.Object.Player{
+namespace Game.Object.Moving{
 	public partial class Walk : DynamicState{
 		private PlayerInputManager inputManager;
 		private Player player;
 		public override void _EnterTree(){
 			base._EnterTree();
+			ID = 1;
 			player = GetOwnerOrNull<Player>();
 			inputManager = player.InputManager;
-			Frame = new FrameInfo(8, 1, 8.5);
+			Frame = new FrameInfo(8, 8.5);
 			IsLoop = true;
 			}
 		public override void _Ready(){

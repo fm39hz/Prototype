@@ -1,15 +1,15 @@
 using Godot;
+using Metadata.Object;
 
 namespace Component.Animation{
     public partial class SpriteSheet : Sprite2D{
         [Signal] public delegate void AnimationFinishedEventHandler();
-        private int targetDirection;
         private int currentFrame = 0;
         private double frameCounter = 0;
-        public void Animate(FrameInfo frame, int direction, double relativeResponseTime, bool isLoop){
-            targetDirection = direction;
-            int _firstFrame = frame.Length * targetDirection;
-            int _nextFrame = frame.Length * (targetDirection + 1);
+        public void Animate(FrameInfo frame, ObjectMetadata objectdata, double relativeResponseTime, bool isLoop){
+            var _direction = objectdata.GetDirectionNumber();
+            var _firstFrame = frame.Length * _direction++;
+            var _nextFrame = frame.Length * _direction;
                 if (_firstFrame <= currentFrame && currentFrame < _nextFrame){
                     frameCounter += relativeResponseTime;
                     }
@@ -24,7 +24,7 @@ namespace Component.Animation{
                         }
                     currentFrame = _firstFrame;
                     }
-            FrameCoords = new Vector2I(currentFrame, frame.State);
+            FrameCoords = new Vector2I(currentFrame, objectdata.StateID);
             }
         }
     }

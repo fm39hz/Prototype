@@ -1,10 +1,12 @@
+using System;
 using Godot;
 using System.Collections.Generic;
 
 namespace Management.Direction{
 	public class DirectionManager{
 		private Dictionary<int, Vector2> Direction = new(8);
-		public DirectionManager(){
+
+        public DirectionManager(){
 			Direction.Add(0, Vector2.Down);
 			Direction.Add(1, Vector2.Down + Vector2.Right);
 			Direction.Add(2, Vector2.Right);
@@ -26,6 +28,9 @@ namespace Management.Direction{
 			}
 		public Vector2 GetDirectionVector(int input){
 			Vector2 _target = Vector2.Zero;
+				if (input < 0 || input > 7){
+					return _target;
+					}
 				foreach (KeyValuePair<int, Vector2> direction in Direction){
 					if (input == direction.Key){
 						_target = direction.Value.Normalized();

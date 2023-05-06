@@ -4,6 +4,7 @@ using Godot;
 namespace Component.StateMachine{
     public abstract partial class State : Node{
 		[Signal] public delegate void StateRunningEventHandler();
+        public int ID{get; set;}
         public bool Condition{get; protected set;}
         protected StateMachine Machine{get; set;}
         protected bool Initialized{get; set;}
@@ -21,7 +22,7 @@ namespace Component.StateMachine{
             }
         public override void _PhysicsProcess(double delta){
             this._UpdateCondition(delta);
-                if (this.Machine.CurrentState == this){
+                if (Machine.CurrentState == this){
                     _RunningState(delta);
                     }
             }
@@ -44,13 +45,13 @@ namespace Component.StateMachine{
             if (!this.Initialized){
                 return;
                 }
-            Condition = condition;
+            this.Condition = condition;
             }
         public virtual void ResetCondition(){
             if (!this.Initialized){
                 return;
                 }
-            Condition = false;
+            this.Condition = false;
             }
         public virtual void _EnteredMachine(){
             if (!this.Initialized){
@@ -66,7 +67,7 @@ namespace Component.StateMachine{
             if (!this.Initialized){
                 return;
                 }
-                this.EmitSignal(SignalName.StateRunning);
+            this.EmitSignal(SignalName.StateRunning);
             }
         public virtual void _ExitState(){
             if (!this.Initialized){
