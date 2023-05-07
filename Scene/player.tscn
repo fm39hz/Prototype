@@ -23,7 +23,7 @@ vframes = 3
 script = ExtResource("3_dg1l7")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_52075")
@@ -42,3 +42,4 @@ MovingSpeed = 85.0
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("5_6y4gu")
+MovingSpeed = 100.0

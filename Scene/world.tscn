@@ -21,7 +21,7 @@ z_index = -100
 [node name="Player" parent="." instance=ExtResource("1_1kvu2")]
 position = Vector2(156, 76)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="MainCamera" type="Camera2D" parent="Player"]
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0

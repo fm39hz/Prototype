@@ -11,6 +11,9 @@
             "stopAtEntry": false,
             "requireExactSource": false,
             "enableStepFiltering": false,
+            "logging": {
+                "moduleLoad": false
+                },
         }
     ]
 }
