@@ -22,7 +22,7 @@ namespace Game.Object.Moving{
 			UpdateMetaData();
 			var currentState = ObjectedStateMachine.CurrentState.ToDynamic();
 			var Frame = currentState.Frame;
-				Sheet.Animate(Frame, Metadata, GetRelativeResponseTime(delta), Metadata.IsLoopingAnimation);
+				Sheet.Animate(Frame, Metadata, GetRelativeResponseTime(delta));
 			IsCollided = MoveAndSlide();
 			}
 		}

@@ -9,7 +9,7 @@ namespace Game.Object{
         public bool IsCollided{get; protected set;} = false;
 		public SpriteSheet Sheet{get; protected set;}
 		public StateMachine ObjectedStateMachine{get; protected set;}
-		public ObjectMetadata Metadata{get; protected set;}
+		public DynamicMetadata Metadata{get; protected set;}
 		public T GetFirstChildOfType<T>() where T : Node{
 			T targetChild = null;
 				for (int i = 0; i < this.GetChildCount(); i++){

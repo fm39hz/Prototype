@@ -6,7 +6,7 @@ namespace Component.Animation{
         [Signal] public delegate void AnimationFinishedEventHandler();
         private int currentFrame = 0;
         private double frameCounter = 0;
-        public void Animate(FrameInfo frame, ObjectMetadata objectdata, double relativeResponseTime, bool isLoop){
+        public void Animate(FrameInfo frame, DynamicMetadata objectdata, double relativeResponseTime){
             var _direction = objectdata.GetDirectionNumber();   //Lấy hướng nhìn của đối tượng
             var _firstFrame = frame.Length * _direction++;      //Lấy frame bắt đầu của animation
             var _nextFrame = frame.Length * _direction;         //Lấy frame bắt đầu của hướng kế tiếp
@@ -15,7 +15,7 @@ namespace Component.Animation{
                     }
                 if (frameCounter >= 60 * relativeResponseTime / frame.Speed){
                     if (currentFrame == _nextFrame - 1){
-                        if (!isLoop){
+                        if (!objectdata.IsLoopingAnimation){
                             EmitSignal(SignalName.AnimationFinished);
                             }
                         currentFrame = _firstFrame;             //Reset về frame bắt đầu khi tới frame cuối

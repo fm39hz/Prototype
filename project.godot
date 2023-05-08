@@ -23,10 +23,11 @@ settings/stdout/print_fps=true
 
 window/size/viewport_width=320
 window/size/viewport_height=180
+window/size/mode=4
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_height"
 
 [dotnet]
 
