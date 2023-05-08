@@ -26,7 +26,6 @@ namespace Game.Object.Moving{
 			this.UpdateMetaData();
 			var currentState = ObjectedStateMachine.CurrentState.ToDynamic();
 			var Frame = currentState.Frame;
-			GD.Print(currentState.Name + ": " + Velocity + " " + Metadata.GetDirectionVector());
 				Sheet.Animate(Frame, Metadata, GetRelativeResponseTime(delta), Metadata.IsLoopingAnimation);
 			IsCollided = MoveAndSlide();
 			}
