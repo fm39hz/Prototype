@@ -10,13 +10,28 @@ namespace Game.Object{
 		public SpriteSheet Sheet{get; protected set;}
 		public StateMachine ObjectedStateMachine{get; protected set;}
 		public ObjectMetadata Metadata{get; protected set;}
+		public T GetFirstChildOfType<T>() where T : Node{
+			T targetChild = null;
+				for (int i = 0; i < this.GetChildCount(); i++){
+					if (this.GetChildOrNull<T>(i) != null){
+						targetChild = this.GetChild<T>(i);
+						}
+					}
+			return targetChild;
+			}
+		public T GetFirstSiblingOfType<T>() where T : Node{
+			Node parent = this.GetParent();
+			T targetSibling = null;
+				for (int i = 0; i < parent.GetChildCount(); i++){
+					if (parent.GetChildOrNull<T>(i) != null){
+						targetSibling = parent.GetChild<T>(i);
+						}
+					}
+			return targetSibling;
+			}
 		public override void _EnterTree(){
 			try{
-                for (int i = 0; i < this.GetChildCount(); i++){
-                    if (this.GetChildOrNull<SpriteSheet>(i) != null){
-				        Sheet = GetChild<SpriteSheet>(i);
-                        }
-                    }
+				this.Sheet = GetFirstChildOfType<SpriteSheet>();
 				}
 			catch (InvalidCastException e){
 				GD.Print(e.Message);
@@ -27,12 +42,8 @@ namespace Game.Object{
 			}
 		public override void _Ready(){
 			try{
-                for (int i = 0; i < this.GetChildCount(); i++){
-                    if (this.GetChildOrNull<StateMachine>(i) != null){
-                        ObjectedStateMachine = GetChild<StateMachine>(i);
-                        }
-                    }
-				Metadata = new ObjectMetadata();
+				this.ObjectedStateMachine = GetFirstChildOfType<StateMachine>();
+				this.Metadata = new();
 				}
 			catch (InvalidCastException e){
 				GD.Print(e.Message);
@@ -46,11 +57,11 @@ namespace Game.Object{
 			}
 		protected void UpdateMetaData(){
 			var currentState = ObjectedStateMachine.CurrentState.ToDynamic();
-			Metadata.StateID = currentState.ID;
-			Metadata.IsLoopingAnimation = currentState.IsLoop;
-			if (!Velocity.IsEqualApprox(Vector2.Zero)){
-				Metadata.SetDirection(Velocity);
-				}
+				Metadata.StateID = currentState.ID;
+				Metadata.IsLoopingAnimation = currentState.IsLoop;
+					if (!Velocity.IsEqualApprox(Vector2.Zero)){
+						Metadata.SetDirection(Velocity);
+						}
 			}
         }
     }
