@@ -1,3 +1,4 @@
+using System.Threading;
 using Godot;
 using System;
 using Metadata.Object;
@@ -15,6 +16,7 @@ namespace Game.Object{
 				for (int i = 0; i < this.GetChildCount(); i++){
 					if (this.GetChildOrNull<T>(i) != null){
 						targetChild = this.GetChild<T>(i);
+						break;
 						}
 					}
 			return targetChild;
@@ -25,6 +27,7 @@ namespace Game.Object{
 				for (int i = 0; i < parent.GetChildCount(); i++){
 					if (parent.GetChildOrNull<T>(i) != null){
 						targetSibling = parent.GetChild<T>(i);
+						break;
 						}
 					}
 			return targetSibling;
@@ -53,7 +56,7 @@ namespace Game.Object{
 				}
 			}
 		protected static double GetRelativeResponseTime(double delta){
-			return 60 * delta;
+			return Performance.GetMonitor(Performance.Monitor.TimeFps) * delta;
 			}
 		protected void UpdateMetaData(){
 			var currentState = ObjectedStateMachine.CurrentState.ToDynamic();
