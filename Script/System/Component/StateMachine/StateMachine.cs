@@ -24,6 +24,7 @@ namespace Component.StateMachine{
 					this.StateExited += selected._ExitState;
 					}
 			this.SelectState();
+			PreviousState = CurrentState;
 			}
 		protected void SelectState(){
 			if (!this.IsInitialized){
