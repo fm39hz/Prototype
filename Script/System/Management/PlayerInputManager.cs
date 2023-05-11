@@ -5,6 +5,7 @@ namespace Management.InputManager{
 		[Signal] public delegate void MovementKeyPressedEventHandler(bool IsPressed);
 		[Signal] public delegate void DashKeyPressedEventHandler();
 		public bool IsDoingSomething{get; set;}
+		protected Vector2 Velocity{get; set;}
 		public override void _UnhandledKeyInput(InputEvent @event){
 			if (@event is InputEventKey keyEscape){
 				if (keyEscape.IsPressed() && keyEscape.Keycode == Key.Escape){
@@ -31,12 +32,12 @@ namespace Management.InputManager{
 					}
 			}
 		public Vector2 GetPlayerMovementVector(Vector2 _inputVector){
-			Vector2 Velocity = _inputVector;
-				if (!this.IsDoingSomething){
-					Velocity.X = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
-					Velocity.Y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
-					}
-			return Velocity.Normalized();
+			if (!this.IsDoingSomething){
+				_inputVector.X = Input.GetActionRawStrength("ui_right") - Input.GetActionRawStrength("ui_left");
+				_inputVector.Y = Input.GetActionRawStrength("ui_down") - Input.GetActionRawStrength("ui_up");
+				}
+			Velocity = _inputVector.Normalized();
+			return Velocity;
 			}
 		}
 	}
