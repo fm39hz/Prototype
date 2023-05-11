@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhnkjaj1p3omn"]
 
 [ext_resource type="PackedScene" uid="uid://kgg7c4d2bawo" path="res://Scene/player.tscn" id="1_1kvu2"]
-[ext_resource type="Script" path="res://Script/System/Management/PlayerInputManager.cs" id="1_6083w"]
+[ext_resource type="PackedScene" uid="uid://dla2de2doyhx" path="res://Scene/InputManager.tscn" id="1_4vuk4"]
 [ext_resource type="PackedScene" uid="uid://cte2kxveeh4sa" path="res://Scene/bush.tscn" id="3_6wqwq"]
 [ext_resource type="PackedScene" uid="uid://dl4ac1yuuhs2d" path="res://Scene/Background.tscn" id="3_pygs1"]
 
@@ -9,8 +9,7 @@
 y_sort_enabled = true
 metadata/_edit_lock_ = true
 
-[node name="InputManager" type="Node" parent="."]
-script = ExtResource("1_6083w")
+[node name="InputManager" parent="." instance=ExtResource("1_4vuk4")]
 
 [node name="Bush" parent="." instance=ExtResource("3_6wqwq")]
 position = Vector2(112, 56)
