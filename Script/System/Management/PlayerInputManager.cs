@@ -33,8 +33,7 @@ namespace Management.InputManager{
 			}
 		public Vector2 GetPlayerMovementVector(Vector2 _inputVector){
 			if (!this.IsDoingSomething){
-				_inputVector.X = Input.GetActionRawStrength("ui_right") - Input.GetActionRawStrength("ui_left");
-				_inputVector.Y = Input.GetActionRawStrength("ui_down") - Input.GetActionRawStrength("ui_up");
+				_inputVector = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 				}
 			Velocity = _inputVector.Normalized();
 			return Velocity;
