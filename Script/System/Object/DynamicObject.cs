@@ -25,8 +25,7 @@ namespace Game.Object{
 		/// <value></value>
 		public StateMachine ObjectiveStateMachine{get; protected set;}
 		/// <summary>
-		/// Metadata, chứa thông tin về State ID, hướng nhìn của object, 
-		/// Animation có loop hay không,...
+		/// Metadata, chứa thông tin về State ID, hướng nhìn của object, Animation có loop hay không,...
 		/// </summary>
 		/// <value></value>
 		public DynamicMetadata Metadata{get; protected set;}
