@@ -6,16 +6,16 @@ namespace Component.Animation{
         [Signal] public delegate void AnimationFinishedEventHandler();
         private int currentFrame = 0;
         private double frameCounter = 0;
-        public void Animate(FrameInfo frame, DynamicMetadata objectdata, double relativeResponseTime){
-            var _direction = objectdata.GetDirectionNumber();   //Lấy hướng nhìn của đối tượng
-            var _firstFrame = frame.Length * _direction++;      //Lấy frame bắt đầu của animation
-            var _nextFrame = frame.Length * _direction;         //Lấy frame bắt đầu của hướng kế tiếp
+        public void Animate(FrameInfo frameInfo, DynamicMetadata objectData, double relativeResponseTime){
+            var _direction = objectData.GetDirectionNumber();   //Lấy hướng nhìn của đối tượng
+            var _firstFrame = frameInfo.Length * _direction++;      //Lấy frame bắt đầu của animation
+            var _nextFrame = frameInfo.Length * _direction;         //Lấy frame bắt đầu của hướng kế tiếp
                 if (_firstFrame <= currentFrame && currentFrame < _nextFrame){
                     frameCounter += relativeResponseTime;       //Tạo bộ đếm frame(thực)
                     }
-                if (frameCounter >= 60 * relativeResponseTime / frame.Speed){
+                if (frameCounter >= 60 * relativeResponseTime / frameInfo.Speed){
                     if (currentFrame == _nextFrame - 1){
-                        if (!objectdata.IsLoopingAnimation){
+                        if (!objectData.IsLoopingAnimation){
                             EmitSignal(SignalName.AnimationFinished);
                             }
                         currentFrame = _firstFrame;             //Reset về frame bắt đầu khi tới frame cuối
@@ -28,7 +28,7 @@ namespace Component.Animation{
                 if (currentFrame < _firstFrame || currentFrame > _nextFrame){
                     currentFrame = _firstFrame;                 //Chuyển tiếp frame tới vị trí mới
                     }
-                FrameCoords = new Vector2I(currentFrame, objectdata.StateID);
+                FrameCoords = new Vector2I(currentFrame, objectData.StateID);
             }
         }
     }
