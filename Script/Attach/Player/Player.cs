@@ -18,12 +18,5 @@ namespace Game.Object.Moving{
 					GD.Print(e.Message);
 					}
 			}
-		public override void _PhysicsProcess(double delta){
-			UpdateMetaData();
-			var currentState = ObjectedStateMachine.CurrentState.ToDynamic();
-			var Frame = currentState.Frame;
-				Sheet.Animate(Frame, Metadata, GetRelativeResponseTime(delta));
-			IsCollided = MoveAndSlide();
-			}
 		}
 	}
