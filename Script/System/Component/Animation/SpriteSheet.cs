@@ -2,10 +2,28 @@ using Godot;
 using Metadata.Object;
 
 namespace Component.Animation{
+    /// <summary>
+    /// Class dùng cho Sprite Sheet, chia animation theo 8 hướng
+    /// </summary>
     public partial class SpriteSheet : Sprite2D{
+        /// <summary>
+        /// Signal được kích khi Chủ thể không loop và chạy xong animation
+        /// </summary>
         [Signal] public delegate void AnimationFinishedEventHandler();
+        /// <summary>
+        /// Frame hiện tại
+        /// </summary>
         private int currentFrame = 0;
+        /// <summary>
+        /// Bộ đếm frame thực
+        /// </summary>
         private double frameCounter = 0;
+        /// <summary>
+        /// Chạy animation của Sprite Sheet dựa trên hướng và State cho trước
+        /// </summary>
+        /// <param name="frameInfo">Thông tin frame hiện tại</param>
+        /// <param name="objectData">Metadata của chủ thể</param>
+        /// <param name="relativeResponseTime">Thời gian phản hồi tương đối</param>
         public void Animate(FrameInfo frameInfo, DynamicMetadata objectData, double relativeResponseTime){
             var _direction = objectData.GetDirectionNumber();   //Lấy hướng nhìn của đối tượng
             var _firstFrame = frameInfo.Length * _direction++;      //Lấy frame bắt đầu của animation
@@ -28,7 +46,7 @@ namespace Component.Animation{
                 if (currentFrame < _firstFrame || currentFrame > _nextFrame){
                     currentFrame = _firstFrame;                 //Chuyển tiếp frame tới vị trí mới
                     }
-                FrameCoords = new Vector2I(currentFrame, objectData.StateID);
+            FrameCoords = new Vector2I(currentFrame, objectData.StateID);
             }
         }
     }
