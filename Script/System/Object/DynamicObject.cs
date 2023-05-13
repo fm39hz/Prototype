@@ -14,8 +14,21 @@ namespace Game.Object{
 		/// </summary>
 		/// <value></value>
         public bool IsCollided{get; protected set;} = false;
+		/// <summary>
+		/// Sprite Sheet của object
+		/// </summary>
+		/// <value></value>
 		public SpriteSheet Sheet{get; protected set;}
+		/// <summary>
+		/// State Machine của object
+		/// </summary>
+		/// <value></value>
 		public StateMachine ObjectiveStateMachine{get; protected set;}
+		/// <summary>
+		/// Metadata, chứa thông tin về State ID, hướng nhìn của object, 
+		/// Animation có loop hay không,...
+		/// </summary>
+		/// <value></value>
 		public DynamicMetadata Metadata{get; protected set;}
 		/// <summary>
 		/// Trả về node con đầu tiên có type T
