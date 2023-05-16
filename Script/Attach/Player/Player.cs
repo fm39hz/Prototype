@@ -2,7 +2,7 @@ using Godot;
 using System;
 using Management.InputManager;
 
-namespace Game.Object.Moving{
+namespace Game.Object.Dynamic{
 	public partial class Player : DynamicObject{
 		public PlayerInputManager InputManager{get; protected set;}
 		public override void _EnterTree(){
