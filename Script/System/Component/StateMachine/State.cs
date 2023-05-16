@@ -4,7 +4,7 @@ using Godot;
 namespace Component.StateMachine{
     public abstract partial class State : Node{
 		[Signal] public delegate void StateRunningEventHandler();
-        public int ID{get; set;}
+        [Export] public int ID{get; set;}
         public bool Condition{get; protected set;}
         protected StateMachine Machine{get; set;}
         protected bool Initialized{get; set;}
@@ -40,6 +40,18 @@ namespace Component.StateMachine{
                 return null;
                 }
             return (StaticState)this;
+            }
+        public bool IsState(State state){
+            if (state == this){
+                return true;
+                }
+            return false;
+            }
+        public bool IsState(String stateName){
+            if (stateName == this.Name){
+                return true;
+                }
+            return false;
             }
         public virtual void SetCondition(bool condition){
             if (!this.Initialized){
