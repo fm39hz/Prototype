@@ -11,8 +11,10 @@ namespace Component.StateMachine{
 		public List<State> States{get; protected set;} = new();
 		protected bool IsInitialized {get; set;}
 		public override void _Ready(){
+			int _id = 0;
 			foreach (State target in GetChildren().OfType<State>()){
 				this.States.Add(target);
+				target.ID = _id++;
 				}
 			this.Init();
 			}
