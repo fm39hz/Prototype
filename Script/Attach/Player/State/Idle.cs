@@ -1,4 +1,3 @@
-using Component.Animation;
 using Component.StateMachine;
 using Management.InputManager;
 
