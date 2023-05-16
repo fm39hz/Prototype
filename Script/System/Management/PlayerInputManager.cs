@@ -4,7 +4,7 @@ namespace Management.InputManager{
 	public partial class PlayerInputManager : Node{
 		[Signal] public delegate void MovementKeyPressedEventHandler(bool IsPressed);
 		[Signal] public delegate void DashKeyPressedEventHandler();
-		public bool IsDoingSomething{private get; set;}
+		public bool CanMove{private get; set;}
 		public override void _UnhandledKeyInput(InputEvent @event){
 			if (@event is InputEventKey keyEscape){
 				if (keyEscape.IsPressed() && keyEscape.Keycode == Key.Escape){
@@ -19,9 +19,9 @@ namespace Management.InputManager{
 			bool _right = Input.IsActionPressed("ui_right");
 				if (Input.IsActionJustPressed("ui_dash")){
 					EmitSignal(SignalName.DashKeyPressed);
-					this.IsDoingSomething = true;
+					this.CanMove = false;
 					}
-				if (!this.IsDoingSomething){
+				if (this.CanMove){
 					if (_up || _down || _left || _right){
 						EmitSignal(SignalName.MovementKeyPressed, true);
 						}
@@ -31,7 +31,7 @@ namespace Management.InputManager{
 					}
 			}
 		public Vector2 GetPlayerMovementVector(Vector2 inputVector){
-			if (!this.IsDoingSomething){
+			if (this.CanMove){
 				inputVector = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down").LimitLength(1f);
 				}
 			return inputVector.Normalized();
