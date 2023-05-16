@@ -10,18 +10,18 @@ namespace Component.Animation{
         [Signal] public delegate void AnimationFinishedEventHandler();
         /// Summary:
         ///     Frame hiện tại
-        private int currentFrame = 0;
+        private int currentFrame{get; set;} = 0;
         /// Summary:
         ///     Bộ đếm frame thực
-        private double frameCounter = 0;
+        private double frameCounter{get; set;} = 0;
         /// <summary>
         /// Chạy animation của Sprite Sheet dựa trên hướng và State cho trước
         /// </summary>
         /// <param name="frameInfo">Thông tin frame hiện tại</param>
         /// <param name="objectData">Metadata của chủ thể</param>
         /// <param name="relativeResponseTime">Thời gian phản hồi tương đối</param>
-        public void Animate(FrameInfo frameInfo, DynamicMetadata objectData, double relativeResponseTime){
-            var _direction = objectData.GetDirectionNumber();   //Lấy hướng nhìn của đối tượng
+        public void Animate(FrameInfo frameInfo, DynamicObjectMetadata objectData, double relativeResponseTime){
+            var _direction = objectData.GetDirectionAsNumber();   //Lấy hướng nhìn của đối tượng
             var _firstFrame = frameInfo.Length * _direction++;      //Lấy frame bắt đầu của animation
             var _nextFrame = frameInfo.Length * _direction;         //Lấy frame bắt đầu của hướng kế tiếp
                 if (_firstFrame <= currentFrame && currentFrame < _nextFrame){

@@ -22,7 +22,7 @@ namespace Game.Object{
 		public StateMachine ObjectiveStateMachine{get; protected set;}
 		/// Summary:
 		/// 	Metadata, chứa thông tin về State ID, hướng nhìn của object, Animation có loop hay không,...
-		public DynamicMetadata Metadata{get; protected set;}
+		public DynamicObjectMetadata Metadata{get; protected set;}
 		/// <summary>
 		/// Trả về node con đầu tiên có type T
 		/// </summary>

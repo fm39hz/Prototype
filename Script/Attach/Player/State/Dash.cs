@@ -27,7 +27,7 @@ namespace Game.Object.Dynamic{
 			}
 		public override void _RunningState(double delta){
 			base._RunningState(delta);
-			player.Velocity = inputManager.GetPlayerMovementVector(player.Metadata.GetDirectionVector()) * this.MovingSpeed;
+			player.Velocity = inputManager.GetPlayerMovementVector(player.Metadata.GetDirectionAsVector()) * this.MovingSpeed;
 			}
 		}
 	}
