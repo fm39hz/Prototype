@@ -104,21 +104,31 @@ namespace Game.Object{
 		/// Cập nhật Metadata của đối tượng
 		/// </summary>
 		protected void UpdateMetadata(){
-			var State = this.ObjectiveStateMachine.CurrentState.ToDynamic();
-				this.Metadata.StateID = State.ID;
-				this.Metadata.IsLoopingAnimation = State.IsLoop;
-					if (!this.Velocity.IsEqualApprox(Vector2.Zero)){
-						this.Metadata.SetDirection(Velocity);
-						}
+			try {
+				var State = this.ObjectiveStateMachine.CurrentState as DynamicState;
+					this.Metadata.StateID = State.ID;
+					this.Metadata.IsLoopingAnimation = State.IsLoop;
+						if (!this.Velocity.IsEqualApprox(Vector2.Zero)){
+							this.Metadata.SetDirection(Velocity);
+							}
+				}
+			catch (NullReferenceException){
+				GD.Print("Không thể tìm thấy State hiện tại của đối tượng: \'" + this.Name + "\'");
+				}
 			}
 		/// <summary>
 		/// Animate Sprite Sheet dựa trên thông tin lấy được từ method UpdateMetadata
 		/// </summary>
 		/// <param name="delta"></param>
 		protected void Animation(double delta){
-			var State = this.ObjectiveStateMachine.CurrentState.ToDynamic();
-			var Frame = State.Frame;
-				this.Sheet.Animate(Frame, Metadata, GetRelativeResponseTime(delta));
+			try {
+				var State = this.ObjectiveStateMachine.CurrentState as DynamicState;
+				var Frame = State.Frame;
+					this.Sheet.Animate(Frame, Metadata, GetRelativeResponseTime(delta));
+				}
+			catch (NullReferenceException){
+				GD.Print("Không thể tìm thấy State hiện tại của đối tượng: \'" + this.Name + "\'");
+				}
 			}
         }
     }
