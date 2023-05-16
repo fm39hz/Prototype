@@ -5,7 +5,6 @@ namespace Game.Object.Dynamic{
 		public PlayerInputManager InputManager{get; private set;}
 		public override void _EnterTree(){
 			base._EnterTree();
-				var _scene = GetParent();
 				InputManager = GetFirstChildOfType<PlayerInputManager>();
 			}
 		}
