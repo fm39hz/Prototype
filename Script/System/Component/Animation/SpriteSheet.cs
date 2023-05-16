@@ -2,21 +2,17 @@ using Godot;
 using Metadata.Object;
 
 namespace Component.Animation{
-    /// <summary>
-    /// Class dùng cho Sprite Sheet, chia animation theo 8 hướng
-    /// </summary>
+    /// Summary:
+    ///     Class dùng cho Sprite Sheet, chia animation theo 8 hướng
     public partial class SpriteSheet : Sprite2D{
-        /// <summary>
-        /// Signal được kích khi Chủ thể không loop và chạy xong animation
-        /// </summary>
+        /// Summary:
+        ///     Signal được kích khi Chủ thể không loop và chạy xong animation
         [Signal] public delegate void AnimationFinishedEventHandler();
-        /// <summary>
-        /// Frame hiện tại
-        /// </summary>
+        /// Summary:
+        ///     Frame hiện tại
         private int currentFrame = 0;
-        /// <summary>
-        /// Bộ đếm frame thực
-        /// </summary>
+        /// Summary:
+        ///     Bộ đếm frame thực
         private double frameCounter = 0;
         /// <summary>
         /// Chạy animation của Sprite Sheet dựa trên hướng và State cho trước

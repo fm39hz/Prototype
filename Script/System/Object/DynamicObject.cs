@@ -5,29 +5,20 @@ using Component.Animation;
 using Component.StateMachine;
 
 namespace Game.Object{
-	/// <summary>
-	/// Object động, có State Machine, có Animation
-	/// </summary>
+	/// Summary:
+	/// 	Object động, có State Machine & Animation
     public abstract partial class DynamicObject : CharacterBody2D{
-		/// <summary>
-		/// Lưu giá trị kiểm tra xem có đang collide với vật thể nào không
-		/// </summary>
-		/// <value></value>
+		/// Summary:
+		/// 	Lưu giá trị kiểm tra xem có đang collide với vật thể nào không
         public bool IsCollided{get; protected set;} = false;
-		/// <summary>
-		/// Sprite Sheet của object
-		/// </summary>
-		/// <value></value>
+		/// Summary:
+		/// 	Sprite Sheet của object
 		public SpriteSheet Sheet{get; protected set;}
-		/// <summary>
-		/// State Machine của object
-		/// </summary>
-		/// <value></value>
+		/// Summary:
+		/// 	State Machine của object
 		public StateMachine ObjectiveStateMachine{get; protected set;}
-		/// <summary>
-		/// Metadata, chứa thông tin về State ID, hướng nhìn của object, Animation có loop hay không,...
-		/// </summary>
-		/// <value></value>
+		/// Summary:
+		/// 	Metadata, chứa thông tin về State ID, hướng nhìn của object, Animation có loop hay không,...
 		public DynamicMetadata Metadata{get; protected set;}
 		/// <summary>
 		/// Trả về node con đầu tiên có type T
@@ -100,9 +91,8 @@ namespace Game.Object{
 		protected static double GetRelativeResponseTime(double delta){
 			return Performance.GetMonitor(Performance.Monitor.TimeFps) * delta;
 			}
-		/// <summary>
-		/// Cập nhật Metadata của đối tượng
-		/// </summary>
+		/// Summary:
+		/// 	Cập nhật Metadata của đối tượng
 		protected void UpdateMetadata(){
 			try {
 				var State = this.ObjectiveStateMachine.CurrentState as DynamicState;
