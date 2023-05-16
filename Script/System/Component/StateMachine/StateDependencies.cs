@@ -4,10 +4,22 @@ using Game.Object;
 
 namespace Component.StateMachine{
     public abstract partial class DynamicState : State{
-        [Export] public float MovingSpeed{get; protected set;}
-        public FrameInfo Frame{get; protected set;}
-        public bool IsLoop{get; protected set;}
         public DynamicObject OwnerObjected{get; protected set;}
+        public FrameInfo Frame{get; protected set;}
+        [ExportCategory("Motion")]
+            [Export] public float MovingSpeed{get; protected set;}
+        [ExportCategory("Animation")]
+            [Export] public int NumberOfFrame{get; protected set;}
+            [Export] public bool IsLoop{get; protected set;}
+            [Export] public float AnimationSpeed{get; protected set;}
+        public override void _EnterTree(){
+            base._EnterTree();
+            Frame = new(NumberOfFrame, AnimationSpeed);
+                if (AnimationSpeed == 0){
+                    IsLoop = false;
+                    GD.Print("Animation Loop đã được set về false vì AnimationSpeed chưa được set");
+                    }
+            }
         }
     public abstract partial class StaticState : State{
         }

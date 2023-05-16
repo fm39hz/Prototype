@@ -12,8 +12,6 @@ namespace Game.Object.Dynamic{
 			player = GetOwnerOrNull<Player>();
 			inputManager = player.InputManager;
 			spriteSheet = player.Sheet;
-			Frame = new FrameInfo(4, 4.5);
-			IsLoop = false;
 			}
 		public override void _Ready(){
 			base._Ready();

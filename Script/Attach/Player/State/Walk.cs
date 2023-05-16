@@ -10,8 +10,6 @@ namespace Game.Object.Dynamic{
 			base._EnterTree();
 			player = GetOwnerOrNull<Player>();
 			inputManager = player.InputManager;
-			Frame = new FrameInfo(8, 8.5);
-			IsLoop = true;
 			}
 		public override void _Ready(){
 			base._Ready();
