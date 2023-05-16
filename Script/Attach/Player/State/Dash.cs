@@ -9,7 +9,6 @@ namespace Game.Object.Dynamic{
 		private SpriteSheet spriteSheet;
 		public override void _EnterTree(){
 			base._EnterTree();
-			ID = 2;
 			player = GetOwnerOrNull<Player>();
 			inputManager = player.InputManager;
 			spriteSheet = player.Sheet;

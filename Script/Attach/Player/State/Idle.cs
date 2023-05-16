@@ -8,7 +8,6 @@ namespace Game.Object.Dynamic{
 		private Player player;
 		public override void _EnterTree(){
 			base._EnterTree();
-			ID = 0;
 			player = GetOwnerOrNull<Player>();
 			inputManager = player.InputManager;
 			Frame = new FrameInfo(4, 4.5);

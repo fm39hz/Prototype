@@ -8,7 +8,6 @@ namespace Game.Object.Dynamic{
 		private Player player;
 		public override void _EnterTree(){
 			base._EnterTree();
-			ID = 1;
 			player = GetOwnerOrNull<Player>();
 			inputManager = player.InputManager;
 			Frame = new FrameInfo(8, 8.5);
@@ -19,6 +18,12 @@ namespace Game.Object.Dynamic{
 			inputManager.MovementKeyPressed += this.SetCondition;
 			inputManager.DashKeyPressed += this.ResetCondition;
 			}
+		// public override void SetCondition(bool condition){
+		// 	base.SetCondition(condition);
+		// 	if (player.Velocity.IsZeroApprox() && !Machine.PreviousState.IsState(this)){
+		// 		Condition = false;
+		// 		}
+		// 	}
 		public override void _RunningState(double delta){
 			base._RunningState(delta);
 			player.Velocity = inputManager.GetPlayerMovementVector(player.Velocity) * this.MovingSpeed;
