@@ -30,16 +30,10 @@ namespace Component.StateMachine{
             this.Initialized = true;
             }
         public DynamicState ToDynamic(){
-            if (this is not State || this is StaticState){
-                return null;
-                }
-            return (DynamicState)this;
+            return this as DynamicState;
             }
         public StaticState ToStatic(){
-            if (this is not State || this is DynamicState){
-                return null;
-                }
-            return (StaticState)this;
+            return this as StaticState;
             }
         public bool IsState(State state){
             if (state == this){
