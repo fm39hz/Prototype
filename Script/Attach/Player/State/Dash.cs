@@ -23,7 +23,7 @@ namespace Game.Object.Dynamic{
 			}
 		public override void ResetCondition(){
 			base.ResetCondition();
-			inputManager.CanMove = true;
+			player.CanMove = true;
 			}
 		public override void _RunningState(double delta){
 			base._RunningState(delta);

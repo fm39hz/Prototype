@@ -9,6 +9,9 @@ namespace Game.Object{
 	/// 	Object động, có State Machine & Animation
     public abstract partial class DynamicObject : CharacterBody2D{
 		/// Summary:
+		/// 	Điều kiện quyết định đối tượng có được di chuyển hay không
+		public bool CanMove{get; set;} = true;
+		/// Summary:
 		/// 	Lưu giá trị kiểm tra xem có đang collide với vật thể nào không
         public bool IsCollided{get; protected set;} = false;
 		/// Summary:
@@ -55,13 +58,13 @@ namespace Game.Object{
 			try{
 				this.Sheet = GetFirstChildOfType<SpriteSheet>();
 				}
-			catch (InvalidCastException e){
+			catch (InvalidCastException CannotGetSpriteSheet){
 				GD.Print("Không thể cast tới Sprite Sheet");
-				throw e;
+				throw CannotGetSpriteSheet;
 				}
-			catch (NullReferenceException e){
+			catch (NullReferenceException DontHaveSpriteSheet){
 				GD.Print("Chưa có Sprite Sheet");
-				throw e;
+				throw DontHaveSpriteSheet;
 				}
 			}
 		public override void _Ready(){
@@ -69,13 +72,13 @@ namespace Game.Object{
 				this.ObjectiveStateMachine = GetFirstChildOfType<StateMachine>();
 				this.Metadata = new();
 				}
-			catch (InvalidCastException e){
+			catch (InvalidCastException CannotGetStateMachine){
 				GD.Print("Không thể cast tới State Machine");
-				throw e;
+				throw CannotGetStateMachine;
 				}
-			catch (NullReferenceException e){
+			catch (NullReferenceException DontHaveStateMachine){
 				GD.Print("Chưa có State Machine");
-				throw e;
+				throw DontHaveStateMachine;
 				}
 			}
 		public override void _PhysicsProcess(double delta){
@@ -102,8 +105,9 @@ namespace Game.Object{
 							this.Metadata.SetDirection(Velocity);
 							}
 				}
-			catch (NullReferenceException){
+			catch (NullReferenceException CurrentStateMissing){
 				GD.Print("Không thể tìm thấy State hiện tại của đối tượng: \'" + this.Name + "\'");
+				throw CurrentStateMissing;
 				}
 			}
 		/// <summary>
@@ -116,8 +120,9 @@ namespace Game.Object{
 				var Frame = State.Frame;
 					this.Sheet.Animate(Frame, Metadata, GetRelativeResponseTime(delta));
 				}
-			catch (NullReferenceException){
+			catch (NullReferenceException CurrentStateMissing){
 				GD.Print("Không thể tìm thấy State hiện tại của đối tượng: \'" + this.Name + "\'");
+				throw CurrentStateMissing;
 				}
 			}
         }
