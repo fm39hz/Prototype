@@ -15,7 +15,7 @@ namespace Component.Animation{
         ///     Bộ đếm frame thực
         private double frameCounter{get; set;} = 0;
         /// <summary>
-        /// Chạy animation của Sprite Sheet dựa trên hướng và State cho trước
+        /// Chạy animation của Sprite Sheet Dữ liệu của đối tượng được truyền vào
         /// </summary>
         /// <param name="frameInfo">Thông tin frame hiện tại</param>
         /// <param name="objectData">Metadata của chủ thể</param>
