@@ -28,7 +28,7 @@ namespace Component.Object{
 		/// <summary>
 		/// Metadata, chứa thông tin về State ID, hướng nhìn của object, Animation có loop hay không,...
 		/// </summary>
-		public DynamicObjectMetadata Metadata{get; protected set;}
+		public DynamicObjectData Metadata{get; protected set;}
 		/// <summary>
 		/// Trả về node con đầu tiên có type T
 		/// </summary>

@@ -2,11 +2,11 @@ using Godot;
 using Metadata.Direction;
 
 namespace Metadata.Object{
-    public partial class DynamicObjectMetadata{
+    public partial class DynamicObjectData{
         public int StateID{get; set;}
-        public DirectionMetadata Direction{get; protected set;}
+        public DirectionData Direction{get; protected set;}
         public bool IsLoopingAnimation{get; set;}
-        public DynamicObjectMetadata(){
+        public DynamicObjectData(){
             this.StateID = 0;
             this.Direction = new();
             this.IsLoopingAnimation = true;

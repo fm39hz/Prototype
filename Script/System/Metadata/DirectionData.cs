@@ -3,11 +3,11 @@ using Modifier.Direction;
 using System.Collections.Generic;
 
 namespace Metadata.Direction{
-	public class DirectionMetadata{
+	public class DirectionData{
 		public Dictionary<int, Vector2> Direction{get; private set;} = new(8);
 		public int AsNumber{get; private set;}
 		public Vector2 AsVector{get; private set;}
-        public DirectionMetadata(){
+        public DirectionData(){
 			Direction.Add(0, Vector2.Down);
 			Direction.Add(1, Vector2.Down + Vector2.Right);
 			Direction.Add(2, Vector2.Right);
