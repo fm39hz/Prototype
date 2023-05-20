@@ -1,6 +1,6 @@
 using Component.Animation;
 
-namespace Game.Object.Player{
+namespace Component.Object.Player{
     public partial class Sheet : SpriteSheet{
         }
     }

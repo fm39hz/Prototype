@@ -1,6 +1,6 @@
 using Management.InputManager;
 
-namespace Game.Object.Dynamic{
+namespace Component.Object.Dynamic{
 	public partial class Player : DynamicObject{
 		public PlayerInputManager InputManager{get; private set;}
 		public override void _EnterTree(){

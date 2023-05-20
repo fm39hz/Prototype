@@ -1,7 +1,7 @@
-using Component.StateMachine;
+using Component.FiniteStateMachine;
 using Management.InputManager;
 
-namespace Game.Object.Dynamic{
+namespace Component.Object.Dynamic{
 	public partial class Walk : DynamicState{
 		private PlayerInputManager inputManager;
 		private Player player;

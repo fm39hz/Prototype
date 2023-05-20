@@ -1,6 +1,6 @@
-using Component.StateMachine;
+using Component.FiniteStateMachine;
 
-namespace Game.Object.Player{
+namespace Component.Object.Player{
 	public partial class PlayerStateMachine : StateMachine{
 		}
 	}

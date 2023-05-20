@@ -1,8 +1,8 @@
 using Godot;
 using Component.Animation;
-using Game.Object;
+using Component.Object;
 
-namespace Component.StateMachine{
+namespace Component.FiniteStateMachine{
     public abstract partial class DynamicState : State{
         public DynamicObject OwnerObjected{get; protected set;}
         public FrameInfo Frame{get; protected set;}

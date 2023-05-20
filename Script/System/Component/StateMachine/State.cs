@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace Component.StateMachine{
+namespace Component.FiniteStateMachine{
     public abstract partial class State : Node{
 		[Signal] public delegate void StateRunningEventHandler();
         [Export] public int ID{get; set;}

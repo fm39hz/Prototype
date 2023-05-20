@@ -1,8 +1,8 @@
 using Component.Animation;
-using Component.StateMachine;
+using Component.FiniteStateMachine;
 using Management.InputManager;
 
-namespace Game.Object.Dynamic{
+namespace Component.Object.Dynamic{
 	public partial class Dash : DynamicState{
 		private Player player;
 		private PlayerInputManager inputManager;

@@ -2,9 +2,9 @@ using Godot;
 using System;
 using Metadata.Object;
 using Component.Animation;
-using Component.StateMachine;
+using Component.FiniteStateMachine;
 
-namespace Game.Object{
+namespace Component.Object{
 	/// Summary:
 	/// 	Object động, có State Machine & Animation
     public abstract partial class DynamicObject : CharacterBody2D{

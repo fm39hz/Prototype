@@ -1,6 +1,6 @@
 using System;
 using Godot;
-using Game.Object.Dynamic;
+using Component.Object.Dynamic;
 
 namespace Management.InputManager{
 	public partial class PlayerInputManager : Node{
