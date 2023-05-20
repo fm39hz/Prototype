@@ -1,6 +1,6 @@
-namespace Component.Animation{
-    public class FrameInfo{
-        public FrameInfo(int frameNumber, double speed){
+namespace Metadata.Animation{
+    public class FrameData{
+        public FrameData(int frameNumber, double speed){
             Length = frameNumber;
             Speed = speed;
             }
