@@ -5,23 +5,29 @@ using Component.Animation;
 using Component.FiniteStateMachine;
 
 namespace Component.Object{
-	/// Summary:
-	/// 	Object động, có State Machine & Animation
+	/// <summary>
+	/// Object động, có State Machine & Animation
+	/// </summary>
     public abstract partial class DynamicObject : CharacterBody2D{
-		/// Summary:
-		/// 	Điều kiện quyết định đối tượng có được di chuyển hay không
+		/// <summary>
+		/// Điều kiện quyết định đối tượng có được di chuyển hay không
+		/// </summary>
 		public bool CanMove{get; set;} = true;
-		/// Summary:
-		/// 	Lưu giá trị kiểm tra xem có đang collide với vật thể nào không
+		/// <summary>
+		/// Lưu giá trị kiểm tra xem có đang collide với vật thể nào không
+		/// </summary>
         public bool IsCollided{get; protected set;} = false;
-		/// Summary:
-		/// 	Sprite Sheet của object
+		/// <summary>
+		/// Sprite Sheet của object
+		/// </summary>
 		public SpriteSheet Sheet{get; protected set;}
-		/// Summary:
-		/// 	State Machine của object
+		/// <summary>
+		/// State Machine của object
+		/// </summary>
 		public StateMachine ObjectiveStateMachine{get; protected set;}
-		/// Summary:
-		/// 	Metadata, chứa thông tin về State ID, hướng nhìn của object, Animation có loop hay không,...
+		/// <summary>
+		/// Metadata, chứa thông tin về State ID, hướng nhìn của object, Animation có loop hay không,...
+		/// </summary>
 		public DynamicObjectMetadata Metadata{get; protected set;}
 		/// <summary>
 		/// Trả về node con đầu tiên có type T
@@ -94,8 +100,9 @@ namespace Component.Object{
 		protected static double GetRelativeResponseTime(double delta){
 			return Performance.GetMonitor(Performance.Monitor.TimeFps) * delta;
 			}
-		/// Summary:
-		/// 	Cập nhật Metadata của đối tượng
+		/// <summary>
+		/// Cập nhật Metadata của đối tượng
+		/// </summary>
 		protected void UpdateMetadata(){
 			try {
 				var State = this.ObjectiveStateMachine.CurrentState as DynamicState;
