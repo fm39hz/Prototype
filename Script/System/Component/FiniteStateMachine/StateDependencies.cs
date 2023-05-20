@@ -1,11 +1,12 @@
 using Godot;
+using Metadata.Animation;
 using Component.Animation;
 using Component.Object;
 
 namespace Component.FiniteStateMachine{
     public abstract partial class DynamicState : State{
         public DynamicObject OwnerObjected{get; protected set;}
-        public FrameInfo Frame{get; protected set;}
+        public FrameData Frame{get; protected set;}
         [ExportCategory("Motion")]
             [Export] public float MovingSpeed{get; protected set;}
         [ExportCategory("Animation")]
