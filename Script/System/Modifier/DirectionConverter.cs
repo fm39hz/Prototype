@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Metadata.Direction;
 
 namespace Modifier.Direction{
-		public static class Convert{
+		public static class DirectionConverter{
 			public static int ToDirection(Vector2 input){
-				var _directionMap = new DirectionData().Direction;
+				var _directionMap = new DirectionData().DirectionContainer;
 				var _target = 0;
 					foreach (KeyValuePair<int, Vector2> direction in _directionMap){
 						if (input.AngleTo(direction.Value) == 0){
@@ -16,7 +16,7 @@ namespace Modifier.Direction{
 				return _target;
 				}
 			public static Vector2 ToDirection(int input){
-				var _directionMap = new DirectionData().Direction;
+				var _directionMap = new DirectionData().DirectionContainer;
 				var _target = Vector2.Zero;
 					if (input < 0 || input > 7){
 						return _target;
