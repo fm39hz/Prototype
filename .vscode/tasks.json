@@ -7,7 +7,7 @@
             "type": "shell",
             "args": [
                 "build",
-                "${workspaceFolder}/ThisIsGame.csproj",
+                "${workspaceFolder}/Prototype.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
