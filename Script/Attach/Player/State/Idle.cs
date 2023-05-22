@@ -1,9 +1,9 @@
 using Component.FiniteStateMachine;
-using Management.InputManager;
+using Management;
 
 namespace Component.Object.Dynamic{
 	public partial class Idle : DynamicState{
-		private PlayerInputManager inputManager;
+		private InputManager inputManager;
 		private Player player;
 		public override void _EnterTree(){
 			base._EnterTree();

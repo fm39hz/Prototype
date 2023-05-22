@@ -1,11 +1,11 @@
 using Component.Animation;
 using Component.FiniteStateMachine;
-using Management.InputManager;
+using Management;
 
 namespace Component.Object.Dynamic{
 	public partial class Dash : DynamicState{
 		private Player player;
-		private PlayerInputManager inputManager;
+		private InputManager inputManager;
 		private SpriteSheet spriteSheet;
 		public override void _EnterTree(){
 			base._EnterTree();
