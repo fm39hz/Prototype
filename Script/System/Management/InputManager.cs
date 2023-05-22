@@ -2,8 +2,8 @@ using System;
 using Godot;
 using Component.Object.Dynamic;
 
-namespace Management.InputManager{
-	public partial class PlayerInputManager : Node{
+namespace Management{
+	public partial class InputManager : Node{
 		[Signal] public delegate void MovementKeyPressedEventHandler(bool IsPressed);
 		[Signal] public delegate void DashKeyPressedEventHandler();
 		private Player player{get; set;}
