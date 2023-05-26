@@ -105,9 +105,9 @@ namespace Component.Object{
 		/// </summary>
 		protected void UpdateMetadata(){
 			try {
-				var State = this.ObjectiveStateMachine.CurrentState as DynamicState;
-					this.Metadata.StateID = State.ID;
-					this.Metadata.IsLoopingAnimation = State.IsLoop;
+				var _state = this.ObjectiveStateMachine.CurrentState as DynamicState;
+					this.Metadata.StateID = _state.ID;
+					this.Metadata.IsLoopingAnimation = _state.IsLoop;
 						if (!this.Velocity.IsEqualApprox(Vector2.Zero)){
 							this.Metadata.SetDirection(Velocity);
 							}
@@ -123,9 +123,9 @@ namespace Component.Object{
 		/// <param name="delta"></param>
 		protected void Animation(double delta){
 			try {
-				var State = this.ObjectiveStateMachine.CurrentState as DynamicState;
-				var Frame = State.Frame;
-					this.Sheet.Animate(Frame, Metadata, GetRelativeResponseTime(delta));
+				var _state = this.ObjectiveStateMachine.CurrentState as DynamicState;
+				var _frame = _state.Frame;
+					this.Sheet.Animate(_frame, Metadata, GetRelativeResponseTime(delta));
 				}
 			catch (NullReferenceException CurrentStateMissing){
 				GD.Print("Không thể tìm thấy State hiện tại của đối tượng: \'" + this.Name + "\'");
