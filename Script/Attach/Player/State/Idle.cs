@@ -1,5 +1,5 @@
 using Component.FiniteStateMachine;
-using Management;
+using Component.Manager;
 
 namespace Component.Object.Dynamic{
 	public partial class Idle : DynamicState{

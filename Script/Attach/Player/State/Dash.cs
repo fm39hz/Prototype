@@ -1,6 +1,6 @@
 using Component.Animation;
 using Component.FiniteStateMachine;
-using Management;
+using Component.Manager;
 
 namespace Component.Object.Dynamic{
 	public partial class Dash : DynamicState{
