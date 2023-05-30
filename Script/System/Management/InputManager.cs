@@ -43,9 +43,9 @@ namespace Management{
 			}
 		public Vector2 GetPlayerMovementVector(Vector2 inputVector){
 			if (player.CanMove){
-				inputVector = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down").LimitLength(1f);
+				inputVector = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 				}
-			return inputVector.Normalized();
+			return inputVector;
 			}
 		}
 	}
