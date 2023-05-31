@@ -50,7 +50,7 @@ namespace Component.Object{
 		/// <typeparam name="T"></typeparam>
 		/// <returns>Node đầu tiên có type T ở cùng cấp, hoặc null nếu không tìm thấy</returns>
 		public T GetFirstSiblingOfType<T>() where T : Node{
-			Node parent = this.GetParent();
+			var parent = this.GetParent();
 			T targetSibling = null;
 				for (int i = 0; i < parent.GetChildCount(); i++){
 					if (parent.GetChildOrNull<T>(i) != null){

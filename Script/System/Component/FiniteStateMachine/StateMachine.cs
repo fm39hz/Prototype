@@ -11,28 +11,28 @@ namespace Component.FiniteStateMachine{
 		public List<State> States{get; protected set;} = new();
 		protected bool IsInitialized {get; set;}
 		public override void _Ready(){
-			int _id = 0;
-			foreach (State target in GetChildren().OfType<State>()){
+			var _id = 0;
+			foreach (var target in GetChildren().OfType<State>()){
 				this.States.Add(target);
 				target.ID = _id++;
 				}
 			this.Init();
 			}
 		protected void Init(){
-			IsInitialized = true;
-				foreach (State selected in States){
+			this.IsInitialized = true;
+				foreach (var selected in States){
 					this.StateEntered += selected._EnteredMachine;
 					selected.StateRunning += this.CheckingCondition;
 					this.StateExited += selected._ExitState;
 					}
 			this.SelectState();
-			PreviousState = CurrentState;
+			this.PreviousState = this.CurrentState;
 			}
 		protected void SelectState(){
 			if (!this.IsInitialized){
 				return;
 				}
-			foreach (State selected in States){
+			foreach (var selected in States){
 				if (selected.Condition){
 					this.CurrentState = selected;
 					this.EmitSignal(SignalName.StateEntered);
@@ -42,7 +42,7 @@ namespace Component.FiniteStateMachine{
 			}
 		protected void CheckingCondition(){
 			if (this.IsInitialized && !CurrentState.Condition){
-				PreviousState = CurrentState;
+				this.PreviousState = this.CurrentState;
 					this.EmitSignal(SignalName.StateExited);
 					this.SelectState();
 				}

@@ -24,10 +24,10 @@ namespace Component.Manager{
 				}
 			}
 		public override void _PhysicsProcess(double delta){
-			bool _up = Input.IsActionPressed("ui_up");
-			bool _down = Input.IsActionPressed("ui_down");
-			bool _left = Input.IsActionPressed("ui_left");
-			bool _right = Input.IsActionPressed("ui_right");
+			var _up = Input.IsActionPressed("ui_up");
+			var _down = Input.IsActionPressed("ui_down");
+			var _left = Input.IsActionPressed("ui_left");
+			var _right = Input.IsActionPressed("ui_right");
 				if (Input.IsActionJustPressed("ui_dash")){
 					EmitSignal(SignalName.DashKeyPressed);
 					player.CanMove = false;
