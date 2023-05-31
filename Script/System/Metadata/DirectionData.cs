@@ -1,5 +1,5 @@
 using Godot;
-using Modifier.Direction;
+using Utility.Direction;
 using System.Collections.Generic;
 
 namespace Metadata.Direction{
