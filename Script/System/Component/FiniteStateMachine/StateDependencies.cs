@@ -15,6 +15,7 @@ namespace Component.FiniteStateMachine;
             [Export] public float AnimationSpeed{get; protected set;}
         public override void _EnterTree(){
             base._EnterTree();
+            OwnerObjected = GetOwner<DynamicObject>();
             Frame = new(NumberOfFrame, AnimationSpeed);
                 if (AnimationSpeed == 0){
                     IsLoop = false;

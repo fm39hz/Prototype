@@ -3,6 +3,7 @@ using System;
 using Metadata.Object;
 using Component.Animation;
 using Component.FiniteStateMachine;
+using Component.Manager;
 
 namespace Component.Object;
 	/// <summary>
@@ -17,6 +18,10 @@ namespace Component.Object;
 		/// Lưu giá trị kiểm tra xem có đang collide với vật thể nào không
 		/// </summary>
         public bool IsCollided{get; protected set;} = false;
+		/// <summary>
+		/// Lấy thông tin input của Player
+		/// </summary>
+		public InputManager PlayerInputManager{get; private set;}
 		/// <summary>
 		/// Sprite Sheet của object
 		/// </summary>
@@ -63,13 +68,14 @@ namespace Component.Object;
 		public override void _EnterTree(){
 			try{
 				this.Sheet = GetFirstChildOfType<SpriteSheet>();
+				this.PlayerInputManager = GetFirstChildOfType<InputManager>();
 				}
 			catch (InvalidCastException CannotGetSpriteSheet){
-				GD.Print("Không thể cast tới Sprite Sheet");
+				GD.Print("Không thể cast tới Sprite Sheet & Player Input Manager");
 				throw CannotGetSpriteSheet;
 				}
 			catch (NullReferenceException DontHaveSpriteSheet){
-				GD.Print("Chưa có Sprite Sheet");
+				GD.Print("Chưa có Sprite Sheet & Player Input Manger");
 				throw DontHaveSpriteSheet;
 				}
 			}
