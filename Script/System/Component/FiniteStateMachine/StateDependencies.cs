@@ -5,7 +5,7 @@ using Component.Object;
 
 namespace Component.FiniteStateMachine;
     public abstract partial class DynamicState : State{
-        public DynamicObject OwnerObjected{get; protected set;}
+        public DynamicObject OwnedObject{get; protected set;}
         public FrameData Frame{get; protected set;}
         [ExportCategory("Motion")]
             [Export] public float MovingSpeed{get; protected set;}
@@ -15,7 +15,7 @@ namespace Component.FiniteStateMachine;
             [Export] public float AnimationSpeed{get; protected set;}
         public override void _EnterTree(){
             base._EnterTree();
-            OwnerObjected = GetOwner<DynamicObject>();
+            OwnedObject = GetOwner<DynamicObject>();
             Frame = new(NumberOfFrame, AnimationSpeed);
                 if (AnimationSpeed == 0){
                     IsLoop = false;

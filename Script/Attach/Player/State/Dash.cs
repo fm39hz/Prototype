@@ -2,18 +2,18 @@ using Component.FiniteStateMachine;
 public partial class Dash : DynamicState{
 	public override void _Ready(){
 		base._Ready();
-		OwnerObjected.PlayerInputManager.DashKeyPressed += this.SetCondition;
-		OwnerObjected.Sheet.AnimationFinished += this.ResetCondition;
+		OwnedObject.PlayerInputManager.DashKeyPressed += this.SetCondition;
+		OwnedObject.Sheet.AnimationFinished += this.ResetCondition;
 		}
 	public void SetCondition(){
 		base.SetCondition(true);
 		}
 	public override void ResetCondition(){
 		base.ResetCondition();
-		OwnerObjected.CanMove = true;
+		OwnedObject.CanMove = true;
 		}
 	public override void _RunningState(double delta){
 		base._RunningState(delta);
-		OwnerObjected.Velocity = OwnerObjected.PlayerInputManager.GetPlayerMovementVector(OwnerObjected.Metadata.GetDirectionAsVector()) * this.MovingSpeed;
+		OwnedObject.Velocity = OwnedObject.PlayerInputManager.GetPlayerMovementVector(OwnedObject.Metadata.GetDirectionAsVector()) * this.MovingSpeed;
 		}
 	}
