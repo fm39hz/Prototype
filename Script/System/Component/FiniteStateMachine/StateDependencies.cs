@@ -3,7 +3,7 @@ using Metadata.Animation;
 using Component.Animation;
 using Component.Object;
 
-namespace Component.FiniteStateMachine{
+namespace Component.FiniteStateMachine;
     public abstract partial class DynamicState : State{
         public DynamicObject OwnerObjected{get; protected set;}
         public FrameData Frame{get; protected set;}
@@ -24,4 +24,3 @@ namespace Component.FiniteStateMachine{
         }
     public abstract partial class StaticState : State{
         }
-    }

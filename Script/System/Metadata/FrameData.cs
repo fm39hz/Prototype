@@ -1,4 +1,4 @@
-namespace Metadata.Animation{
+namespace Metadata.Animation;
     /// <summary>
     /// Chứa thông tin về frame của 1 đối tượng
     /// </summary>
@@ -18,4 +18,3 @@ namespace Metadata.Animation{
         /// <value></value>
         public double Speed{get; set;}
         }
-    }

@@ -2,7 +2,7 @@ using Godot;
 using System.Collections.Generic;
 using Metadata.Direction;
 
-namespace Utility.Direction{
+namespace Utility.Direction;
 		public static class DirectionConverter{
 			public static int ToDirection(Vector2 input){
 				var _directionMap = new DirectionData().DirectionContainer;
@@ -30,4 +30,3 @@ namespace Utility.Direction{
 				return _target;
 				}
 			}
-    }

@@ -1,7 +1,7 @@
 using Godot;
 using Metadata.Direction;
 
-namespace Metadata.Object{
+namespace Metadata.Object;
     public partial class DynamicObjectData{
         public int StateID{get; set;}
         public DirectionData Direction{get; protected set;}
@@ -24,4 +24,3 @@ namespace Metadata.Object{
             return this.Direction.AsVector;
             }
         }
-    }

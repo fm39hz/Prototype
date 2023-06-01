@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Component.DamageSystem{
+namespace Component.DamageSystem;
     public partial class Hitbox : Node{
         [Signal] delegate void AttackHittedEventHandler();
         [Export] public Area2D AttackZone{get; set;}
@@ -8,4 +8,3 @@ namespace Component.DamageSystem{
 
             }
         }
-    }

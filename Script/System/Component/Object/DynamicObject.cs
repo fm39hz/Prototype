@@ -4,7 +4,7 @@ using Metadata.Object;
 using Component.Animation;
 using Component.FiniteStateMachine;
 
-namespace Component.Object{
+namespace Component.Object;
 	/// <summary>
 	/// Object động, có State Machine & Animation
 	/// </summary>
@@ -133,4 +133,3 @@ namespace Component.Object{
 				}
 			}
         }
-    }
