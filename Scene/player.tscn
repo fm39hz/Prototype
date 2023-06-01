@@ -22,6 +22,7 @@ texture = ExtResource("1_ety8i")
 hframes = 64
 vframes = 3
 script = ExtResource("3_g435g")
+metadata/_edit_lock_ = true
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
