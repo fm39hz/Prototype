@@ -6,10 +6,10 @@ namespace Component.Manager;
 	public partial class InputManager : Node{
 		[Signal] public delegate void MovementKeyPressedEventHandler(bool IsPressed);
 		[Signal] public delegate void DashKeyPressedEventHandler();
-		private Player player{get; set;}
+		private Player CurrentPlayer{get; set;}
 		public override void _Ready(){
 			try{
-				player = GetOwner<Player>();
+				CurrentPlayer = GetOwner<Player>();
 				}
 			catch(NullReferenceException InputMustInPlayer){
 				GD.Print("InputManager phải được đặt trong Player");
@@ -30,9 +30,9 @@ namespace Component.Manager;
 			var _right = Input.IsActionPressed("ui_right");
 				if (Input.IsActionJustPressed("ui_dash")){
 					EmitSignal(SignalName.DashKeyPressed);
-					player.CanMove = false;
+					CurrentPlayer.CanMove = false;
 					}
-				if (player.CanMove){
+				if (CurrentPlayer.CanMove){
 					if (_up || _down || _left || _right){
 						EmitSignal(SignalName.MovementKeyPressed, true);
 						}
@@ -42,7 +42,7 @@ namespace Component.Manager;
 					}
 			}
 		public Vector2 GetPlayerMovementVector(Vector2 inputVector){
-			if (player.CanMove){
+			if (CurrentPlayer.CanMove){
 				inputVector = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 				}
 			return inputVector;
