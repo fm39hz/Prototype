@@ -3,7 +3,8 @@ using Metadata.Animation;
 using Component.Object;
 
 namespace Component.FiniteStateMachine;
-public abstract partial class DynamicState : State{
+    [GlobalClass]
+    public abstract partial class DynamicState : State{
         public DynamicObject OwnedObject{get; protected set;}
         public FrameData Frame{get; protected set;}
         [ExportCategory("Motion")]

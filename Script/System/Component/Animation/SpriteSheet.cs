@@ -3,6 +3,7 @@ using Metadata.Object;
 using Metadata.Animation;
 
 namespace Component.Animation{
+    [GlobalClass]
     /// <summary>
     /// Class dùng cho Sprite Sheet, chia animation theo 8 hướng
 	/// </summary>

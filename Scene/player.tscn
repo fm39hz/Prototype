@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="1_ety8i"]
 [ext_resource type="Script" path="res://Script/Attach/Player/Player.cs" id="1_fns8d"]
-[ext_resource type="Script" path="res://Script/Attach/Player/Component/Sheet.cs" id="3_g435g"]
-[ext_resource type="Script" path="res://Script/Attach/Player/Component/PlayerStateMachine.cs" id="4_gbenw"]
+[ext_resource type="Script" path="res://Script/System/Component/Animation/SpriteSheet.cs" id="3_lr4iv"]
 [ext_resource type="PackedScene" uid="uid://dla2de2doyhx" path="res://Scene/InputManager.tscn" id="4_jxjqn"]
-[ext_resource type="Script" path="res://Script/Attach/Player/State/Dash.cs" id="5_6y4gu"]
-[ext_resource type="Script" path="res://Script/Attach/Player/State/Idle.cs" id="6_vojtc"]
-[ext_resource type="Script" path="res://Script/Attach/Player/State/Walk.cs" id="7_lb15a"]
+[ext_resource type="Script" path="res://Script/System/Component/FiniteStateMachine/StateMachine.cs" id="5_tieys"]
+[ext_resource type="Script" path="res://Script/Attach/Player/State/Idle.cs" id="6_iqujp"]
+[ext_resource type="Script" path="res://Script/Attach/Player/State/Walk.cs" id="6_quyph"]
+[ext_resource type="Script" path="res://Script/Attach/Player/State/Dash.cs" id="7_ld330"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_52075"]
 radius = 3.0
@@ -21,7 +21,7 @@ position = Vector2(-0.5, -13)
 texture = ExtResource("1_ety8i")
 hframes = 64
 vframes = 3
-script = ExtResource("3_g435g")
+script = ExtResource("3_lr4iv")
 metadata/_edit_lock_ = true
 
 [node name="Collider" type="CollisionShape2D" parent="."]
@@ -32,14 +32,15 @@ metadata/_edit_lock_ = true
 
 [node name="InputManager" parent="." instance=ExtResource("4_jxjqn")]
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("4_gbenw")
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
+script = ExtResource("5_tieys")
+CurrentState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("6_vojtc")
+script = ExtResource("6_iqujp")
 
 [node name="Walk" type="Node" parent="StateMachine"]
-script = ExtResource("7_lb15a")
+script = ExtResource("6_quyph")
 
 [node name="Dash" type="Node" parent="StateMachine"]
-script = ExtResource("5_6y4gu")
+script = ExtResource("7_ld330")

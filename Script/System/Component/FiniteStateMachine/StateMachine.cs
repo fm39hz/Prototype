@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Component.FiniteStateMachine;
+	[GlobalClass]
 	public abstract partial class StateMachine : Node{
 		[Signal] public delegate void StateEnteredEventHandler();
 		[Signal] public delegate void StateExitedEventHandler();
