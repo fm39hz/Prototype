@@ -32,14 +32,17 @@ metadata/_edit_lock_ = true
 
 [node name="InputManager" parent="." instance=ExtResource("4_jxjqn")]
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
 script = ExtResource("4_gbenw")
+CurrentState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("6_vojtc")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("7_lb15a")
+MovingSpeed = 85.0
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("5_6y4gu")
+MovingSpeed = 100.0
