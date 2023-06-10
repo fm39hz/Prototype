@@ -38,11 +38,14 @@ CurrentState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("6_vojtc")
+AnimationSpeed = 5.0
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("7_lb15a")
 MovingSpeed = 85.0
+AnimationSpeed = 5.0
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("5_6y4gu")
 MovingSpeed = 100.0
+AnimationSpeed = 5.0
