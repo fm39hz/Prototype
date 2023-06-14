@@ -16,7 +16,7 @@ height = 8.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fns8d")
 
-[node name="SpriteSheet" type="Sprite2D" parent="."]
+[node name="Sheet" type="Sprite2D" parent="."]
 position = Vector2(-0.5, -13)
 texture = ExtResource("1_ety8i")
 hframes = 64
@@ -38,14 +38,19 @@ CurrentState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("6_vojtc")
+NumberOfFrame = 4
+IsLoop = true
 AnimationSpeed = 5.0
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("7_lb15a")
 MovingSpeed = 85.0
+NumberOfFrame = 8
+IsLoop = true
 AnimationSpeed = 5.0
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("5_6y4gu")
 MovingSpeed = 100.0
+NumberOfFrame = 4
 AnimationSpeed = 5.0
