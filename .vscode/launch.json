@@ -13,7 +13,7 @@
                 "program": "/run/media/fm39hz/Local Disk/Hienpham/Game_Engine/Godot/Godot_Linux/Godot",
                 },
             "cwd": "${workspaceFolder}",
-            "console": "externalTerminal",
+            "console": "internalConsole",
             "stopAtEntry": false,
             "requireExactSource": false,
             "enableStepFiltering": false,
