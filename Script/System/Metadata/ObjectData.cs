@@ -21,6 +21,6 @@ namespace Metadata.Object;
             return this.Direction.AsNumber;
             }
         public Vector2 GetDirectionAsVector(){
-            return this.Direction.AsVector;
+            return this.Direction.AsVector.Normalized();
             }
         }
