@@ -1,10 +1,11 @@
 {
+    "version": "0.0.1",
     "configurations": [
         {
-            "name": "Launch Godot",
+            "name": "Debug",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "buildGodot",
+            "preLaunchTask": "Build",
             "windows": {
                 "program": "E:/Hienpham/Game_Engine/Godot/Godot_Win/Godot.exe",
                 },

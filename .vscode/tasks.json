@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "buildGodot",
+            "label": "Build",
             "command": "dotnet",
             "type": "shell",
             "args": [
