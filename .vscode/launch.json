@@ -5,7 +5,12 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "buildGodot",
-            "program": "E:/Hienpham/Game_Engine/Godot/Godot_v4.0/Godot.exe",
+            "windows": {
+                "program": "E:/Hienpham/Game_Engine/Godot/Godot_Win/Godot.exe",
+                },
+            "linux": {
+                "program": "/run/media/fm39hz/Local Disk/Hienpham/Game_Engine/Godot/Godot_Linux/Godot",
+                },
             "cwd": "${workspaceFolder}",
             "console": "externalTerminal",
             "stopAtEntry": false,
