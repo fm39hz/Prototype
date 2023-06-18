@@ -10,7 +10,7 @@
                 "program": "E:/Hienpham/Game_Engine/Godot/Godot_Win/Godot.exe",
                 },
             "linux": {
-                "program": "/run/media/fm39hz/Local Disk/Hienpham/Game_Engine/Godot/Godot_Linux/Godot",
+                "program": "/usr/bin/godot-mono",
                 },
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
