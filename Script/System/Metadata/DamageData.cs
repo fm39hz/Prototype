@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Godot;
 
 namespace Component.DamageSystem;
-    public abstract class DamageType{
+    public abstract partial class DamageData : Node{
         [Export] public double Value{get; set;}
-        public List<Effect> Type{get; set;} = new();
+        public List<Effect> Effects{get; set;} = new();
         }
