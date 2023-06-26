@@ -47,7 +47,7 @@ script = ExtResource("7_lb15a")
 MovingSpeed = 85.0
 NumberOfFrame = 8
 IsLoop = true
-AnimationSpeed = 7.5
+AnimationSpeed = 8.5
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("5_6y4gu")
