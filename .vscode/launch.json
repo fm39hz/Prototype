@@ -6,6 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "Build",
+            "program": "",
             "windows": {
                 "program": "E:/Hienpham/Game_Engine/Godot/Godot_Win/Godot.exe",
                 },
@@ -20,6 +21,6 @@
             "logging": {
                 "moduleLoad": false
                 },
-        }
+        }   
     ]
 }
