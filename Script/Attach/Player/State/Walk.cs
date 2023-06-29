@@ -1,18 +1,20 @@
 using Component.FiniteStateMachine;
-public partial class Walk : DynamicState{
-	public override void _Ready(){
-		base._Ready();
-		OwnedObject.PlayerInputManager.MovementKeyPressed += this.SetCondition;
-		OwnedObject.PlayerInputManager.DashKeyPressed += this.ResetCondition;
+
+namespace Component.Attached.Player;
+	public partial class Walk : DynamicState{
+		public override void _Ready(){
+			base._Ready();
+			Object.PlayerInputManager.MovementKeyPressed += this.SetCondition;
+			Object.PlayerInputManager.DashKeyPressed += this.ResetCondition;
+			}
+		// public override void SetCondition(bool condition){
+		// 	base.SetCondition(condition);
+		// 	if (Object.Velocity.IsZeroApprox() && !StateController.PreviousState.IsState(this)){
+		// 		Condition = false;
+		// 		}
+		// 	}
+		public override void RunningState(double delta){
+			base.RunningState(delta);
+			Object.Velocity = Object.PlayerInputManager.GetPlayerMovementVector(Object.Velocity) * this.MovingSpeed;
+			}
 		}
-	// public override void SetCondition(bool condition){
-	// 	base.SetCondition(condition);
-	// 	if (player.Velocity.IsZeroApprox() && !Machine.PreviousState.IsState(this)){
-	// 		Condition = false;
-	// 		}
-	// 	}
-	public override void RunningState(double delta){
-		base.RunningState(delta);
-		OwnedObject.Velocity = OwnedObject.PlayerInputManager.GetPlayerMovementVector(OwnedObject.Velocity) * this.MovingSpeed;
-		}
-	}

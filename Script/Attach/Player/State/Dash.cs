@@ -1,19 +1,21 @@
 using Component.FiniteStateMachine;
-public partial class Dash : DynamicState{
-	public override void _Ready(){
-		base._Ready();
-		OwnedObject.PlayerInputManager.DashKeyPressed += this.SetCondition;
-		OwnedObject.Sheet.AnimationFinished += this.ResetCondition;
+
+namespace Component.Attached.Player;
+	public partial class Dash : DynamicState{
+		public override void _Ready(){
+			base._Ready();
+			Object.PlayerInputManager.DashKeyPressed += this.SetCondition;
+			Object.Sheet.AnimationFinished += this.ResetCondition;
+			}
+		public void SetCondition(){
+			base.SetCondition(true);
+			}
+		public override void ResetCondition(){
+			base.ResetCondition();
+			Object.CanMove = true;
+			}
+		public override void RunningState(double delta){
+			base.RunningState(delta);
+			Object.Velocity = Object.PlayerInputManager.GetPlayerMovementVector(Object.Metadata.GetDirectionAsVector()) * this.MovingSpeed;
+			}
 		}
-	public void SetCondition(){
-		base.SetCondition(true);
-		}
-	public override void ResetCondition(){
-		base.ResetCondition();
-		OwnedObject.CanMove = true;
-		}
-	public override void RunningState(double delta){
-		base.RunningState(delta);
-		OwnedObject.Velocity = OwnedObject.PlayerInputManager.GetPlayerMovementVector(OwnedObject.Metadata.GetDirectionAsVector()) * this.MovingSpeed;
-		}
-	}
