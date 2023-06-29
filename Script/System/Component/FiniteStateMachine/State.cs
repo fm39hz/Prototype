@@ -6,11 +6,11 @@ namespace Component.FiniteStateMachine;
 		[Signal] public delegate void StateRunningEventHandler();
         [Export] public int ID{get; set;}
         public bool Condition{get; protected set;}
-        protected StateMachine Machine{get; set;}
+        protected StateMachine StateController{get; set;}
         protected bool Initialized{get; set;}
         public override void _EnterTree(){
             try{
-                this.Machine = this.GetParent<StateMachine>();
+                this.StateController = this.GetParent<StateMachine>();
                 }
             catch (NullReferenceException){
                 GD.Print("Failed to detect State Machine for State \"" + this.Name + "\"");
@@ -22,7 +22,7 @@ namespace Component.FiniteStateMachine;
             }
         public override void _PhysicsProcess(double delta){
             this.UpdateCondition(delta);
-                if (Machine.CurrentState == this){
+                if (StateController.CurrentState == this){
                     RunningState(delta);
                     }
             }

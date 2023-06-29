@@ -21,9 +21,9 @@ namespace Component.FiniteStateMachine;
 		protected void Init(){
 			this.IsInitialized = true;
 				foreach (var selected in States){
-					this.StateEntered += selected._EnteredMachine;
+					this.StateEntered += selected.EnteredMachine;
 					selected.StateRunning += this.CheckingCondition;
-					this.StateExited += selected._ExitState;
+					this.StateExited += selected.ExitState;
 					}
 			this.SelectState();
 			this.PreviousState = this.CurrentState;
