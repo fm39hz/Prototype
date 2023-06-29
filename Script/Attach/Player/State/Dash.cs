@@ -12,8 +12,8 @@ public partial class Dash : DynamicState{
 		base.ResetCondition();
 		OwnedObject.CanMove = true;
 		}
-	public override void _RunningState(double delta){
-		base._RunningState(delta);
+	public override void RunningState(double delta){
+		base.RunningState(delta);
 		OwnedObject.Velocity = OwnedObject.PlayerInputManager.GetPlayerMovementVector(OwnedObject.Metadata.GetDirectionAsVector()) * this.MovingSpeed;
 		}
 	}

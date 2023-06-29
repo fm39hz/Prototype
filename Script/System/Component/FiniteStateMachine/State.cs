@@ -21,9 +21,9 @@ namespace Component.FiniteStateMachine;
              this.Init();
             }
         public override void _PhysicsProcess(double delta){
-            this._UpdateCondition(delta);
+            this.UpdateCondition(delta);
                 if (Machine.CurrentState == this){
-                    _RunningState(delta);
+                    RunningState(delta);
                     }
             }
         protected void Init(){
@@ -59,23 +59,23 @@ namespace Component.FiniteStateMachine;
                 }
             this.Condition = false;
             }
-        public virtual void _EnteredMachine(){
+        public virtual void EnteredMachine(){
             if (!this.Initialized){
                 return;
                 }
             }
-        public virtual void _UpdateCondition(double delta){
+        public virtual void UpdateCondition(double delta){
             if (!this.Initialized){
                 return;
                 }
             }
-        public virtual void _RunningState(double delta){
+        public virtual void RunningState(double delta){
             if (!this.Initialized){
                 return;
                 }
             this.EmitSignal(SignalName.StateRunning);
             }
-        public virtual void _ExitState(){
+        public virtual void ExitState(){
             if (!this.Initialized){
                 return;
                 }

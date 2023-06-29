@@ -11,8 +11,8 @@ public partial class Walk : DynamicState{
 	// 		Condition = false;
 	// 		}
 	// 	}
-	public override void _RunningState(double delta){
-		base._RunningState(delta);
+	public override void RunningState(double delta){
+		base.RunningState(delta);
 		OwnedObject.Velocity = OwnedObject.PlayerInputManager.GetPlayerMovementVector(OwnedObject.Velocity) * this.MovingSpeed;
 		}
 	}
