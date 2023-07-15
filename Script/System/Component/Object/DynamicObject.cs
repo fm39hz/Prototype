@@ -34,6 +34,7 @@ namespace Component.Object;
 		/// Metadata, chứa thông tin về State ID, hướng nhìn của object, Animation có loop hay không,...
 		/// </summary>
 		public DynamicObjectData Metadata{get; protected set;}
+		[Export] public bool IsFourDirection{get; protected set;} = true;
 		/// <summary>
 		/// Trả về node con đầu tiên có type T
 		/// </summary>
@@ -83,6 +84,7 @@ namespace Component.Object;
 			try{
 				this.ObjectiveStateMachine = GetFirstChildOfType<StateMachine>();
 				this.Metadata = new();
+				this.Metadata.IsFourDirection = this.IsFourDirection;
 				}
 			catch (InvalidCastException CannotGetStateMachine){
 				GD.Print("Không thể cast tới State Machine");

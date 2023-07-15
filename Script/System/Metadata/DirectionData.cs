@@ -4,18 +4,20 @@ using System.Collections.Generic;
 
 namespace Metadata.Direction;
 	public class DirectionData{
-		public Dictionary<int, Vector2> DirectionContainer{get; private set;} = new(8);
+		public Dictionary<int, Vector2> DirectionContainer{get; private set;}
 		public int AsNumber{get; private set;}
 		public Vector2 AsVector{get; private set;}
         public DirectionData(){
-			DirectionContainer.Add(0, Vector2.Down);
-			DirectionContainer.Add(1, Vector2.Down + Vector2.Right);
-			DirectionContainer.Add(2, Vector2.Right);
-			DirectionContainer.Add(3, Vector2.Right + Vector2.Up);
-			DirectionContainer.Add(4, Vector2.Up);
-			DirectionContainer.Add(5, Vector2.Up + Vector2.Left);
-			DirectionContainer.Add(6, Vector2.Left);
-			DirectionContainer.Add(7, Vector2.Left + Vector2.Down);
+        	DirectionContainer = new(8){
+				{ 0, Vector2.Down },
+				{ 1, Vector2.Right },
+				{ 2, Vector2.Up },
+				{ 3, Vector2.Left },
+				{ 4, Vector2.Down + Vector2.Right },
+				{ 5, Vector2.Right + Vector2.Up },
+				{ 6, Vector2.Up + Vector2.Left },
+				{ 7, Vector2.Left + Vector2.Down }
+				};
 			}
 		public void SetDirection(int input){
 			this.AsNumber = input;
