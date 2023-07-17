@@ -11,10 +11,10 @@ namespace Metadata.Animation;
         /// Số frame của Animation
         /// </summary>
         /// <value></value>
-        public int Length{get; set;}
+        public int Length { get; set; }
         /// <summary>
         /// Tốc độ của Animation
         /// </summary>
         /// <value></value>
-        public double Speed{get; set;}
+        public double Speed { get; set; }
         }

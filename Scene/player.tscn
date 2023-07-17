@@ -39,9 +39,11 @@ CurrentState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("6_vojtc")
+MovingSpeed = null
 NumberOfFrame = 4
 IsLoop = true
 AnimationSpeed = 5.0
+ID = null
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("7_lb15a")
@@ -49,9 +51,12 @@ MovingSpeed = 85.0
 NumberOfFrame = 8
 IsLoop = true
 AnimationSpeed = 8.5
+ID = null
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("5_6y4gu")
 MovingSpeed = 100.0
 NumberOfFrame = 4
+IsLoop = null
 AnimationSpeed = 5.0
+ID = null

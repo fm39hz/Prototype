@@ -14,11 +14,11 @@ namespace Component.Animation{
 		/// <summary>
 		/// Frame hiện tại
 		/// </summary>
-		private int CurrentFrame{get; set;} = 0;
+		private int CurrentFrame { get; set; } = 0;
 		/// <summary>
 		/// Bộ đếm frame thực
 		/// </summary>
-		private double FrameCounter{get; set;} = 0;
+		private double FrameCounter { get; set; } = 0;
 		/// <summary>
 		/// Chạy animation của Sprite Sheet Dữ liệu của đối tượng được truyền vào
 		/// </summary>

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace Metadata.Direction;
 	public class DirectionData{
-		public Dictionary<int, Vector2> DirectionContainer{get; private set;}
-		public int AsNumber{get; private set;}
-		public Vector2 AsVector{get; private set;}
+		public Dictionary<int, Vector2> DirectionContainer { get; private set; }
+		public int AsNumber { get; private set; }
+		public Vector2 AsVector { get; private set; }
 		public DirectionData(){
 			DirectionContainer = new(8){
 				{ 0, Vector2.Down },

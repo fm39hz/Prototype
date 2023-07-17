@@ -13,28 +13,28 @@ namespace Component.Object;
 		/// <summary>
 		/// Điều kiện quyết định đối tượng có được di chuyển hay không
 		/// </summary>
-		public bool CanMove{get; set;} = true;
+		public bool CanMove { get; set; } = true;
 		/// <summary>
 		/// Lưu giá trị kiểm tra xem có đang collide với vật thể nào không
 		/// </summary>
-		public bool IsCollided{get; protected set;} = false;
+		public bool IsCollided { get; protected set; } = false;
 		/// <summary>
 		/// Lấy thông tin input của Player
 		/// </summary>
-		public InputManager PlayerInputManager{get; private set;}
+		public InputManager PlayerInputManager { get; protected set; }
 		/// <summary>
 		/// Sprite Sheet của object
 		/// </summary>
-		public SpriteSheet Sheet{get; protected set;}
+		public SpriteSheet Sheet { get; protected set; }
 		/// <summary>
 		/// State Machine của object
 		/// </summary>
-		public StateMachine ObjectiveStateMachine{get; protected set;}
+		public StateMachine ObjectiveStateMachine { get; protected set; }
 		/// <summary>
 		/// Metadata, chứa thông tin về State ID, hướng nhìn của object, Animation có loop hay không,...
 		/// </summary>
-		public DynamicObjectData Metadata{get; protected set;}
-		[Export] public bool IsFourDirection{get; protected set;} = true;
+		public DynamicObjectData Metadata { get; protected set; }
+		[Export] public bool FourDirectionAnimation { get; protected set; } = true;
 		/// <summary>
 		/// Trả về node con đầu tiên có type T
 		/// </summary>
@@ -84,7 +84,7 @@ namespace Component.Object;
 			try{
 				this.ObjectiveStateMachine = GetFirstChildOfType<StateMachine>();
 				this.Metadata = new(){
-					IsFourDirection = this.IsFourDirection
+					IsFourDirection = this.FourDirectionAnimation
 					};
 				}
 			catch (InvalidCastException CannotGetStateMachine){

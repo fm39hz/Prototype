@@ -3,10 +3,10 @@ using Metadata.Direction;
 
 namespace Metadata.Object;
     public partial class DynamicObjectData{
-        public int StateID{get; set;}
-        public DirectionData Direction{get; protected set;}
-        public bool IsLoopingAnimation{get; set;}
-        public bool IsFourDirection{get; set;}
+        public int StateID { get; set; }
+        public DirectionData Direction { get; protected set; }
+        public bool IsLoopingAnimation { get; set; }
+        public bool IsFourDirection { get; set; }
         public DynamicObjectData(){
             this.StateID = 0;
             this.Direction = new();

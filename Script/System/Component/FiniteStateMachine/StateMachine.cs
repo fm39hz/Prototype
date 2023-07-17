@@ -6,12 +6,13 @@ namespace Component.FiniteStateMachine;
 	public abstract partial class StateMachine : Node{
 		[Signal] public delegate void StateEnteredEventHandler();
 		[Signal] public delegate void StateExitedEventHandler();
-		[Export] public State CurrentState{get; protected set;}
-		public State PreviousState{get; protected set;}
-		public List<State> States{get; protected set;} = new();
-		protected bool IsInitialized {get; set;}
+		[Export] public State CurrentState { get; protected set; }
+		public State PreviousState { get; protected set; }
+		public List<State> States { get; protected set; }
+		protected bool IsInitialized { get; set; }
 		public override void _Ready(){
 			var _id = 0;
+			this.States = new();
 			foreach (var target in GetChildren().OfType<State>()){
 				this.States.Add(target);
 				target.ID = _id++;

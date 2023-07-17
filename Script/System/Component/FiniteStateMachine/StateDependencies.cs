@@ -4,14 +4,14 @@ using Component.Object;
 
 namespace Component.FiniteStateMachine;
 public abstract partial class DynamicState : State{
-		public DynamicObject Object{get; protected set;}
-		public FrameData Frame{get; protected set;}
+		public DynamicObject Object { get; protected set; }
+		public FrameData Frame { get; protected set; }
 		[ExportCategory("Motion")]
-			[Export] public float MovingSpeed{get; protected set;}
+			[Export] public float MovingSpeed { get; protected set; }
 		[ExportCategory("Animation")]
-			[Export] public int NumberOfFrame{get; protected set;}
-			[Export] public bool IsLoop{get; protected set;}
-			[Export] public float AnimationSpeed{get; protected set;}
+			[Export] public int NumberOfFrame { get; protected set; }
+			[Export] public bool IsLoop { get; protected set; }
+			[Export] public float AnimationSpeed { get; protected set; }
 		public override void _EnterTree(){
 			base._EnterTree();
 			Object = GetOwner<DynamicObject>();

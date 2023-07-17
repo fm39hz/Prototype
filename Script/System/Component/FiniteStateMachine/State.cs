@@ -4,10 +4,10 @@ using Godot;
 namespace Component.FiniteStateMachine;
     public abstract partial class State : Node{
 		[Signal] public delegate void StateRunningEventHandler();
-        [Export] public int ID{get; set;}
-        public bool Condition{get; protected set;}
+        [Export] public int ID { get; set; }
+        public bool Condition { get; protected set; }
         protected StateMachine StateController{get; set;}
-        protected bool IsInitialized{get; set;}
+        protected bool IsInitialized { get; set; }
         public override void _EnterTree(){
             try{
                 this.StateController = this.GetParent<StateMachine>();
