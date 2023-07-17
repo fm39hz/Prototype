@@ -1,4 +1,5 @@
 using Component.DamageSystem;
+using Metadata.Instance;
 using Godot;
 
 namespace Component.Object.Equipment;

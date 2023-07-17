@@ -15,7 +15,7 @@ height = 8.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fns8d")
-IsFourDirection = false
+FourDirectionAnimation = false
 
 [node name="Sheet" type="Sprite2D" parent="."]
 position = Vector2(-0.5, -13)

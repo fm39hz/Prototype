@@ -1,5 +1,5 @@
 using Godot;
-using Metadata.Animation;
+using Metadata.Instance;
 using Component.Object;
 
 namespace Component.FiniteStateMachine;

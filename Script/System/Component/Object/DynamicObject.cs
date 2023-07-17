@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using Metadata.Object;
+using Metadata.Instance;
 using Component.Animation;
 using Component.FiniteStateMachine;
 using Component.Manager;
@@ -33,7 +33,7 @@ namespace Component.Object;
 		/// <summary>
 		/// Metadata, chứa thông tin về State ID, hướng nhìn của object, Animation có loop hay không,...
 		/// </summary>
-		public DynamicObjectData Metadata { get; protected set; }
+		public ObjectData Metadata { get; protected set; }
 		[Export] public bool FourDirectionAnimation { get; protected set; } = true;
 		/// <summary>
 		/// Trả về node con đầu tiên có type T

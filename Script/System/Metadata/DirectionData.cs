@@ -2,7 +2,7 @@ using Godot;
 using Utility.Direction;
 using System.Collections.Generic;
 
-namespace Metadata.Direction;
+namespace Metadata.Instance;
 	public class DirectionData{
 		public Dictionary<int, Vector2> DirectionContainer { get; private set; }
 		public int AsNumber { get; private set; }

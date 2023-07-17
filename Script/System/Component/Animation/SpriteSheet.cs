@@ -1,6 +1,6 @@
 using Godot;
-using Metadata.Object;
-using Metadata.Animation;
+using Metadata.Instance;
+using Metadata.Instance;
 
 namespace Component.Animation{
 	/// <summary>
@@ -25,7 +25,7 @@ namespace Component.Animation{
 		/// <param name="frameInfo">Thông tin frame hiện tại</param>
 		/// <param name="objectData">Metadata của chủ thể</param>
 		/// <param name="relativeResponseTime">Thời gian phản hồi tương đối</param>
-		public void Animate(FrameData frameInfo, DynamicObjectData objectData, double relativeResponseTime){
+		public void Animate(FrameData frameInfo, ObjectData objectData, double relativeResponseTime){
 			var _direction = objectData.GetDirectionAsNumber();     //Lấy hướng nhìn của đối tượng
 			var _firstFrame = frameInfo.Length * _direction++;      //Lấy frame bắt đầu của animation
 			var _nextFrame = frameInfo.Length * _direction;         //Lấy frame bắt đầu của hướng kế tiếp

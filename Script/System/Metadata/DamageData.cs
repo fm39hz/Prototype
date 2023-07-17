@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using Component.DamageSystem;
 using Godot;
 
-namespace Component.DamageSystem;
+namespace Metadata.Instance;
     public abstract partial class DamageData : Node{
         [Export] public double Value { get; set; }
         public List<Effect> EffectsValue { get; set; } = new();
