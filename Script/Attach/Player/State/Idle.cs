@@ -10,7 +10,7 @@ namespace Component.Attached.Player;
 			_inputManager.DashKeyPressed += this.ResetCondition;
 			}
 		public override void SetCondition(bool condition){
-			if (!this.Initialized){
+			if (!this.IsInitialized){
 				return;
 				}
 			Condition = !condition;

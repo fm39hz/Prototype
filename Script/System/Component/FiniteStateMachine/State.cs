@@ -7,7 +7,7 @@ namespace Component.FiniteStateMachine;
         [Export] public int ID{get; set;}
         public bool Condition{get; protected set;}
         protected StateMachine StateController{get; set;}
-        protected bool Initialized{get; set;}
+        protected bool IsInitialized{get; set;}
         public override void _EnterTree(){
             try{
                 this.StateController = this.GetParent<StateMachine>();
@@ -27,7 +27,7 @@ namespace Component.FiniteStateMachine;
                     }
             }
         protected void Init(){
-            this.Initialized = true;
+            this.IsInitialized = true;
             }
         public DynamicState ToDynamic(){
             return this as DynamicState;
@@ -48,35 +48,35 @@ namespace Component.FiniteStateMachine;
             return false;
             }
         public virtual void SetCondition(bool condition){
-            if (!this.Initialized){
+            if (!this.IsInitialized){
                 return;
                 }
             this.Condition = condition;
             }
         public virtual void ResetCondition(){
-            if (!this.Initialized){
+            if (!this.IsInitialized){
                 return;
                 }
             this.Condition = false;
             }
         public virtual void EnteredMachine(){
-            if (!this.Initialized){
+            if (!this.IsInitialized){
                 return;
                 }
             }
         public virtual void UpdateCondition(double delta){
-            if (!this.Initialized){
+            if (!this.IsInitialized){
                 return;
                 }
             }
         public virtual void RunningState(double delta){
-            if (!this.Initialized){
+            if (!this.IsInitialized){
                 return;
                 }
             this.EmitSignal(SignalName.StateRunning);
             }
         public virtual void ExitState(){
-            if (!this.Initialized){
+            if (!this.IsInitialized){
                 return;
                 }
             }
