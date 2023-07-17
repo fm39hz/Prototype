@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Metadata.Instance;
+namespace Data.Instance;
     public partial class ObjectData{
         public int StateID { get; set; }
         public DirectionData Direction { get; protected set; }

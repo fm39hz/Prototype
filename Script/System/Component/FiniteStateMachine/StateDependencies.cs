@@ -1,5 +1,5 @@
 using Godot;
-using Metadata.Instance;
+using Data.Instance;
 using Component.Object;
 
 namespace Component.FiniteStateMachine;

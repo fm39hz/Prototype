@@ -1,5 +1,5 @@
 using Component.DamageSystem;
-using Metadata.Instance;
+using Data.Instance;
 using Godot;
 
 namespace Component.Object.Equipment;

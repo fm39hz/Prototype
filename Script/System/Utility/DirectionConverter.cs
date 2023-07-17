@@ -1,6 +1,6 @@
 using Godot;
 using System.Collections.Generic;
-using Metadata.Instance;
+using Data.Instance;
 
 namespace Utility.Direction;
 		public static class DirectionConverter{

@@ -1,12 +1,15 @@
 using System;
 using Godot;
 
-namespace Metadata.Global;
+namespace Data.Global;
     public partial class Metadata : Node{
-        public double RelativeResponseTime { get; protected set; }
+		/// <summary>
+		/// Trả về giá trị bằng fps * delta
+		/// </summary>
+		/// <returns>1 khi fps đạt ngưỡng lý tưởng</returns>
+        public double RelativeResponseTime { get; private set; }
         public override void _Ready(){
             this.ProcessMode = ProcessModeEnum.Always;
-            GD.Print("Metadata Ready!");
             }
         public override void _PhysicsProcess(double delta){
             this.RelativeResponseTime = Performance.GetMonitor(Performance.Monitor.TimeFps) * delta;

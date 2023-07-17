@@ -1,6 +1,6 @@
 using Godot;
-using Metadata.Instance;
-using Metadata.Instance;
+using Data.Instance;
+using Data.Global;
 
 namespace Component.Animation{
 	/// <summary>
@@ -25,14 +25,15 @@ namespace Component.Animation{
 		/// <param name="frameInfo">Thông tin frame hiện tại</param>
 		/// <param name="objectData">Metadata của chủ thể</param>
 		/// <param name="relativeResponseTime">Thời gian phản hồi tương đối</param>
-		public void Animate(FrameData frameInfo, ObjectData objectData, double relativeResponseTime){
+		public void Animate(FrameData frameInfo, ObjectData objectData){
+			var _relativeResponseTime = GetNode<Metadata>("/root/Metadata").RelativeResponseTime;
 			var _direction = objectData.GetDirectionAsNumber();     //Lấy hướng nhìn của đối tượng
 			var _firstFrame = frameInfo.Length * _direction++;      //Lấy frame bắt đầu của animation
 			var _nextFrame = frameInfo.Length * _direction;         //Lấy frame bắt đầu của hướng kế tiếp
 				if (_firstFrame <= CurrentFrame && CurrentFrame < _nextFrame){
-					FrameCounter += relativeResponseTime;       //Tạo bộ đếm frame(thực)
+					FrameCounter += _relativeResponseTime;       //Tạo bộ đếm frame(thực)
 					}
-				if (FrameCounter >= 60 * relativeResponseTime / frameInfo.Speed){
+				if (FrameCounter >= 60 * _relativeResponseTime / frameInfo.Speed){
 					if (CurrentFrame == _nextFrame - 1){
 						if (!objectData.IsLoopingAnimation){
 							EmitSignal(SignalName.AnimationFinished);

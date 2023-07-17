@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using Metadata.Instance;
+using Data.Instance;
 using Component.Animation;
 using Component.FiniteStateMachine;
 using Component.Manager;
@@ -98,7 +98,7 @@ namespace Component.Object;
 			}
 		public override void _PhysicsProcess(double delta){
 			UpdateMetadata();
-			Animation(delta);
+			Animation();
 			this.IsCollided = MoveAndSlide();
 			}
 		/// <summary>
@@ -130,11 +130,11 @@ namespace Component.Object;
 		/// Animate Sprite Sheet dựa trên thông tin lấy được từ method UpdateMetadata
 		/// </summary>
 		/// <param name="delta"></param>
-		protected void Animation(double delta){
+		protected void Animation(){
 			try {
 				var _state = this.ObjectiveStateMachine.CurrentState as DynamicState;
 				var _frame = _state.Frame;
-					this.Sheet.Animate(_frame, Metadata, GetRelativeResponseTime(delta));
+					this.Sheet.Animate(_frame, Metadata);
 				}
 			catch (NullReferenceException CurrentStateMissing){
 				GD.Print("Không thể tìm thấy State hiện tại của đối tượng: \'" + this.Name + "\'");
