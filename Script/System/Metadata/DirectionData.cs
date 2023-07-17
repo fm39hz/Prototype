@@ -7,8 +7,8 @@ namespace Metadata.Direction;
 		public Dictionary<int, Vector2> DirectionContainer{get; private set;}
 		public int AsNumber{get; private set;}
 		public Vector2 AsVector{get; private set;}
-        public DirectionData(){
-        	DirectionContainer = new(8){
+		public DirectionData(){
+			DirectionContainer = new(8){
 				{ 0, Vector2.Down },
 				{ 1, Vector2.Right },
 				{ 2, Vector2.Up },

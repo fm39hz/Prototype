@@ -9,7 +9,7 @@ namespace Component.Object;
 	/// <summary>
 	/// Object động, có State Machine & Animation
 	/// </summary>
-    public abstract partial class DynamicObject : CharacterBody2D{
+	public abstract partial class DynamicObject : CharacterBody2D{
 		/// <summary>
 		/// Điều kiện quyết định đối tượng có được di chuyển hay không
 		/// </summary>
@@ -17,7 +17,7 @@ namespace Component.Object;
 		/// <summary>
 		/// Lưu giá trị kiểm tra xem có đang collide với vật thể nào không
 		/// </summary>
-        public bool IsCollided{get; protected set;} = false;
+		public bool IsCollided{get; protected set;} = false;
 		/// <summary>
 		/// Lấy thông tin input của Player
 		/// </summary>
@@ -83,8 +83,9 @@ namespace Component.Object;
 		public override void _Ready(){
 			try{
 				this.ObjectiveStateMachine = GetFirstChildOfType<StateMachine>();
-				this.Metadata = new();
-				this.Metadata.IsFourDirection = this.IsFourDirection;
+				this.Metadata = new(){
+					IsFourDirection = this.IsFourDirection
+					};
 				}
 			catch (InvalidCastException CannotGetStateMachine){
 				GD.Print("Không thể cast tới State Machine");
@@ -140,4 +141,4 @@ namespace Component.Object;
 				throw CurrentStateMissing;
 				}
 			}
-        }
+		}
