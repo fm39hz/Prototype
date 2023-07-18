@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Metadata="*res://Script/System/Data/Metadata.cs"
+Metadata="*res://System/Data/Metadata.cs"
 
 [debug]
 

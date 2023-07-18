@@ -1,20 +1,20 @@
 [gd_scene load_steps=10 format=3 uid="uid://kgg7c4d2bawo"]
 
+[ext_resource type="Script" path="res://Script/Actor/Player/Player.cs" id="1_egrr5"]
 [ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="1_ety8i"]
-[ext_resource type="Script" path="res://Script/Attach/Player/Player.cs" id="1_fns8d"]
-[ext_resource type="Script" path="res://Script/Attach/Player/Component/Sheet.cs" id="3_g435g"]
-[ext_resource type="Script" path="res://Script/Attach/Player/Component/PlayerStateMachine.cs" id="4_gbenw"]
+[ext_resource type="Script" path="res://Script/Actor/Player/Component/Sheet.cs" id="3_jn2l3"]
 [ext_resource type="PackedScene" uid="uid://dla2de2doyhx" path="res://Scene/InputManager.tscn" id="4_jxjqn"]
-[ext_resource type="Script" path="res://Script/Attach/Player/State/Dash.cs" id="5_6y4gu"]
-[ext_resource type="Script" path="res://Script/Attach/Player/State/Idle.cs" id="6_vojtc"]
-[ext_resource type="Script" path="res://Script/Attach/Player/State/Walk.cs" id="7_lb15a"]
+[ext_resource type="Script" path="res://Script/Actor/Player/Component/PlayerStateMachine.cs" id="5_5kfl6"]
+[ext_resource type="Script" path="res://Script/Actor/Player/State/Idle.cs" id="6_4iqak"]
+[ext_resource type="Script" path="res://Script/Actor/Player/State/Walk.cs" id="7_ualbc"]
+[ext_resource type="Script" path="res://Script/Actor/Player/State/Dash.cs" id="8_q6tnu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_52075"]
 radius = 3.0
 height = 8.0
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_fns8d")
+script = ExtResource("1_egrr5")
 FourDirectionAnimation = false
 
 [node name="Sheet" type="Sprite2D" parent="."]
@@ -22,7 +22,7 @@ position = Vector2(-0.5, -13)
 texture = ExtResource("1_ety8i")
 hframes = 64
 vframes = 3
-script = ExtResource("3_g435g")
+script = ExtResource("3_jn2l3")
 metadata/_edit_lock_ = true
 
 [node name="Collider" type="CollisionShape2D" parent="."]
@@ -34,29 +34,24 @@ metadata/_edit_lock_ = true
 [node name="InputManager" parent="." instance=ExtResource("4_jxjqn")]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
-script = ExtResource("4_gbenw")
+script = ExtResource("5_5kfl6")
 CurrentState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("6_vojtc")
-MovingSpeed = null
+script = ExtResource("6_4iqak")
 NumberOfFrame = 4
 IsLoop = true
 AnimationSpeed = 5.0
-ID = null
 
 [node name="Walk" type="Node" parent="StateMachine"]
-script = ExtResource("7_lb15a")
+script = ExtResource("7_ualbc")
 MovingSpeed = 85.0
 NumberOfFrame = 8
 IsLoop = true
 AnimationSpeed = 8.5
-ID = null
 
 [node name="Dash" type="Node" parent="StateMachine"]
-script = ExtResource("5_6y4gu")
+script = ExtResource("8_q6tnu")
 MovingSpeed = 100.0
 NumberOfFrame = 4
-IsLoop = null
 AnimationSpeed = 5.0
-ID = null

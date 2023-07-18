@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dla2de2doyhx"]
 
-[ext_resource type="Script" path="res://Script/System/Component/Manager/InputManager.cs" id="1_so84s"]
+[ext_resource type="Script" path="res://System/Component/Manager/InputManager.cs" id="1_so84s"]
 
 [node name="InputManager" type="Node"]
 script = ExtResource("1_so84s")

@@ -16,7 +16,6 @@ z_index = -100
 
 [node name="Player" parent="." instance=ExtResource("1_1kvu2")]
 position = Vector2(156, 76)
-FourDirectionAnimation = null
 
 [node name="MainCamera" type="Camera2D" parent="Player"]
 process_callback = 0
