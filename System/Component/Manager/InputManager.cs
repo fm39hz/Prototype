@@ -1,6 +1,6 @@
 using System;
 using Godot;
-using Actor;
+using Actor.TargetPlayer;
 
 namespace GameSystem.Component.Manager;
 	public partial class InputManager : Node{
