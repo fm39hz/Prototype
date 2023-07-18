@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace Data.Global;
+namespace GameSystem.Data.Global;
     public partial class Metadata : Node{
 		/// <summary>
 		/// Trả về giá trị bằng fps * delta

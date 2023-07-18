@@ -1,8 +1,8 @@
 using Godot;
 using System.Collections.Generic;
-using Data.Instance;
+using GameSystem.Data.Instance;
 
-namespace Utility.Direction;
+namespace GameSystem.Utility.Direction;
 		public static class DirectionConverter{
 			public static int ToDirection(Vector2 input){
 				var _directionMap = new DirectionData().DirectionContainer;

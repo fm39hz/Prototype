@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Component.DamageSystem;
+namespace GameSystem.Component.DamageSystem;
     public abstract partial class Effect : Node{
         [Signal] public delegate void EffectAppliedEventHandler();
         [Signal] public delegate void EffectDiscardedEventHandler();

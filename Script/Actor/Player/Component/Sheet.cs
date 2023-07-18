@@ -1,4 +1,5 @@
-using Component.Animation;
+using GameSystem.Component.Animation;
 
-public partial class Sheet : SpriteSheet{
-	}
+namespace Actor.TargetPlayer;
+	public partial class Sheet : SpriteSheet{
+		}

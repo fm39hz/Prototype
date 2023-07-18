@@ -1,5 +1,5 @@
-using Component.Object;
+using GameSystem.Component.Object;
 
-namespace Actor;
+namespace Actor.TargetPlayer;
 	public partial class Player : DynamicObject{
 	}

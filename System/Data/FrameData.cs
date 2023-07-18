@@ -1,4 +1,4 @@
-namespace Data.Instance;
+namespace GameSystem.Data.Instance;
     /// <summary>
     /// Chứa thông tin về frame của 1 đối tượng
     /// </summary>

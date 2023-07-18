@@ -1,7 +1,6 @@
-using Component.FiniteStateMachine;
+using GameSystem.Component.FiniteStateMachine;
 
-namespace Component.Attached.Player;
-
+namespace  Actor.TargetPlayer;
 	public partial class Idle : DynamicState{
 		public override void _Ready(){
 			base._Ready();

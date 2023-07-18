@@ -1,8 +1,8 @@
 using Godot;
-using Data.Instance;
-using Component.Object;
+using GameSystem.Data.Instance;
+using GameSystem.Component.Object;
 
-namespace Component.FiniteStateMachine;
+namespace GameSystem.Component.FiniteStateMachine;
 public abstract partial class DynamicState : State{
 		public DynamicObject Object { get; protected set; }
 		public FrameData Frame { get; protected set; }

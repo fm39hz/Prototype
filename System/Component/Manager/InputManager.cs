@@ -2,7 +2,7 @@ using System;
 using Godot;
 using Actor;
 
-namespace Component.Manager;
+namespace GameSystem.Component.Manager;
 	public partial class InputManager : Node{
 		[Signal] public delegate void MovementKeyPressedEventHandler(bool IsPressed);
 		[Signal] public delegate void DashKeyPressedEventHandler();

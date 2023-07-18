@@ -1,11 +1,11 @@
 using Godot;
 using System;
-using Data.Instance;
-using Component.Animation;
-using Component.FiniteStateMachine;
-using Component.Manager;
+using GameSystem.Data.Instance;
+using GameSystem.Component.Animation;
+using GameSystem.Component.FiniteStateMachine;
+using GameSystem.Component.Manager;
 
-namespace Component.Object;
+namespace GameSystem.Component.Object;
 	/// <summary>
 	/// Object động, có State Machine & Animation
 	/// </summary>

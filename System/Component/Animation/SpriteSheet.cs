@@ -1,8 +1,8 @@
 using Godot;
-using Data.Instance;
-using Data.Global;
+using GameSystem.Data.Instance;
+using GameSystem.Data.Global;
 
-namespace Component.Animation{
+namespace GameSystem.Component.Animation{
 	/// <summary>
 	/// Class dùng cho Sprite Sheet, chia animation theo 8 hướng
 	/// </summary>

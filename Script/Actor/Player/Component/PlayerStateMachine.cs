@@ -1,4 +1,5 @@
-using Component.FiniteStateMachine;
+using GameSystem.Component.FiniteStateMachine;
 
-public partial class PlayerStateMachine : StateMachine{
-	}
+namespace Actor.TargetPlayer;
+	public partial class PlayerStateMachine : StateMachine{
+		}
