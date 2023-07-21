@@ -3,6 +3,7 @@ using GameSystem.Data.Instance;
 using GameSystem.Data.Global;
 
 namespace GameSystem.Component.Animation{
+	[GlobalClass]
 	/// <summary>
 	/// Class dùng cho Sprite Sheet, chia animation theo 8 hướng
 	/// </summary>

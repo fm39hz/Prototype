@@ -2,7 +2,8 @@ using System;
 using Godot;
 
 namespace GameSystem.Component.FiniteStateMachine;
-    public abstract partial class State : Node{
+    [GlobalClass]
+    public partial class State : Node{
 		[Signal] public delegate void StateRunningEventHandler();
         [Export] public int ID { get; set; }
         public bool Condition { get; protected set; }

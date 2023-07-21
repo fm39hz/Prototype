@@ -12,10 +12,10 @@ namespace  Actor.TargetPlayer;
 			}
 		public override void ResetCondition(){
 			base.ResetCondition();
-			Object.CanMove = true;
+			Object.IsMoveable = true;
 			}
 		public override void RunningState(double delta){
 			base.RunningState(delta);
-			Object.Velocity = Object.PlayerInputManager.GetPlayerMovementVector(Object.Metadata.GetDirectionAsVector()) * this.MovingSpeed;
+			Object.Velocity = Object.PlayerInputManager.TopDownVector(Object.Metadata.GetDirectionAsVector()) * this.MovingSpeed;
 			}
 		}

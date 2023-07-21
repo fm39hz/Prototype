@@ -3,7 +3,8 @@ using GameSystem.Data.Instance;
 using GameSystem.Component.Object;
 
 namespace GameSystem.Component.FiniteStateMachine;
-public abstract partial class DynamicState : State{
+	[GlobalClass]
+	public partial class DynamicState : State{
 		public DynamicObject Object { get; protected set; }
 		public FrameData Frame { get; protected set; }
 		[ExportCategory("Motion")]
@@ -21,6 +22,4 @@ public abstract partial class DynamicState : State{
 					GD.Print("Animation Loop đã được set về false vì AnimationSpeed chưa được set");
 					}
 			}
-		}
-	public abstract partial class StaticState : State{
 		}

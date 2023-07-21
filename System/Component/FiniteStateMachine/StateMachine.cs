@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace GameSystem.Component.FiniteStateMachine;
-	public abstract partial class StateMachine : Node{
+	[GlobalClass]
+	public partial class StateMachine : Node{
 		[Signal] public delegate void StateEnteredEventHandler();
 		[Signal] public delegate void StateExitedEventHandler();
 		[Export] public State CurrentState { get; protected set; }

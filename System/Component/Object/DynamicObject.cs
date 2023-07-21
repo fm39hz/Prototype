@@ -6,28 +6,25 @@ using GameSystem.Component.FiniteStateMachine;
 using GameSystem.Component.Manager;
 
 namespace GameSystem.Component.Object;
+	[GlobalClass]
 	/// <summary>
 	/// Object động, có State Machine & Animation
 	/// </summary>
-	public abstract partial class DynamicObject : CharacterBody2D{
+	public partial class DynamicObject : BaseObject{
 		/// <summary>
 		/// Điều kiện quyết định đối tượng có được di chuyển hay không
 		/// </summary>
-		public bool CanMove { get; set; } = true;
+		public bool IsMoveable { get; set; } = true;
 		/// <summary>
-		/// Lưu giá trị kiểm tra xem có đang collide với vật thể nào không
+		/// Kiểm soát signal từ input
 		/// </summary>
-		public bool IsCollided { get; protected set; } = false;
+		public InputManager ObjectInputManager { get; protected set; }
 		/// <summary>
-		/// Lấy thông tin input của Player
-		/// </summary>
-		public InputManager PlayerInputManager { get; protected set; }
-		/// <summary>
-		/// Sprite Sheet của object
+		/// Sprite Sheet của đối tượng
 		/// </summary>
 		public SpriteSheet Sheet { get; protected set; }
 		/// <summary>
-		/// State Machine của object
+		/// State Machine của đối tượng
 		/// </summary>
 		public StateMachine ObjectiveStateMachine { get; protected set; }
 		/// <summary>
@@ -35,41 +32,10 @@ namespace GameSystem.Component.Object;
 		/// </summary>
 		public ObjectData Metadata { get; protected set; }
 		[Export] public bool FourDirectionAnimation { get; protected set; } = true;
-		/// <summary>
-		/// Trả về node con đầu tiên có type T
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns>Node con đầu tiên có type T, hoặc null nếu không tìm thấy</returns>
-		public T GetFirstChildOfType<T>() where T : Node{
-			T targetChild = null;
-				for (int i = 0; i < this.GetChildCount(); i++){
-					if (this.GetChildOrNull<T>(i) != null){
-						targetChild = this.GetChild<T>(i);
-						break;
-						}
-					}
-			return targetChild;
-			}
-		/// <summary>
-		/// Trả về node đầu tiên có type T trong node Cha, ở cùng cấp với node hiện tại
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns>Node đầu tiên có type T ở cùng cấp, hoặc null nếu không tìm thấy</returns>
-		public T GetFirstSiblingOfType<T>() where T : Node{
-			var parent = this.GetParent();
-			T targetSibling = null;
-				for (int i = 0; i < parent.GetChildCount(); i++){
-					if (parent.GetChildOrNull<T>(i) != null){
-						targetSibling = parent.GetChild<T>(i);
-						break;
-						}
-					}
-			return targetSibling;
-			}
 		public override void _EnterTree(){
 			try{
 				this.Sheet = GetFirstChildOfType<SpriteSheet>();
-				this.PlayerInputManager = GetFirstChildOfType<InputManager>();
+				this.ObjectInputManager = GetFirstChildOfType<InputManager>();
 				}
 			catch (InvalidCastException CannotGetSpriteSheet){
 				GD.Print("Không thể cast tới Sprite Sheet & Player Input Manager");
@@ -98,16 +64,8 @@ namespace GameSystem.Component.Object;
 			}
 		public override void _PhysicsProcess(double delta){
 			UpdateMetadata();
-			Animation();
+			ActiveAnimation();
 			this.IsCollided = MoveAndSlide();
-			}
-		/// <summary>
-		/// Trả về giá trị bằng fps * delta
-		/// </summary>
-		/// <param name="delta"></param>
-		/// <returns>1 khi fps đạt ngưỡng lý tưởng</returns>
-		protected static double GetRelativeResponseTime(double delta){
-			return Performance.GetMonitor(Performance.Monitor.TimeFps) * delta;
 			}
 		/// <summary>
 		/// Cập nhật Metadata của đối tượng
@@ -129,8 +87,7 @@ namespace GameSystem.Component.Object;
 		/// <summary>
 		/// Animate Sprite Sheet dựa trên thông tin lấy được từ method UpdateMetadata
 		/// </summary>
-		/// <param name="delta"></param>
-		protected void Animation(){
+		protected void ActiveAnimation(){
 			try {
 				var _state = this.ObjectiveStateMachine.CurrentState as DynamicState;
 				var _frame = _state.Frame;
