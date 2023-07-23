@@ -1,10 +1,10 @@
 using GameSystem.Component.FiniteStateMachine;
 
 namespace  Actor.TargetPlayer;
-	public partial class Dash : DynamicState{
+	public partial class Action : DynamicState{
 		public override void _Ready(){
 			base._Ready();
-			Object.PlayerInputManager.DashKeyPressed += this.SetCondition;
+			Object.ObjectInputManager.ActionKeyPressed += this.SetCondition;
 			Object.Sheet.AnimationFinished += this.ResetCondition;
 			}
 		public void SetCondition(){
@@ -16,6 +16,6 @@ namespace  Actor.TargetPlayer;
 			}
 		public override void RunningState(double delta){
 			base.RunningState(delta);
-			Object.Velocity = Object.PlayerInputManager.TopDownVector(Object.Metadata.GetDirectionAsVector()) * this.MovingSpeed;
+			Object.Velocity = Object.ObjectInputManager.TopDownVector(Object.Metadata.GetDirectionAsVector()) * this.MovingSpeed;
 			}
 		}
