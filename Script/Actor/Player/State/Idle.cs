@@ -4,7 +4,7 @@ namespace  Actor.TargetPlayer;
 	public partial class Idle : DynamicState{
 		public override void _Ready(){
 			base._Ready();
-			var _inputManager = Object.ObjectInputManager;
+			var _inputManager = Object.InputManager;
 			_inputManager.MovementKeyPressed += this.SetCondition;
 			_inputManager.ActionKeyPressed += this.ResetCondition;
 			}
