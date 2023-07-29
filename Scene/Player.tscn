@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://swnvrlxq24r4"]
 
-[ext_resource type="Script" path="res://GameSystem/Component/Object/DynamicObject.cs" id="1_led7m"]
+[ext_resource type="Script" path="res://GameSystem/Component/Object/DynamicObject.cs" id="1_ae58a"]
 [ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="2_8p4dq"]
 [ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="3_f87hs"]
 [ext_resource type="Script" path="res://GameSystem/Component/Manager/InputManager.cs" id="4_cklnt"]
@@ -21,8 +21,8 @@ height = 26.0
 [node name="DynamicObject" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_led7m")
-FourDirectionAnimation = false
+motion_mode = 1
+script = ExtResource("1_ae58a")
 
 [node name="SpriteSheet" type="Sprite2D" parent="."]
 position = Vector2(-0.5, -13)

@@ -1,11 +1,11 @@
 using GameSystem.Component.FiniteStateMachine;
 
-namespace  Actor.TargetPlayer;
+namespace  Actor.Player;
 	public partial class Action : DynamicState{
 		public override void _Ready(){
 			base._Ready();
-			Object.InputManager.ActionKeyPressed += this.SetCondition;
-			Object.Sheet.AnimationFinished += this.ResetCondition;
+			Object.InputManager.ActionKeyPressed += SetCondition;
+			Object.Sheet.AnimationFinished += ResetCondition;
 			}
 		public void SetCondition(){
 			base.SetCondition(true);
@@ -16,6 +16,6 @@ namespace  Actor.TargetPlayer;
 			}
 		public override void RunningState(double delta){
 			base.RunningState(delta);
-			Object.Velocity = Object.InputManager.TopDownVector(Object.Metadata.GetDirectionAsVector()) * this.MovingSpeed;
+			Object.Velocity = Object.InputManager.TopDownVector(Object.Metadata.GetDirectionAsVector()) * MovingSpeed;
 			}
 		}
