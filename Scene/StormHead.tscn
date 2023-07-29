@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dt5uu7hqagx41"]
+
+[ext_resource type="Script" path="res://GameSystem/Component/Object/DynamicObject.cs" id="1_dbi3j"]
+[ext_resource type="Texture2D" uid="uid://dwgdrs1wi5mdi" path="res://Asset/StormHead.png" id="2_nm376"]
+[ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="3_7832e"]
+[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="4_hq7xw"]
+[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/DynamicState.cs" id="5_lc80u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eg14i"]
+radius = 5.0
+height = 16.0
+
+[node name="StormHead" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_dbi3j")
+
+[node name="SpriteSheet" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+texture = ExtResource("2_nm376")
+hframes = 21
+vframes = 5
+script = ExtResource("3_7832e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_eg14i")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
+script = ExtResource("4_hq7xw")
+CurrentState = NodePath("Attack")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_lc80u")
+NumberOfFrame = 10
+IsLoop = true
+AnimationSpeed = 5.0
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("5_lc80u")
+MovingSpeed = 85.0
+NumberOfFrame = 10
+IsLoop = true
+AnimationSpeed = 5.0
+ID = 1
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("5_lc80u")
+NumberOfFrame = 20
+AnimationSpeed = 5.0
+ID = 2
