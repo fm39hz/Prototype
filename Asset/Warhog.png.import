@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwgdrs1wi5mdi"
-path="res://.godot/imported/StormHead.png-d808b1afc2f98de85381fc12ffd7189a.ctex"
+uid="uid://pqer2colc3xs"
+path="res://.godot/imported/Warhog.png-2c525c250a2727074ac0cac272ac7476.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/StormHead.png"
-dest_files=["res://.godot/imported/StormHead.png-d808b1afc2f98de85381fc12ffd7189a.ctex"]
+source_file="res://Asset/Warhog.png"
+dest_files=["res://.godot/imported/Warhog.png-2c525c250a2727074ac0cac272ac7476.ctex"]
 
 [params]
 

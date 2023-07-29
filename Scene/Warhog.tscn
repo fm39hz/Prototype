@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dt5uu7hqagx41"]
 
 [ext_resource type="Script" path="res://GameSystem/Component/Object/DynamicObject.cs" id="1_dbi3j"]
-[ext_resource type="Texture2D" uid="uid://dwgdrs1wi5mdi" path="res://Asset/StormHead.png" id="2_nm376"]
+[ext_resource type="Texture2D" uid="uid://pqer2colc3xs" path="res://Asset/Warhog.png" id="2_fukmr"]
 [ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="3_7832e"]
 [ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="4_hq7xw"]
 [ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/DynamicState.cs" id="5_lc80u"]
@@ -10,15 +10,16 @@
 radius = 5.0
 height = 16.0
 
-[node name="StormHead" type="CharacterBody2D"]
+[node name="Warhog" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_dbi3j")
 
 [node name="SpriteSheet" type="Sprite2D" parent="."]
-position = Vector2(0, -40)
-texture = ExtResource("2_nm376")
-hframes = 21
-vframes = 5
+position = Vector2(-2, -18)
+scale = Vector2(1.00424, 1.01797)
+texture = ExtResource("2_fukmr")
+hframes = 16
+vframes = 4
 script = ExtResource("3_7832e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -32,20 +33,21 @@ CurrentState = NodePath("Attack")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("5_lc80u")
-NumberOfFrame = 10
+NumberOfFrame = 4
 IsLoop = true
 AnimationSpeed = 5.0
 
-[node name="Walk" type="Node" parent="StateMachine"]
+[node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("5_lc80u")
-MovingSpeed = 85.0
-NumberOfFrame = 10
+NumberOfFrame = 4
 IsLoop = true
 AnimationSpeed = 5.0
 ID = 1
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_lc80u")
-NumberOfFrame = 20
+MovingSpeed = 85.0
+NumberOfFrame = 4
+IsLoop = true
 AnimationSpeed = 5.0
 ID = 2
