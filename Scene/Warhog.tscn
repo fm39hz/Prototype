@@ -21,6 +21,7 @@ height = 24.0
 [node name="Warhog" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_dbi3j")
+Health = 50.0
 
 [node name="SpriteSheet" type="Sprite2D" parent="."]
 position = Vector2(-2, -18)
