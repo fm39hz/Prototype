@@ -15,11 +15,11 @@
                 },
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
-            "stopAtEntry": false,
-            "requireExactSource": false,
-            "enableStepFiltering": false,
+            "stopAtEntry": true,
+            "requireExactSource": true,
+            "enableStepFiltering": true,
             "logging": {
-                "moduleLoad": false
+                "moduleLoad": true
                 },
         }   
     ]
