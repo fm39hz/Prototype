@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dt5uu7hqagx41"]
 
 [ext_resource type="Script" path="res://GameSystem/Component/Object/DynamicObject.cs" id="1_dbi3j"]
-[ext_resource type="Texture2D" uid="uid://pqer2colc3xs" path="res://Asset/Warhog.png" id="2_fukmr"]
+[ext_resource type="Texture2D" uid="uid://bn8c5n1n1b66q" path="res://Asset/Skeleton.png" id="2_0iq8m"]
 [ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="3_7832e"]
 [ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="4_hq7xw"]
 [ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/DynamicState.cs" id="5_lc80u"]
@@ -11,34 +11,34 @@
 [ext_resource type="Script" path="res://GameSystem/Data/DamageData.cs" id="9_87ple"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eg14i"]
-radius = 5.0
-height = 16.0
+radius = 2.0
+height = 9.99999
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h3n36"]
-radius = 9.0
-height = 24.0
+radius = 5.0
+height = 14.0
 
-[node name="Warhog" type="CharacterBody2D"]
+[node name="Skeleton" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_dbi3j")
 Health = 50.0
 
 [node name="SpriteSheet" type="Sprite2D" parent="."]
-position = Vector2(-2, -18)
+position = Vector2(0, -7)
 scale = Vector2(1.00424, 1.01797)
-texture = ExtResource("2_fukmr")
+texture = ExtResource("2_0iq8m")
 hframes = 16
 vframes = 4
 script = ExtResource("3_7832e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_eg14i")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
 script = ExtResource("4_hq7xw")
-CurrentState = NodePath("Attack")
+CurrentState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("5_lc80u")
@@ -46,16 +46,16 @@ NumberOfFrame = 4
 IsLoop = true
 AnimationSpeed = 5.0
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_lc80u")
+MovingSpeed = 85.0
 NumberOfFrame = 4
 IsLoop = true
 AnimationSpeed = 5.0
 ID = 1
 
-[node name="Walk" type="Node" parent="StateMachine"]
+[node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("5_lc80u")
-MovingSpeed = 85.0
 NumberOfFrame = 4
 IsLoop = true
 AnimationSpeed = 5.0
@@ -67,18 +67,18 @@ collision_mask = 2
 script = ExtResource("6_akidc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -12)
+position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_h3n36")
 
 [node name="Weapon" type="CharacterBody2D" parent="."]
 script = ExtResource("7_eu8hy")
 
 [node name="Hitbox" type="Marker2D" parent="Weapon"]
-position = Vector2(0, -11)
+position = Vector2(0, -7)
 script = ExtResource("8_2s88m")
 ShapeRadius = 4.0
 ShapeHeight = 16.0
-ShapeSpacing = 16.0
+ShapeSpacing = 12.0
 
 [node name="DamageData" type="Node" parent="Weapon"]
 script = ExtResource("9_87ple")

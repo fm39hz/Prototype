@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dl4ac1yuuhs2d" path="res://Scene/Background.tscn" id="1_4dbqp"]
 [ext_resource type="PackedScene" uid="uid://cte2kxveeh4sa" path="res://Scene/bush.tscn" id="2_5ikld"]
 [ext_resource type="PackedScene" uid="uid://swnvrlxq24r4" path="res://Scene/Player.tscn" id="3_k886c"]
-[ext_resource type="PackedScene" uid="uid://dt5uu7hqagx41" path="res://Scene/Warhog.tscn" id="4_t3u2o"]
+[ext_resource type="PackedScene" uid="uid://dt5uu7hqagx41" path="res://Scene/Skeleton.tscn" id="4_t3u2o"]
 
 [node name="Root" type="Node"]
 
