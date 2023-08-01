@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dt5uu7hqagx41"]
+[gd_scene load_steps=10 format=3 uid="uid://dt5uu7hqagx41"]
 
 [ext_resource type="Script" path="res://GameSystem/Component/Object/DynamicObject.cs" id="1_dbi3j"]
 [ext_resource type="Texture2D" uid="uid://bn8c5n1n1b66q" path="res://Asset/Skeleton.png" id="2_0iq8m"]
@@ -6,9 +6,7 @@
 [ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="4_hq7xw"]
 [ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/DynamicState.cs" id="5_lc80u"]
 [ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/HurtBox.cs" id="6_akidc"]
-[ext_resource type="Script" path="res://GameSystem/Component/Object/Equipment/Weapon.cs" id="7_eu8hy"]
-[ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/Hitbox.cs" id="8_2s88m"]
-[ext_resource type="Script" path="res://GameSystem/Data/DamageData.cs" id="9_87ple"]
+[ext_resource type="PackedScene" uid="uid://cjfdmoe1jr776" path="res://Scene/SkeletonWeapon.tscn" id="7_p8yd8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eg14i"]
 radius = 2.0
@@ -70,16 +68,4 @@ script = ExtResource("6_akidc")
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_h3n36")
 
-[node name="Weapon" type="CharacterBody2D" parent="."]
-script = ExtResource("7_eu8hy")
-
-[node name="Hitbox" type="Marker2D" parent="Weapon"]
-position = Vector2(0, -7)
-script = ExtResource("8_2s88m")
-ShapeRadius = 4.0
-ShapeHeight = 16.0
-ShapeSpacing = 12.0
-
-[node name="DamageData" type="Node" parent="Weapon"]
-script = ExtResource("9_87ple")
-Value = 5.0
+[node name="SkeletonWeapon" parent="." instance=ExtResource("7_p8yd8")]
