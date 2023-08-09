@@ -1,26 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu4c72t1yddqt"]
+[gd_scene load_steps=3 format=3 uid="uid://besl7be7k787j"]
 
-[ext_resource type="PackedScene" uid="uid://dl4ac1yuuhs2d" path="res://Scene/Background.tscn" id="1_4dbqp"]
-[ext_resource type="PackedScene" uid="uid://cte2kxveeh4sa" path="res://Scene/bush.tscn" id="2_5ikld"]
-[ext_resource type="PackedScene" uid="uid://swnvrlxq24r4" path="res://Scene/Player.tscn" id="3_k886c"]
-[ext_resource type="PackedScene" uid="uid://dt5uu7hqagx41" path="res://Scene/Skeleton.tscn" id="4_t3u2o"]
+[ext_resource type="PackedScene" uid="uid://2y3vv8bhnc5a" path="res://Scene/Game.tscn" id="1_nhwpj"]
+[ext_resource type="PackedScene" uid="uid://bagsepc0igo4u" path="res://Scene/Control.tscn" id="2_2ju3d"]
 
 [node name="Root" type="Node"]
 
-[node name="Game" type="Node2D" parent="."]
-y_sort_enabled = true
+[node name="Game" parent="." instance=ExtResource("1_nhwpj")]
 
-[node name="Background" parent="Game" instance=ExtResource("1_4dbqp")]
-position = Vector2(156, 106)
-
-[node name="Bush" parent="Game" instance=ExtResource("2_5ikld")]
-position = Vector2(130, 44)
-
-[node name="Bush2" parent="Game" instance=ExtResource("2_5ikld")]
-position = Vector2(67, 127)
-
-[node name="DynamicObject" parent="Game" instance=ExtResource("3_k886c")]
-position = Vector2(230, 69)
-
-[node name="Warhog" parent="Game" instance=ExtResource("4_t3u2o")]
-position = Vector2(112, 106)
+[node name="Control" parent="." instance=ExtResource("2_2ju3d")]
