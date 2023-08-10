@@ -1,9 +1,16 @@
 using GameSystem.Component.FiniteStateMachine;
 
-namespace Actor.Player;
+namespace Attach.PlayerState;
+using Actor;
 
 public partial class Action : DynamicState
 {
+	public new Player Object { get; set; }
+
+	public override void _EnterTree()
+	{
+		Object = GetOwner<Player>();
+	}
 	public override void _Ready()
 	{
 		base._Ready();

@@ -1,9 +1,15 @@
 using GameSystem.Component.FiniteStateMachine;
+using Actor;
 
-namespace Actor.Player;
+namespace Attach.PlayerState;
 
 public partial class Idle : DynamicState
-{
+{	public new Player Object { get; set; }
+
+	public override void _EnterTree()
+	{
+		Object = GetOwner<Player>();
+	}
 	public override void _Ready()
 	{
 		base._Ready();
