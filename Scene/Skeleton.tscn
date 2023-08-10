@@ -1,71 +1,61 @@
-[gd_scene load_steps=10 format=3 uid="uid://dt5uu7hqagx41"]
+[gd_scene load_steps=10 format=3 uid="uid://cecoybpl8jc10"]
 
-[ext_resource type="Script" path="res://GameSystem/Component/Object/DynamicObject.cs" id="1_dbi3j"]
-[ext_resource type="Texture2D" uid="uid://bn8c5n1n1b66q" path="res://Asset/Skeleton.png" id="2_0iq8m"]
-[ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="3_7832e"]
-[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="4_hq7xw"]
-[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/DynamicState.cs" id="5_lc80u"]
-[ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/HurtBox.cs" id="6_akidc"]
-[ext_resource type="PackedScene" uid="uid://cjfdmoe1jr776" path="res://Scene/SkeletonWeapon.tscn" id="7_p8yd8"]
+[ext_resource type="Script" path="res://GameSystem/Component/Object/Directional/LivingObject.cs" id="1_yt7ad"]
+[ext_resource type="Texture2D" uid="uid://bn8c5n1n1b66q" path="res://Asset/Skeleton.png" id="2_arr43"]
+[ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="3_r0nq2"]
+[ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/HurtBox.cs" id="4_qd0lx"]
+[ext_resource type="PackedScene" uid="uid://csh7ia4jvlrmw" path="res://Scene/SkeletonWeapon.tscn" id="5_4x23i"]
+[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="6_hb42s"]
+[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/DynamicState.cs" id="7_b78ob"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eg14i"]
-radius = 2.0
-height = 9.99999
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b2oj3"]
+radius = 3.0
+height = 12.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h3n36"]
-radius = 5.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_po1ew"]
+radius = 6.0
 height = 14.0
 
 [node name="Skeleton" type="CharacterBody2D"]
-motion_mode = 1
-script = ExtResource("1_dbi3j")
-Health = 50.0
+script = ExtResource("1_yt7ad")
 
 [node name="SpriteSheet" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
-scale = Vector2(1.00424, 1.01797)
-texture = ExtResource("2_0iq8m")
+texture = ExtResource("2_arr43")
 hframes = 16
 vframes = 4
-script = ExtResource("3_7832e")
+script = ExtResource("3_r0nq2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -3)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_eg14i")
+shape = SubResource("CapsuleShape2D_b2oj3")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
-script = ExtResource("4_hq7xw")
-CurrentState = NodePath("Idle")
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("4_qd0lx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_po1ew")
+
+[node name="SkeletonWeapon" parent="." instance=ExtResource("5_4x23i")]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("6_hb42s")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("5_lc80u")
+script = ExtResource("7_b78ob")
 NumberOfFrame = 4
 IsLoop = true
 AnimationSpeed = 5.0
 
 [node name="Walk" type="Node" parent="StateMachine"]
-script = ExtResource("5_lc80u")
-MovingSpeed = 85.0
+script = ExtResource("7_b78ob")
 NumberOfFrame = 4
 IsLoop = true
 AnimationSpeed = 5.0
-ID = 1
 
 [node name="Attack" type="Node" parent="StateMachine"]
-script = ExtResource("5_lc80u")
-NumberOfFrame = 4
-IsLoop = true
+script = ExtResource("7_b78ob")
+NumberOfFrame = 2
 AnimationSpeed = 5.0
-ID = 2
-
-[node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("6_akidc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -7)
-shape = SubResource("CapsuleShape2D_h3n36")
-
-[node name="SkeletonWeapon" parent="." instance=ExtResource("7_p8yd8")]

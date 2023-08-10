@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://uevkmkkff3yo"]
+[gd_scene load_steps=14 format=3 uid="uid://uevkmkkff3yo"]
 
-[ext_resource type="Script" path="res://GameSystem/Component/Object/Directional/LivingObject.cs" id="1_3wrof"]
+[ext_resource type="Script" path="res://Script/Actor/Player/Player.cs" id="1_jljcy"]
 [ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="2_j4jen"]
 [ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="3_l5k86"]
 [ext_resource type="Script" path="res://GameSystem/Component/Manager/InputManager.cs" id="4_gmm5k"]
@@ -10,14 +10,19 @@
 [ext_resource type="Script" path="res://Script/Actor/Player/State/Walk.cs" id="7_dgdcg"]
 [ext_resource type="Script" path="res://GameSystem/Data/DirectionData.cs" id="8_0rr5q"]
 [ext_resource type="Script" path="res://Script/Actor/Player/State/Action.cs" id="8_tg3n7"]
+[ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/HurtBox.cs" id="11_g6aia"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fprrw"]
 radius = 3.0
 height = 9.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3roq"]
+radius = 6.0
+height = 24.0
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_3wrof")
+script = ExtResource("1_jljcy")
 
 [node name="SpriteSheet" type="Sprite2D" parent="."]
 position = Vector2(-0.5, -13)
@@ -51,7 +56,7 @@ MaxSpeed = 85.0
 Acceleration = 400.0
 NumberOfFrame = 8
 IsLoop = true
-AnimationSpeed = 5.0
+AnimationSpeed = 10.0
 
 [node name="Action" type="Node" parent="StateMachine"]
 script = ExtResource("8_tg3n7")
@@ -67,3 +72,13 @@ IsFourDirection = false
 
 [node name="DirectionData" type="Node" parent="LivingObjectData"]
 script = ExtResource("8_0rr5q")
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("11_g6aia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_b3roq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_speed = 10.0

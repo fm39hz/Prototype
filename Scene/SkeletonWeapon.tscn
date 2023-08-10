@@ -1,31 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjfdmoe1jr776"]
+[gd_scene load_steps=7 format=3 uid="uid://csh7ia4jvlrmw"]
 
-[ext_resource type="Script" path="res://GameSystem/Component/Object/Equipment/Weapon.cs" id="1_yhnct"]
-[ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/Hitbox.cs" id="2_geutl"]
-[ext_resource type="Script" path="res://GameSystem/Data/DamageData.cs" id="3_umjlf"]
-[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="4_l3oet"]
-[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/DynamicState.cs" id="5_i8bge"]
+[ext_resource type="Script" path="res://GameSystem/Component/Object/Directional/Equipment/Weapon.cs" id="1_ggurb"]
+[ext_resource type="Texture2D" uid="uid://cmi22hpwu2ip5" path="res://Asset/skeletonweapon.png" id="2_vxu20"]
+[ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="3_ugeot"]
+[ext_resource type="Script" path="res://GameSystem/Data/DamageData.cs" id="4_xij73"]
+[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="5_wjb8w"]
+[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/DynamicState.cs" id="6_dug6j"]
 
 [node name="SkeletonWeapon" type="CharacterBody2D"]
-script = ExtResource("1_yhnct")
+script = ExtResource("1_ggurb")
 
-[node name="Hitbox" type="Marker2D" parent="."]
-position = Vector2(0, -7)
-script = ExtResource("2_geutl")
-ShapeRadius = 4.0
-ShapeHeight = 16.0
-ShapeSpacing = 12.0
+[node name="SpriteSheet" type="Sprite2D" parent="."]
+texture = ExtResource("2_vxu20")
+hframes = 8
+vframes = 2
+script = ExtResource("3_ugeot")
 
 [node name="DamageData" type="Node" parent="."]
-script = ExtResource("3_umjlf")
-Value = 5.0
+script = ExtResource("4_xij73")
+Value = 10.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
-script = ExtResource("4_l3oet")
+script = ExtResource("5_wjb8w")
 CurrentState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("5_i8bge")
+script = ExtResource("6_dug6j")
 
 [node name="Attack" type="Node" parent="StateMachine"]
-script = ExtResource("5_i8bge")
+script = ExtResource("6_dug6j")

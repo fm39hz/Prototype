@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://2y3vv8bhnc5a"]
+[gd_scene load_steps=4 format=3 uid="uid://2y3vv8bhnc5a"]
 
 [ext_resource type="PackedScene" uid="uid://uevkmkkff3yo" path="res://Scene/Player.tscn" id="1_axc85"]
+[ext_resource type="PackedScene" uid="uid://dl4ac1yuuhs2d" path="res://Scene/Background.tscn" id="2_jmkx8"]
+[ext_resource type="PackedScene" uid="uid://cecoybpl8jc10" path="res://Scene/Skeleton.tscn" id="3_t0gux"]
 
 [node name="Game" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_axc85")]
 position = Vector2(63, 34)
+
+[node name="Background" parent="." instance=ExtResource("2_jmkx8")]
+position = Vector2(-60, 41)
+
+[node name="Skeleton" parent="." instance=ExtResource("3_t0gux")]
+position = Vector2(-24, 32)
