@@ -1,84 +1,48 @@
-[gd_scene load_steps=14 format=3 uid="uid://uevkmkkff3yo"]
+[gd_scene load_steps=9 format=3 uid="uid://bt2v6hfoxqed2"]
 
-[ext_resource type="Script" path="res://Script/Actor/Player/Player.cs" id="1_jljcy"]
-[ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="2_j4jen"]
-[ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="3_l5k86"]
-[ext_resource type="Script" path="res://GameSystem/Component/Manager/InputManager.cs" id="4_gmm5k"]
-[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="5_6x6si"]
-[ext_resource type="Script" path="res://Script/Actor/Player/State/Idle.cs" id="6_g5qpo"]
-[ext_resource type="Script" path="res://GameSystem/Data/LivingObjectData.cs" id="7_15bqm"]
-[ext_resource type="Script" path="res://Script/Actor/Player/State/Walk.cs" id="7_dgdcg"]
-[ext_resource type="Script" path="res://GameSystem/Data/DirectionData.cs" id="8_0rr5q"]
-[ext_resource type="Script" path="res://Script/Actor/Player/State/Action.cs" id="8_tg3n7"]
-[ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/HurtBox.cs" id="11_g6aia"]
+[ext_resource type="Script" path="res://GameSystem/Component/Object/Compositor/CreatureCompositor.cs" id="1_dmi5n"]
+[ext_resource type="Script" path="res://Script/Actor/Player/PlayerBody.cs" id="1_r28j0"]
+[ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="3_errg1"]
+[ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="4_s66si"]
+[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="5_vwseo"]
+[ext_resource type="Script" path="res://Script/Actor/Player/State/Idle.cs" id="6_v56e8"]
+[ext_resource type="Script" path="res://Script/Actor/Player/State/Walk.cs" id="7_8n6wf"]
+[ext_resource type="Script" path="res://GameSystem/Component/Manager/InputManager.cs" id="7_hgj58"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fprrw"]
-radius = 3.0
-height = 9.0
+[node name="Player" type="Node2D" node_paths=PackedStringArray("Target")]
+script = ExtResource("1_dmi5n")
+Target = NodePath("PlayerBody")
+IsFourDirectoin = false
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3roq"]
-radius = 6.0
-height = 24.0
-
-[node name="Player" type="CharacterBody2D"]
+[node name="PlayerBody" type="CharacterBody2D" parent="."]
 motion_mode = 1
-script = ExtResource("1_jljcy")
+script = ExtResource("1_r28j0")
 
-[node name="SpriteSheet" type="Sprite2D" parent="."]
+[node name="SpriteSheet" type="Sprite2D" parent="PlayerBody"]
 position = Vector2(-0.5, -13)
-texture = ExtResource("2_j4jen")
+texture = ExtResource("3_errg1")
 hframes = 64
 vframes = 3
-script = ExtResource("3_l5k86")
+script = ExtResource("4_s66si")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_fprrw")
-
-[node name="InputManager" type="Node" parent="."]
-script = ExtResource("4_gmm5k")
-
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
-script = ExtResource("5_6x6si")
+[node name="StateMachine" type="Node" parent="PlayerBody" node_paths=PackedStringArray("CurrentState")]
+script = ExtResource("5_vwseo")
 CurrentState = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("6_g5qpo")
+[node name="Idle" type="Node" parent="PlayerBody/StateMachine"]
+script = ExtResource("6_v56e8")
 Friction = 400.0
 NumberOfFrame = 4
 IsLoop = true
-AnimationSpeed = 5.0
+AnimationSpeed = 3.0
 
-[node name="Walk" type="Node" parent="StateMachine"]
-script = ExtResource("7_dgdcg")
+[node name="Walk" type="Node" parent="PlayerBody/StateMachine"]
+script = ExtResource("7_8n6wf")
 MaxSpeed = 85.0
 Acceleration = 400.0
 NumberOfFrame = 8
 IsLoop = true
 AnimationSpeed = 10.0
 
-[node name="Action" type="Node" parent="StateMachine"]
-script = ExtResource("8_tg3n7")
-MaxSpeed = 100.0
-Acceleration = 400.0
-NumberOfFrame = 4
-AnimationSpeed = 5.0
-
-[node name="LivingObjectData" type="Node" parent="."]
-script = ExtResource("7_15bqm")
-Health = 100.0
-IsFourDirection = false
-
-[node name="DirectionData" type="Node" parent="LivingObjectData"]
-script = ExtResource("8_0rr5q")
-
-[node name="HurtBox" type="Area2D" parent="."]
-script = ExtResource("11_g6aia")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -12)
-shape = SubResource("CapsuleShape2D_b3roq")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_speed = 10.0
+[node name="InputManager" type="Node" parent="PlayerBody"]
+script = ExtResource("7_hgj58")

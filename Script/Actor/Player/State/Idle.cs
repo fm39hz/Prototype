@@ -3,17 +3,18 @@ using Actor;
 
 namespace Attach.PlayerState;
 
-public partial class Idle : DynamicState
-{	public new Player Object { get; set; }
+public partial class Idle : StaticState
+{	public new PlayerBody Target { get; set; }
 
 	public override void _EnterTree()
 	{
-		Object = GetOwner<Player>();
+		base._EnterTree();
+		Target = StateMachine.GetParent<PlayerBody>();
 	}
 	public override void _Ready()
 	{
 		base._Ready();
-		var _inputManager = Object.InputManager;
+		var _inputManager = Target.InputManager;
 		_inputManager.MovementKeyPressed += SetCondition;
 		_inputManager.ActionKeyPressed += ResetCondition;
 	}

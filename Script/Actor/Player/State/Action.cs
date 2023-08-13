@@ -3,19 +3,20 @@ using GameSystem.Component.FiniteStateMachine;
 namespace Attach.PlayerState;
 using Actor;
 
-public partial class Action : DynamicState
+public partial class Action : StaticState
 {
-	public new Player Object { get; set; }
+	public new PlayerBody Target { get; set; }
 
 	public override void _EnterTree()
 	{
-		Object = GetOwner<Player>();
+		base._EnterTree();
+		Target = StateMachine.GetParent<PlayerBody>();
 	}
 	public override void _Ready()
 	{
 		base._Ready();
-		Object.InputManager.ActionKeyPressed += SetCondition;
-		Object.Sheet.AnimationFinished += ResetCondition;
+		Target.InputManager.ActionKeyPressed += SetCondition;
+		Target.Compositor.SpriteSheet.AnimationFinished += ResetCondition;
 	}
 
 	public void SetCondition()
@@ -26,12 +27,12 @@ public partial class Action : DynamicState
 	public override void ResetCondition()
 	{
 		base.ResetCondition();
-		Object.IsMoveable = true;
+		Target.Compositor.Information.IsMoveable = true;
 	}
 
 	public override void RunningState(double delta)
 	{
 		base.RunningState(delta);
-		Object.Velocity = Object.InputManager.TopDownVector(Object.Information.GetDirectionAsVector()) * MaxSpeed;
+		Target.Velocity = Target.InputManager.TopDownVector(Target.Compositor.Information.Direction.AsVector) * MaxSpeed;
 	}
 }

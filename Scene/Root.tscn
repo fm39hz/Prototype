@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://besl7be7k787j"]
+[gd_scene load_steps=3 format=3 uid="uid://62mhbd4eeapx"]
 
-[ext_resource type="PackedScene" uid="uid://2y3vv8bhnc5a" path="res://Scene/Game.tscn" id="1_nhwpj"]
-[ext_resource type="PackedScene" uid="uid://bagsepc0igo4u" path="res://Scene/Control.tscn" id="2_2ju3d"]
+[ext_resource type="PackedScene" uid="uid://bagsepc0igo4u" path="res://Scene/Control.tscn" id="1_ck06c"]
+[ext_resource type="PackedScene" uid="uid://cx42r0fiqsdca" path="res://Scene/Game.tscn" id="2_h24pm"]
 
 [node name="Root" type="Node"]
 
-[node name="Game" parent="." instance=ExtResource("1_nhwpj")]
+[node name="Control" parent="." instance=ExtResource("1_ck06c")]
 
-[node name="Control" parent="." instance=ExtResource("2_2ju3d")]
+[node name="Game" parent="." instance=ExtResource("2_h24pm")]

@@ -1,11 +1,9 @@
-using Godot;
-using System;
 using GameSystem.Component.Manager;
-using GameSystem.Component.Object.Directional;
+using GameSystem.Component.Object.Composition;
 using GameSystem.Utility;
 
 namespace Actor;
-public partial class Player : LivingObject
+public partial class PlayerBody : Creature
 {
 	/// <summary>
 	/// Manage the Input Signal
