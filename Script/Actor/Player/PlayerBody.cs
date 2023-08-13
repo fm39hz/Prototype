@@ -1,5 +1,6 @@
 using GameSystem.Component.Manager;
 using GameSystem.Component.Object.Composition;
+using GameSystem.Component.Object.Compositor;
 using GameSystem.Utility;
 
 namespace Actor;
@@ -13,6 +14,6 @@ public partial class PlayerBody : Creature
 	public override void _EnterTree()
 	{
 		base._EnterTree();
-		InputManager = GodotNodeInteractive.GetFirstChildOfType<InputManager>(this);
+		InputManager = GodotNodeInteractive.GetFirstChildOfType<InputManager>(GetParent<CreatureCompositor>());
 	}
 }
