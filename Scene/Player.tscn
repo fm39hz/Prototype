@@ -12,7 +12,7 @@
 [node name="Player" type="Node2D" node_paths=PackedStringArray("Target")]
 script = ExtResource("1_dmi5n")
 Target = NodePath("PlayerBody")
-IsFourDirectoin = false
+IsFourDirection = false
 
 [node name="PlayerBody" type="CharacterBody2D" parent="."]
 motion_mode = 1
