@@ -5,7 +5,7 @@ using Actor;
 
 public partial class Action : StaticState
 {
-	public new PlayerBody Target { get; set; }
+	public PlayerBody Target { get; private set; }
 
 	public override void _EnterTree()
 	{

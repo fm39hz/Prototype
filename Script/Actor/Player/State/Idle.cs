@@ -4,7 +4,8 @@ using Actor;
 namespace Attach.PlayerState;
 
 public partial class Idle : StaticState
-{	public new PlayerBody Target { get; set; }
+{	
+	public PlayerBody Target { get; private set; }
 
 	public override void _EnterTree()
 	{
@@ -25,7 +26,7 @@ public partial class Idle : StaticState
 		{
 			return;
 		}
-
+		
 		Condition = !condition;
 	}
 }

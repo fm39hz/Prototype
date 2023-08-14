@@ -1,10 +1,12 @@
 using GameSystem.Component.FiniteStateMachine;
 using Actor;
+using Godot;
+
 namespace Attach.PlayerState;
 
 public partial class Walk : StaticState
 {
-	public new PlayerBody Target { get; set; }
+	public PlayerBody Target { get; private set; }
 
 	public override void _EnterTree()
 	{
@@ -17,16 +19,6 @@ public partial class Walk : StaticState
 		Target.InputManager.MovementKeyPressed += SetCondition;
 		Target.InputManager.ActionKeyPressed += ResetCondition;
 	}
-
-	// public override void SetCondition(bool condition)
-	// {
-	// 	base.SetCondition(condition);
-	// 	if (Target.Velocity.IsZeroApprox() && !StateMachine.PreviousState.IsState(this))
-	// 	{
-	// 		Condition = false;
-	// 	}
-	// }
-
 	public override void RunningState(double delta)
 	{
 		base.RunningState(delta);
