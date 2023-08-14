@@ -11,6 +11,7 @@
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("Target")]
 script = ExtResource("1_dmi5n")
+Health = 100.0
 Target = NodePath("PlayerBody")
 IsFourDirection = false
 
