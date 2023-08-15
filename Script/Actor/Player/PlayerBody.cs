@@ -1,7 +1,7 @@
 using GameSystem.Component.Manager;
 using GameSystem.Component.Object.Composition;
 using GameSystem.Component.Object.Compositor;
-using GameSystem.Utility;
+using GameSystem.Utils;
 
 namespace Actor;
 public partial class PlayerBody : Creature
