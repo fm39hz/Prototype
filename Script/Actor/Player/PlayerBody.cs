@@ -14,6 +14,6 @@ public partial class PlayerBody : Creature
 	public override void _EnterTree()
 	{
 		base._EnterTree();
-		InputManager = GodotNodeInteractive.GetFirstChildOfType<InputManager>(GetParent<CreatureCompositor>());
+		InputManager = GetParent<CreatureCompositor>().GetFirstChildOfType<InputManager>();
 	}
 }
