@@ -8,7 +8,7 @@
             "preLaunchTask": "Build",
             "program": "",
             "windows": {
-                "program": "E:/Hienpham/Game_Engine/Godot/Godot_Win/Godot.exe",
+                "program": "D:/Game_Engine/Godot/Godot_Win/Godot.exe",
                 },
             "linux": {
                 "program": "/usr/bin/godot-mono",
