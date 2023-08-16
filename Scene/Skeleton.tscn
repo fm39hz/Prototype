@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctdalp3lv555a"]
+
+[ext_resource type="Script" path="res://GameSystem/Component/Object/Compositor/CreatureCompositor.cs" id="1_uiban"]
+[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="2_7xfbx"]
+[ext_resource type="Script" path="res://GameSystem/Component/Object/Composition/Creature.cs" id="3_aee0t"]
+[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StaticState.cs" id="3_uwrec"]
+[ext_resource type="Texture2D" uid="uid://bn8c5n1n1b66q" path="res://Asset/Skeleton.png" id="4_itmav"]
+[ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="5_36yys"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wb6cp"]
+radius = 2.0
+height = 10.0
+
+[node name="Skeleton" type="Node2D" node_paths=PackedStringArray("Target")]
+script = ExtResource("1_uiban")
+Target = NodePath("SkeletonBody")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
+script = ExtResource("2_7xfbx")
+CurrentState = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_uwrec")
+Friction = 400.0
+NumberOfFrame = 4
+IsLoop = true
+AnimationSpeed = 5.0
+
+[node name="StaticState" type="Node" parent="StateMachine"]
+script = ExtResource("3_uwrec")
+MaxSpeed = 85.0
+Acceleration = 400.0
+NumberOfFrame = 4
+IsLoop = true
+AnimationSpeed = 5.0
+
+[node name="SkeletonBody" type="CharacterBody2D" parent="."]
+motion_mode = 1
+script = ExtResource("3_aee0t")
+
+[node name="SpriteSheet" type="Sprite2D" parent="SkeletonBody"]
+position = Vector2(0, -7)
+texture = ExtResource("4_itmav")
+hframes = 16
+vframes = 4
+script = ExtResource("5_36yys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SkeletonBody"]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wb6cp")
