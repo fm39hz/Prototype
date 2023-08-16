@@ -1,5 +1,7 @@
 using GameSystem.Component.FiniteStateMachine;
 using Actor;
+using GameSystem.Component.Object.Compositor;
+using GameSystem.Utils;
 using Godot;
 
 namespace Attach.PlayerState;
@@ -11,7 +13,7 @@ public partial class Walk : StaticState
 	public override void _EnterTree()
 	{
 		base._EnterTree();
-		Target = StateMachine.GetParent<PlayerBody>();
+		Target = StateMachine.GetOwner<CreatureCompositor>().GetFirstChildOfType<PlayerBody>();
 	}
 	public override void _Ready()
 	{

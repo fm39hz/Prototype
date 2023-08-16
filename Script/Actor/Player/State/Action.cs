@@ -1,4 +1,6 @@
 using GameSystem.Component.FiniteStateMachine;
+using GameSystem.Component.Object.Compositor;
+using GameSystem.Utils;
 
 namespace Attach.PlayerState;
 using Actor;
@@ -10,7 +12,7 @@ public partial class Action : StaticState
 	public override void _EnterTree()
 	{
 		base._EnterTree();
-		Target = StateMachine.GetParent<PlayerBody>();
+		Target = StateMachine.GetOwner<CreatureCompositor>().GetFirstChildOfType<PlayerBody>();
 	}
 	public override void _Ready()
 	{
