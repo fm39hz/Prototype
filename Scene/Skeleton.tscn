@@ -13,6 +13,7 @@ height = 10.0
 
 [node name="Skeleton" type="Node2D" node_paths=PackedStringArray("Target")]
 script = ExtResource("1_uiban")
+Health = 100.0
 Target = NodePath("SkeletonBody")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]

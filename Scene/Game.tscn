@@ -10,7 +10,7 @@ y_sort_enabled = true
 [node name="Background" parent="." instance=ExtResource("2_jmkx8")]
 
 [node name="Player" parent="." instance=ExtResource("2_4capa")]
-position = Vector2(161, 33)
+position = Vector2(78, 47)
 
 [node name="Skeleton" parent="." instance=ExtResource("3_w2upn")]
 position = Vector2(60, 48)
