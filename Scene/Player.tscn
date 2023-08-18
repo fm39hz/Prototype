@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt2v6hfoxqed2"]
+[gd_scene load_steps=11 format=3 uid="uid://bt2v6hfoxqed2"]
 
 [ext_resource type="Script" path="res://GameSystem/Component/Object/Compositor/CreatureCompositor.cs" id="1_dmi5n"]
 [ext_resource type="Script" path="res://Script/Actor/Player/PlayerBody.cs" id="1_r28j0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Script/Actor/Player/State/Idle.cs" id="6_v56e8"]
 [ext_resource type="Script" path="res://Script/Actor/Player/State/Walk.cs" id="7_8n6wf"]
 [ext_resource type="Script" path="res://GameSystem/Component/Manager/InputManager.cs" id="7_hgj58"]
+[ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/HurtBox.cs" id="9_dnpwr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0myc"]
 radius = 3.0
@@ -46,7 +47,7 @@ motion_mode = 1
 script = ExtResource("1_r28j0")
 
 [node name="SpriteSheet" type="Sprite2D" parent="PlayerBody"]
-position = Vector2(-0.5, -13)
+position = Vector2(0, -13)
 texture = ExtResource("3_errg1")
 hframes = 64
 vframes = 3
@@ -57,3 +58,6 @@ metadata/_edit_lock_ = true
 position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v0myc")
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("9_dnpwr")
