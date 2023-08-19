@@ -47,17 +47,19 @@ motion_mode = 1
 script = ExtResource("1_r28j0")
 
 [node name="SpriteSheet" type="Sprite2D" parent="PlayerBody"]
-position = Vector2(0, -13)
+position = Vector2(-8, -29)
 texture = ExtResource("3_errg1")
+centered = false
 hframes = 64
 vframes = 3
 script = ExtResource("4_s66si")
-metadata/_edit_lock_ = true
+PivotPoint = Vector2(0, -13)
+
+[node name="HurtBox" type="Area2D" parent="PlayerBody/SpriteSheet"]
+position = Vector2(0, 13)
+script = ExtResource("9_dnpwr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
 position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v0myc")
-
-[node name="HurtBox" type="Area2D" parent="."]
-script = ExtResource("9_dnpwr")
