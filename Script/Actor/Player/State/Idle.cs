@@ -1,3 +1,4 @@
+using System;
 using GameSystem.Component.FiniteStateMachine;
 using Actor;
 using GameSystem.Component.Object.Compositor;
@@ -25,5 +26,11 @@ public partial class Idle : StaticState
 	public override void SetCondition(bool condition)
 	{
 		Condition = !condition;
+	}
+	public override void RunningState(double delta)
+	{
+		base.RunningState(delta);
+		Target.Velocity = Target.Velocity.MoveToward(Target.Compositor.Information.Direction.AsVector * MaxSpeed,
+			Friction * Convert.ToSingle(delta));
 	}
 }
