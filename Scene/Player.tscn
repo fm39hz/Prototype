@@ -63,3 +63,5 @@ shape = SubResource("CapsuleShape2D_v0myc")
 [node name="HurtBox" type="Area2D" parent="PlayerBody"]
 script = ExtResource("9_dnpwr")
 metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="PlayerBody"]

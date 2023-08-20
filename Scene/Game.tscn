@@ -13,4 +13,49 @@ y_sort_enabled = true
 position = Vector2(78, 47)
 
 [node name="Skeleton" parent="." instance=ExtResource("3_ssu64")]
-position = Vector2(30, 42)
+position = Vector2(183, 58)
+
+[node name="Skeleton2" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(145, 117)
+
+[node name="Skeleton3" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(209, 109)
+
+[node name="Skeleton4" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(102, 94)
+
+[node name="Skeleton5" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(135, 79)
+
+[node name="Skeleton6" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(59, 126)
+
+[node name="Skeleton7" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(33, 77)
+
+[node name="Skeleton8" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(117, 29)
+
+[node name="Skeleton9" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(-22, 89)
+
+[node name="Skeleton10" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(-18, 47)
+
+[node name="Skeleton11" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(5, 30)
+
+[node name="Skeleton12" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(166, 13)
+
+[node name="Skeleton13" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(232, -4)
+
+[node name="Skeleton14" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(191, 4)
+
+[node name="Skeleton15" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(137, -17)
+
+[node name="Skeleton16" parent="." instance=ExtResource("3_ssu64")]
+position = Vector2(82, -9)
