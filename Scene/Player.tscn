@@ -55,12 +55,11 @@ vframes = 3
 script = ExtResource("4_s66si")
 metadata/_edit_lock_ = true
 
-[node name="HurtBox" type="Area2D" parent="PlayerBody/SpriteSheet"]
-position = Vector2(8, 29)
-script = ExtResource("9_dnpwr")
-metadata/_edit_lock_ = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
 position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v0myc")
+
+[node name="HurtBox" type="Area2D" parent="PlayerBody"]
+script = ExtResource("9_dnpwr")
+metadata/_edit_lock_ = true

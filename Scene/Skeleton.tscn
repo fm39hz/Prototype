@@ -48,10 +48,10 @@ hframes = 16
 vframes = 4
 script = ExtResource("5_36yys")
 
-[node name="HurtBox" type="Area2D" parent="SkeletonBody/SpriteSheet"]
-script = ExtResource("7_gxell")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SkeletonBody"]
 position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_wb6cp")
+
+[node name="HurtBox" type="Area2D" parent="SkeletonBody"]
+script = ExtResource("7_gxell")
