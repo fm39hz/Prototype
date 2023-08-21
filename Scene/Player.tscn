@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt2v6hfoxqed2"]
+[gd_scene load_steps=12 format=3 uid="uid://bt2v6hfoxqed2"]
 
 [ext_resource type="Script" path="res://GameSystem/Component/Object/Compositor/CreatureCompositor.cs" id="1_dmi5n"]
 [ext_resource type="Script" path="res://Script/Actor/Player/PlayerBody.cs" id="1_r28j0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="4_s66si"]
 [ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="5_vwseo"]
 [ext_resource type="Script" path="res://Script/Actor/Player/State/Idle.cs" id="6_v56e8"]
+[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StaticState.cs" id="6_xxuwf"]
 [ext_resource type="Script" path="res://Script/Actor/Player/State/Walk.cs" id="7_8n6wf"]
 [ext_resource type="Script" path="res://GameSystem/Component/Manager/InputManager.cs" id="7_hgj58"]
 [ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/HurtBox.cs" id="9_dnpwr"]
@@ -41,6 +42,11 @@ Acceleration = 400.0
 NumberOfFrame = 8
 IsLoop = true
 AnimationSpeed = 10.0
+
+[node name="StaticState" type="Node" parent="StateMachine"]
+script = ExtResource("6_xxuwf")
+NumberOfFrame = 4
+AnimationSpeed = 5.0
 
 [node name="PlayerBody" type="CharacterBody2D" parent="."]
 motion_mode = 1
