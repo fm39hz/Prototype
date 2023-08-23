@@ -16,10 +16,6 @@ config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 run/flush_stdout_on_print=true
 config/icon="res://icon.svg"
 
-[autoload]
-
-GlobalData="*res://GameSystem/Data/GlobalData.cs"
-
 [debug]
 
 settings/stdout/print_fps=true
