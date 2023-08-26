@@ -10,7 +10,7 @@ public partial class Walk : StaticState {
 
 	public override void _EnterTree() {
 		base._EnterTree();
-		Target = StateMachine.GetOwner<CreatureCompositor>().GetFirstChildOfType<PlayerBody>();
+		Target = StateMachine.GetOwner<CreatureCompositor>().GetFirstChild<PlayerBody>();
 	}
 
 	public override void _Ready() {
