@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://ccr3qpk1gijvg"]
+[gd_scene load_steps=3 format=3 uid="uid://ccr3qpk1gijvg"]
+
+[ext_resource type="PackedScene" uid="uid://bagsepc0igo4u" path="res://Scene/Control.tscn" id="1_y2pa2"]
+[ext_resource type="PackedScene" uid="uid://4lhemuisdtu5" path="res://Scene/Game.tscn" id="2_80sux"]
 
 [node name="Root" type="Node"]
+
+[node name="Control" parent="." instance=ExtResource("1_y2pa2")]
+
+[node name="Game" parent="." instance=ExtResource("2_80sux")]
