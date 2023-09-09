@@ -1,6 +1,6 @@
 using GameSystem.Component.Manager;
-using GameSystem.Component.Object.Composition;
-using GameSystem.Component.Object.Compositor;
+using GameSystem.Object.Composition;
+using GameSystem.Object.Compositor;
 using GameSystem.Utils;
 
 namespace Actor;

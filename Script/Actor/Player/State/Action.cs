@@ -1,5 +1,5 @@
 using GameSystem.Component.FiniteStateMachine;
-using GameSystem.Component.Object.Compositor;
+using GameSystem.Object.Compositor;
 using GameSystem.Data.Instance;
 using GameSystem.Utils;
 
