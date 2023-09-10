@@ -3,3 +3,4 @@
 
 # Mono specific ignores
 .vs/
+*.old
