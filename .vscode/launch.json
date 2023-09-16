@@ -9,18 +9,18 @@
             "program": "",
             "windows": {
                 "program": "D:/Game_Engine/Godot/Godot_Win/Godot.exe",
-                },
+            },
             "linux": {
                 "program": "/usr/bin/godot-mono",
-                },
+            },
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "stopAtEntry": true,
             "requireExactSource": true,
-            "enableStepFiltering": true,
+            "enableStepFiltering": false,
             "logging": {
                 "moduleLoad": true
-                },
-        }   
+            },
+        }
     ]
 }
