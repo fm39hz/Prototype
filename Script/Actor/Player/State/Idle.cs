@@ -1,25 +1,25 @@
+using System.IO;
 using System;
 using GameSystem.Component.FiniteStateMachine;
-using Actor;
-using GameSystem.Component.Object.Compositor;
-using GameSystem.Utils;
+using GameSystem.Component.Object.Composition;
+using GameSystem.Object.Compositor.Implemented;
 
 namespace Attach.PlayerState;
 
 public partial class Idle : StaticState
 {
-	public PlayerBody Target { get; private set; }
+	public Player Target { get; private set; }
 
 	public override void _EnterTree()
 	{
 		base._EnterTree();
-		Target = StateMachine.GetOwner<CreatureCompositor>().GetFirstChild<PlayerBody>();
+		Target = GetOwner<Player>();
 	}
 
 	public override void _Ready()
 	{
 		base._Ready();
-		var _inputManager = Target.InputManager;
+		var _inputManager = Target.InputHandler;
 		_inputManager.MovementKeyPressed += SetCondition;
 		_inputManager.ActionKeyPressed += ResetCondition;
 	}
@@ -31,8 +31,12 @@ public partial class Idle : StaticState
 
 	public override void RunningState(double delta)
 	{
+		if (Target.Composition is not Creature _target)
+		{
+			throw new InvalidDataException("Player Must be Creature");
+		}
 		base.RunningState(delta);
-		Target.Velocity = Target.Velocity.MoveToward(Target.Compositor.Information.Direction.AsVector * MaxSpeed,
+		_target.Velocity = _target.Velocity.MoveToward(Target.Information.Direction.AsVector * MaxSpeed,
 			Friction * Convert.ToSingle(delta));
 	}
 }
