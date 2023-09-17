@@ -1,7 +1,4 @@
 using GameSystem.Component.FiniteStateMachine;
-using Actor;
-using GameSystem.Component.Object.Compositor;
-using GameSystem.Utils;
 using GameSystem.Object.Compositor.Implemented;
 using GameSystem.Component.Object.Composition;
 using System.IO;
