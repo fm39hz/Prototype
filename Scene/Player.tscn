@@ -22,9 +22,8 @@ IsFourDirection = false
 script = ExtResource("2_kjddo")
 
 [node name="SpriteSheet" type="Sprite2D" parent="Creature"]
-position = Vector2(-8.5, -29)
+position = Vector2(-0.5, -13)
 texture = ExtResource("3_mm116")
-centered = false
 hframes = 64
 vframes = 3
 script = ExtResource("4_x7qp7")
