@@ -22,11 +22,13 @@ IsFourDirection = false
 script = ExtResource("2_kjddo")
 
 [node name="SpriteSheet" type="Sprite2D" parent="Creature"]
-position = Vector2(-0.5, -13)
+position = Vector2(-8.5, -29)
 texture = ExtResource("3_mm116")
+centered = false
 hframes = 64
 vframes = 3
 script = ExtResource("4_x7qp7")
+metadata/_edit_lock_ = true
 
 [node name="HurtBox" type="Area2D" parent="Creature"]
 script = ExtResource("5_8y2n0")
@@ -35,6 +37,7 @@ script = ExtResource("5_8y2n0")
 position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kmcmk")
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Creature"]
 process_callback = 0
