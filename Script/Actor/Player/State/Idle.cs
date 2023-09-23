@@ -1,7 +1,7 @@
 using System.IO;
 using System;
 using GameSystem.Component.FiniteStateMachine;
-using GameSystem.Component.Object.Composition;
+using GameSystem.Object.Composition;
 using GameSystem.Object.Compositor.Implemented;
 
 namespace Attach.PlayerState;

@@ -1,6 +1,6 @@
 using System.IO;
 using GameSystem.Component.FiniteStateMachine;
-using GameSystem.Component.Object.Composition;
+using GameSystem.Object.Composition;
 using GameSystem.Data.Instance;
 using GameSystem.Object.Compositor.Implemented;
 
