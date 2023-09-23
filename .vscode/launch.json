@@ -1,26 +1,25 @@
 {
-    "version": "0.0.1",
-    "configurations": [
-        {
-            "name": "Debug",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "Build",
-            "program": "",
-            "windows": {
-                "program": "D:/Game_Engine/Godot/Godot_Win/Godot.exe",
-            },
-            "linux": {
-                "program": "/usr/bin/godot-mono",
-            },
-            "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
-            "stopAtEntry": true,
-            "requireExactSource": true,
-            "enableStepFiltering": false,
-            "logging": {
-                "moduleLoad": true
-            },
-        }
-    ]
+	"version": "0.0.1",
+	"configurations": [
+		{
+			"name": "Debug",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "Build",
+			"program": "",
+			"windows": {
+				"program": "D:/Game_Engine/Godot/Godot_Win/Godot.exe",
+			},
+			"linux": {
+				"program": "/usr/bin/godot-mono",
+			},
+			"cwd": "${workspaceFolder}",
+			"console": "internalConsole",
+			"stopAtEntry": true,
+			"enableStepFiltering": false,
+			"logging": {
+				"moduleLoad": false
+			},
+		}
+	]
 }
