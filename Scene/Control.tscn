@@ -1,9 +1,27 @@
-[gd_scene format=3 uid="uid://bagsepc0igo4u"]
+[gd_scene load_steps=2 format=3 uid="uid://bagsepc0igo4u"]
+
+[ext_resource type="Script" path="res://Script/GUI/Monitoring.cs" id="1_ctc4k"]
 
 [node name="Control" type="Control"]
+clip_contents = true
+layout_direction = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+
+[node name="Monitoring" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+threaded = true
+script = ExtResource("1_ctc4k")
