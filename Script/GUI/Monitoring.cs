@@ -1,3 +1,4 @@
+using GameSystem.Data.Global;
 using Godot;
 
 namespace Attach.GUI;
@@ -5,6 +6,9 @@ public partial class Monitoring : RichTextLabel
 {
 	public override void _Process(double delta)
 	{
-		Text = Engine.GetFramesPerSecond().ToString() + " fps";
+		if (GlobalStatus.GetDebugInfo())
+		{
+			Text = Engine.GetFramesPerSecond().ToString() + " fps";
+		}
 	}
 }
