@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="3_mm116"]
 [ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="4_x7qp7"]
 [ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/HurtBox.cs" id="5_8y2n0"]
-[ext_resource type="PackedScene" uid="uid://bagsepc0igo4u" path="res://Scene/Control.tscn" id="6_kco2k"]
+[ext_resource type="PackedScene" uid="uid://cf61up7sjemtu" path="res://Scene/MainCamera.tscn" id="6_rm3ii"]
 [ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="7_xpxtl"]
 [ext_resource type="Script" path="res://Script/Actor/Player/State/Idle.cs" id="8_o2rwu"]
 [ext_resource type="Script" path="res://Script/Actor/Player/State/Walk.cs" id="8_unumv"]
@@ -40,13 +40,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kmcmk")
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="Creature"]
-process_callback = 0
-position_smoothing_enabled = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Creature/Camera2D"]
-
-[node name="Control" parent="Creature/Camera2D/CanvasLayer" instance=ExtResource("6_kco2k")]
+[node name="MainCamera" parent="Creature" instance=ExtResource("6_rm3ii")]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
 script = ExtResource("7_xpxtl")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf61up7sjemtu"]
+
+[ext_resource type="PackedScene" uid="uid://bagsepc0igo4u" path="res://Scene/Control.tscn" id="1_lcr1o"]
+
+[node name="MainCamera" type="Camera2D"]
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("1_lcr1o")]
