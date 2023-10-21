@@ -45,6 +45,6 @@ public partial class Action : StaticState
 			throw new InvalidDataException("Player Must be Creature");
 		}
 		_target.Velocity = Target.InputHandler.TopDownVector(Target.Information.Direction.AsVector) *
-						MaxSpeed;
+							MaxSpeed;
 	}
 }
