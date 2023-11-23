@@ -1,6 +1,6 @@
 using GameSystem.Component.FiniteStateMachine;
-using GameSystem.Object.Compositor.Implemented;
-using GameSystem.Object.Composition;
+using GameSystem.Object.Compositor.Concrete;
+using GameSystem.Object.Decorator;
 using System.IO;
 
 namespace Attach.PlayerState;
@@ -25,7 +25,7 @@ public partial class Walk : StaticState
 
 	public override void RunningState(double delta)
 	{
-		if (Target.Composition is not Creature _target)
+		if (Target.Decorator is not Creature _target)
 		{
 			throw new InvalidDataException("Player Must be Creature");
 		}
