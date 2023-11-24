@@ -13,8 +13,9 @@
 radius = 2.0
 height = 8.0
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("Decorator")]
 script = ExtResource("1_phxoq")
+Decorator = NodePath("Creature")
 IsFourDirection = false
 
 [node name="Creature" type="CharacterBody2D" parent="."]
