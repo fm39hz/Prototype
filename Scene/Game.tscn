@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://4lhemuisdtu5"]
 
 [ext_resource type="PackedScene" uid="uid://dl4ac1yuuhs2d" path="res://Scene/Background.tscn" id="1_lrxfb"]
-[ext_resource type="PackedScene" uid="uid://dmtc6lcabtxl3" path="res://Scene/Player.tscn" id="2_78nlv"]
+[ext_resource type="PackedScene" uid="uid://by7apel464yp" path="res://Scene/Player.tscn" id="2_78nlv"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_lrxfb")]
 
 [node name="Player" parent="." instance=ExtResource("2_78nlv")]
-position = Vector2(207, 87)
+position = Vector2(116, 78)
