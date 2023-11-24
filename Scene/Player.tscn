@@ -1,63 +1,63 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmtc6lcabtxl3"]
+[gd_scene load_steps=10 format=3 uid="uid://by7apel464yp"]
 
-[ext_resource type="Script" path="res://GameSystem/Object/Compositor/Implemented/Player.cs" id="1_toldm"]
-[ext_resource type="Script" path="res://GameSystem/Object/Composition/Creature.cs" id="2_kjddo"]
-[ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="3_mm116"]
-[ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="4_x7qp7"]
-[ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/HurtBox.cs" id="5_8y2n0"]
-[ext_resource type="PackedScene" uid="uid://cf61up7sjemtu" path="res://Scene/MainCamera.tscn" id="6_rm3ii"]
-[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="7_xpxtl"]
-[ext_resource type="Script" path="res://Script/Actor/Player/State/Idle.cs" id="8_o2rwu"]
-[ext_resource type="Script" path="res://Script/Actor/Player/State/Walk.cs" id="8_unumv"]
+[ext_resource type="Script" path="res://GameSystem/Object/Compositor/Concrete/Player.cs" id="1_phxoq"]
+[ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="2_dsxqa"]
+[ext_resource type="Script" path="res://GameSystem/Object/Decorator/Creature.cs" id="2_vtwr3"]
+[ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="3_enxq6"]
+[ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="5_b6vym"]
+[ext_resource type="Script" path="res://Script/Actor/Player/State/Idle.cs" id="6_6lhod"]
+[ext_resource type="Script" path="res://Script/Actor/Player/State/Walk.cs" id="7_tmy6w"]
+[ext_resource type="Script" path="res://Script/Actor/Player/State/Action.cs" id="8_n25q5"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kmcmk"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_duxa8"]
 radius = 2.0
-height = 10.0
+height = 8.0
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("Composition")]
-script = ExtResource("1_toldm")
-Composition = NodePath("Creature")
+[node name="Player" type="Node2D"]
+script = ExtResource("1_phxoq")
 IsFourDirection = false
 
 [node name="Creature" type="CharacterBody2D" parent="."]
-script = ExtResource("2_kjddo")
+script = ExtResource("2_vtwr3")
 
 [node name="SpriteSheet" type="Sprite2D" parent="Creature"]
-position = Vector2(-8.5, -29)
-texture = ExtResource("3_mm116")
+position = Vector2(-8, -29)
+texture = ExtResource("2_dsxqa")
 centered = false
+offset = Vector2(-0.5, 0)
 hframes = 64
 vframes = 3
-script = ExtResource("4_x7qp7")
+script = ExtResource("3_enxq6")
 metadata/_edit_lock_ = true
 
-[node name="HurtBox" type="Area2D" parent="Creature"]
-script = ExtResource("5_8y2n0")
+[node name="Camera2D" type="Camera2D" parent="Creature"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Creature"]
 position = Vector2(0, -2)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_kmcmk")
-metadata/_edit_lock_ = true
-
-[node name="MainCamera" parent="Creature" instance=ExtResource("6_rm3ii")]
+shape = SubResource("CapsuleShape2D_duxa8")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
-script = ExtResource("7_xpxtl")
+script = ExtResource("5_b6vym")
 CurrentState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("8_o2rwu")
+script = ExtResource("6_6lhod")
 Friction = 400.0
 NumberOfFrame = 4
 IsLoop = true
 AnimationSpeed = 5.0
 
 [node name="Walk" type="Node" parent="StateMachine"]
-script = ExtResource("8_unumv")
+script = ExtResource("7_tmy6w")
 MaxSpeed = 85.0
 Acceleration = 400.0
 Id = 1
 NumberOfFrame = 8
 IsLoop = true
-AnimationSpeed = 8.0
+AnimationSpeed = 5.0
+
+[node name="Action" type="Node" parent="StateMachine"]
+script = ExtResource("8_n25q5")
+NumberOfFrame = 4
+AnimationSpeed = 5.0
