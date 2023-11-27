@@ -43,9 +43,9 @@ shape = SubResource("CapsuleShape2D_duxa8")
 [node name="HurtBox" type="Area2D" parent="Creature"]
 script = ExtResource("9_p40at")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("InitualizedState")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("InitializedState")]
 script = ExtResource("5_b6vym")
-InitualizedState = NodePath("Idle")
+InitializedState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("6_6lhod")
@@ -58,6 +58,7 @@ AnimationSpeed = 3.5
 script = ExtResource("7_tmy6w")
 MaxSpeed = 85.0
 Acceleration = 800.0
+Id = 1
 NumberOfFrame = 8
 IsLoop = true
-AnimationSpeed = 6.0
+AnimationSpeed = 8.0
