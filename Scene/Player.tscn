@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bagsepc0igo4u" path="res://Scene/Control.tscn" id="5_phwt3"]
 [ext_resource type="Script" path="res://Script/Actor/Player/State/Idle.cs" id="6_6lhod"]
 [ext_resource type="Script" path="res://Script/Actor/Player/State/Walk.cs" id="7_tmy6w"]
-[ext_resource type="Script" path="res://Script/Actor/Player/State/Action.cs" id="8_n25q5"]
+[ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/HurtBox.cs" id="9_p40at"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_duxa8"]
 radius = 2.0
@@ -33,6 +33,8 @@ script = ExtResource("3_enxq6")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Creature"]
+process_callback = 0
+position_smoothing_enabled = true
 
 [node name="Control" parent="Creature/Camera2D" instance=ExtResource("5_phwt3")]
 
@@ -41,16 +43,19 @@ position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_duxa8")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CurrentState")]
+[node name="HurtBox" type="Area2D" parent="Creature"]
+script = ExtResource("9_p40at")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("InitualizedState")]
 script = ExtResource("5_b6vym")
-CurrentState = NodePath("Idle")
+InitualizedState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("6_6lhod")
 Friction = 400.0
 NumberOfFrame = 4
 IsLoop = true
-AnimationSpeed = 5.0
+AnimationSpeed = 3.5
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("7_tmy6w")
@@ -59,9 +64,4 @@ Acceleration = 400.0
 Id = 1
 NumberOfFrame = 8
 IsLoop = true
-AnimationSpeed = 5.0
-
-[node name="Action" type="Node" parent="StateMachine"]
-script = ExtResource("8_n25q5")
-NumberOfFrame = 4
-AnimationSpeed = 5.0
+AnimationSpeed = 8.0
