@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://by7apel464yp"]
+[gd_scene load_steps=10 format=3 uid="uid://by7apel464yp"]
 
 [ext_resource type="Script" path="res://GameSystem/Object/Compositor/Concrete/Player.cs" id="1_phxoq"]
 [ext_resource type="Texture2D" uid="uid://17w1gout0maw" path="res://Asset/player_sprite_sheet.png" id="2_dsxqa"]
 [ext_resource type="Script" path="res://GameSystem/Object/Decorator/Creature.cs" id="2_vtwr3"]
 [ext_resource type="Script" path="res://GameSystem/Component/Animation/SpriteSheet.cs" id="3_enxq6"]
 [ext_resource type="Script" path="res://GameSystem/Component/FiniteStateMachine/StateMachine.cs" id="5_b6vym"]
-[ext_resource type="PackedScene" uid="uid://bagsepc0igo4u" path="res://Scene/Control.tscn" id="5_phwt3"]
 [ext_resource type="Script" path="res://Script/Actor/Player/State/Idle.cs" id="6_6lhod"]
 [ext_resource type="Script" path="res://Script/Actor/Player/State/Walk.cs" id="7_tmy6w"]
 [ext_resource type="Script" path="res://GameSystem/Component/DamageSystem/HurtBox.cs" id="9_p40at"]
@@ -35,8 +34,6 @@ metadata/_edit_lock_ = true
 [node name="Camera2D" type="Camera2D" parent="Creature"]
 process_callback = 0
 position_smoothing_enabled = true
-
-[node name="Control" parent="Creature/Camera2D" instance=ExtResource("5_phwt3")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Creature"]
 position = Vector2(0, -2)
