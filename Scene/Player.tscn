@@ -57,8 +57,7 @@ AnimationSpeed = 3.5
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("7_tmy6w")
 MaxSpeed = 85.0
-Acceleration = 400.0
-Id = 1
+Acceleration = 800.0
 NumberOfFrame = 8
 IsLoop = true
-AnimationSpeed = 8.0
+AnimationSpeed = 6.0
