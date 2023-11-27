@@ -23,7 +23,7 @@ public partial class Walk : StaticState
 		_inputManager.ActionKeyPressed += ResetCondition;
 	}
 
-	public override void RunningState(double delta)
+	protected override void RunningState(double delta)
 	{
 		if (Target.Decorator is not Creature _target)
 		{

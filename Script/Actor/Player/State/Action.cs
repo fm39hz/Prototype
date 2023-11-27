@@ -37,7 +37,7 @@ public partial class Action : StaticState
 		}
 	}
 
-	public override void RunningState(double delta)
+	protected override void RunningState(double delta)
 	{
 		base.RunningState(delta);
 		if (Target.Decorator is not Creature _target)

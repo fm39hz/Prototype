@@ -29,7 +29,7 @@ public partial class Idle : StaticState
 		Condition = !condition;
 	}
 
-	public override void RunningState(double delta)
+	protected override void RunningState(double delta)
 	{
 		if (Target.Decorator is not Creature _target)
 		{
