@@ -19,6 +19,7 @@ Decorator = NodePath("Creature")
 IsFourDirection = false
 
 [node name="Creature" type="CharacterBody2D" parent="."]
+motion_mode = 1
 script = ExtResource("2_vtwr3")
 
 [node name="SpriteSheet" type="Sprite2D" parent="Creature"]
