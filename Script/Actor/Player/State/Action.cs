@@ -1,8 +1,8 @@
 using System.IO;
 using GameSystem.Component.FiniteStateMachine;
-using GameSystem.Object.Decorator;
+using GameSystem.Object.PhysicsBody;
 using GameSystem.Data.Instance;
-using GameSystem.Object.Compositor.Concrete;
+using GameSystem.Object.Root.Concrete;
 
 namespace Attach.PlayerState;
 
@@ -40,7 +40,7 @@ public partial class Action : StaticState
 	protected override void RunningState(double delta)
 	{
 		base.RunningState(delta);
-		if (Target.Decorator is not Creature _target)
+		if (Target.PhysicsBody is not Creature _target)
 		{
 			throw new InvalidDataException("Player Must be Creature");
 		}

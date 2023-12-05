@@ -1,8 +1,8 @@
 using System.IO;
 using System;
 using GameSystem.Component.FiniteStateMachine;
-using GameSystem.Object.Decorator;
-using GameSystem.Object.Compositor.Concrete;
+using GameSystem.Object.PhysicsBody;
+using GameSystem.Object.Root.Concrete;
 
 namespace Attach.PlayerState;
 
@@ -31,7 +31,7 @@ public partial class Idle : StaticState
 
 	protected override void RunningState(double delta)
 	{
-		if (Target.Decorator is not Creature _target)
+		if (Target.PhysicsBody is not Creature _target)
 		{
 			throw new InvalidDataException("Player Must be Creature");
 		}
