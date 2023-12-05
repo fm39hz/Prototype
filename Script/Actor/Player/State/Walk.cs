@@ -1,7 +1,7 @@
-using GameSystem.Component.FiniteStateMachine;
-using GameSystem.Object.Root.Concrete;
-using GameSystem.Object.PhysicsBody;
 using System.IO;
+using GameSystem.Component.FiniteStateMachine;
+using GameSystem.Object.PhysicsBody;
+using GameSystem.Object.Root.Concrete;
 
 namespace Attach.PlayerState;
 
