@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" path="res://Script/GUI/Monitoring.cs" id="1_ctc4k"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
 clip_contents = true
 layout_direction = 2
 layout_mode = 3
@@ -12,13 +14,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_lock_ = true
 
-[node name="Monitoring" type="RichTextLabel" parent="MarginContainer"]
+[node name="Monitoring" type="RichTextLabel" parent="Control/MarginContainer"]
 layout_mode = 2
 fit_content = true
 scroll_active = false
