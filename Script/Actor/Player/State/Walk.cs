@@ -2,6 +2,7 @@ using System.IO;
 using GameSystem.Component.FiniteStateMachine;
 using GameSystem.Object.PhysicsBody;
 using GameSystem.Object.Root.Concrete;
+using GameSystem.VirtualInstance;
 
 namespace Attach.PlayerState;
 
@@ -30,6 +31,6 @@ public partial class Walk : StaticState
 			throw new InvalidDataException("Player Must be Creature");
 		}
 		base.RunningState(delta);
-		_target.Velocity = Target.InputHandler.TopDownVector(_target.Velocity) * MaxSpeed;
+		_target.Velocity = ((IDirectionalInput)Target.InputHandler).GetMovementVector(_target.Velocity) * MaxSpeed;
 	}
 }

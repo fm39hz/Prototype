@@ -21,6 +21,7 @@ IsFourDirection = false
 metadata/_edit_lock_ = true
 
 [node name="Creature" type="CharacterBody2D" parent="."]
+motion_mode = 1
 script = ExtResource("2_pxf42")
 metadata/_edit_lock_ = true
 

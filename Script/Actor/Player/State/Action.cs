@@ -3,6 +3,7 @@ using GameSystem.Component.FiniteStateMachine;
 using GameSystem.Data.Instance;
 using GameSystem.Object.PhysicsBody;
 using GameSystem.Object.Root.Concrete;
+using GameSystem.VirtualInstance;
 
 namespace Attach.PlayerState;
 
@@ -44,7 +45,7 @@ public partial class Action : StaticState
 		{
 			throw new InvalidDataException("Player Must be Creature");
 		}
-		_target.Velocity = Target.InputHandler.TopDownVector(Target.Information.Direction.AsVector) *
+		_target.Velocity = ((IDirectionalInput)Target.InputHandler).GetMovementVector(Target.Information.Direction.AsVector) *
 							MaxSpeed;
 	}
 }
