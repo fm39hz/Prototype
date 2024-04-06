@@ -1,12 +1,11 @@
 using System;
-using System.IO;
-using GameSystem.Component.FiniteStateMachine;
-using GameSystem.Object.PhysicsBody;
-using GameSystem.Object.Root.Concrete;
+using GameSystem.Core.Component.FiniteStateMachine;
+using GameSystem.Core.Object.Root.Concrete;
+using Prototype.GameSystem.Component.FiniteStateMachine;
 
 namespace Attach.PlayerState;
 
-public partial class Idle : StaticState
+public partial class Idle : StaticState, IControllableState
 {
 	public Player Target { get; private set; }
 
@@ -15,6 +14,15 @@ public partial class Idle : StaticState
 		base._EnterTree();
 		Target = GetOwner<Player>();
 	}
+    public void SetCondition(bool condition)
+    {
+		Condition = !condition;
+    }
+
+    public void ResetCondition()
+    {
+		Condition = false;
+    }
 
 	public override void _Ready()
 	{
@@ -24,19 +32,11 @@ public partial class Idle : StaticState
 		_inputManager.ActionKeyPressed += ResetCondition;
 	}
 
-	public override void SetCondition(bool condition)
+	public override void RunningState(double delta)
 	{
-		Condition = !condition;
-	}
-
-	protected override void RunningState(double delta)
-	{
-		if (Target.PhysicsBody is not Creature _target)
-		{
-			throw new InvalidDataException("Player Must be Creature");
-		}
 		base.RunningState(delta);
-		_target.Velocity = _target.Velocity.MoveToward(Target.Information.Direction.AsVector * MaxSpeed,
+		Target.Body.Velocity = Target.Body.Velocity.MoveToward(Target.Information.Direction.AsVector * MaxSpeed,
 			Friction * Convert.ToSingle(delta));
 	}
+
 }

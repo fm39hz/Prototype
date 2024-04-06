@@ -1,13 +1,12 @@
 using System.IO;
-using GameSystem.Component.FiniteStateMachine;
-using GameSystem.Data.Instance;
-using GameSystem.Object.PhysicsBody;
-using GameSystem.Object.Root.Concrete;
-using GameSystem.VirtualInstance;
+using GameSystem.Core.Component.FiniteStateMachine;
+using GameSystem.Core.Component.InputManagement;
+using GameSystem.Core.Object.Root.Concrete;
+using Prototype.GameSystem.Component.FiniteStateMachine;
 
 namespace Attach.PlayerState;
 
-public partial class Action : StaticState
+public partial class Action : StaticState, IControllableState
 {
 	public Player Target { get; private set; }
 
@@ -26,26 +25,22 @@ public partial class Action : StaticState
 
 	public void SetCondition()
 	{
-		base.SetCondition(true);
+		Condition = true;
 	}
 
-	public override void ResetCondition()
+	public void ResetCondition()
 	{
-		base.ResetCondition();
-		if (Target.Information is CreatureData _information)
-		{
-			_information.IsMoveable = true;
-		}
+		Target.Information.IsMoveable = true;
 	}
 
-	protected override void RunningState(double delta)
+	public override void RunningState(double delta)
 	{
 		base.RunningState(delta);
-		if (Target.PhysicsBody is not Creature _target)
-		{
-			throw new InvalidDataException("Player Must be Creature");
-		}
-		_target.Velocity = ((IDirectionalInput)Target.InputHandler).GetMovementVector(Target.Information.Direction.AsVector) *
+		Target.Body.Velocity = ((IDirectionalInput)Target.InputHandler).GetMovementVector(Target.Information.Direction.AsVector) *
 							MaxSpeed;
 	}
+
+    public void SetCondition(bool condition)
+    {
+    }
 }

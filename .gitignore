@@ -4,3 +4,5 @@
 # Mono specific ignores
 .vs/
 *.old
+# Misc
+*.log

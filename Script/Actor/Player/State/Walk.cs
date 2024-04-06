@@ -1,16 +1,26 @@
 using System.IO;
-using GameSystem.Component.FiniteStateMachine;
-using GameSystem.Object.PhysicsBody;
-using GameSystem.Object.Root.Concrete;
-using GameSystem.VirtualInstance;
+using GameSystem.Core.Component.FiniteStateMachine;
+using GameSystem.Core.Component.InputManagement;
+using GameSystem.Core.Object.Root.Concrete;
+using Prototype.GameSystem.Component.FiniteStateMachine;
 
 namespace Attach.PlayerState;
 
-public partial class Walk : StaticState
+public partial class Walk : StaticState, IControllableState
 {
 	public Player Target { get; private set; }
 
-	public override void _EnterTree()
+    public void ResetCondition()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void SetCondition(bool condition)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void _EnterTree()
 	{
 		base._EnterTree();
 		Target = StateMachine.GetOwner<Player>();
@@ -24,13 +34,9 @@ public partial class Walk : StaticState
 		_inputManager.ActionKeyPressed += ResetCondition;
 	}
 
-	protected override void RunningState(double delta)
+	public override void RunningState(double delta)
 	{
-		if (Target.PhysicsBody is not Creature _target)
-		{
-			throw new InvalidDataException("Player Must be Creature");
-		}
 		base.RunningState(delta);
-		_target.Velocity = ((IDirectionalInput)Target.InputHandler).GetMovementVector(_target.Velocity) * MaxSpeed;
+		Target.Body.Velocity = ((IDirectionalInput)Target.InputHandler).GetMovementVector(Target.Body.Velocity) * MaxSpeed;
 	}
 }
