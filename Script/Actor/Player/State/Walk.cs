@@ -1,8 +1,7 @@
-using System.IO;
 using GameSystem.Core.Component.FiniteStateMachine;
 using GameSystem.Core.Component.InputManagement;
 using GameSystem.Core.Object.Root.Concrete;
-using Prototype.GameSystem.Component.FiniteStateMachine;
+using GameSystem.Component.FiniteStateMachine;
 
 namespace Attach.PlayerState;
 
