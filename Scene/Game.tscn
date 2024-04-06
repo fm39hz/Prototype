@@ -9,3 +9,4 @@
 
 [node name="Player" parent="." instance=ExtResource("2_78nlv")]
 position = Vector2(116, 78)
+script = null
