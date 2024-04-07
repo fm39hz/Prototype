@@ -1,13 +1,22 @@
+using GameSystem.Component.FiniteStateMachine;
 using GameSystem.Core.Component.FiniteStateMachine;
 using GameSystem.Core.Component.InputManagement;
 using GameSystem.Core.Object.Root.Concrete;
-using GameSystem.Component.FiniteStateMachine;
 
 namespace Attach.PlayerState;
 
 public partial class Action : StaticState, IControllableState
 {
 	public Player Target { get; private set; }
+
+	public void ResetCondition()
+	{
+		Target.Information.IsMoveable = true;
+	}
+
+	public void SetCondition(bool condition)
+	{
+	}
 
 	public override void _EnterTree()
 	{
@@ -27,19 +36,11 @@ public partial class Action : StaticState, IControllableState
 		Condition = true;
 	}
 
-	public void ResetCondition()
-	{
-		Target.Information.IsMoveable = true;
-	}
-
 	public override void RunningState(double delta)
 	{
 		base.RunningState(delta);
-		Target.Body.Velocity = ((IDirectionalInput)Target.InputHandler).GetMovementVector(Target.Information.Direction.AsVector) *
-							MaxSpeed;
+		Target.Body.Velocity =
+			((IDirectionalInput)Target.InputHandler).GetMovementVector(Target.Information.Direction.AsVector) *
+			MaxSpeed;
 	}
-
-    public void SetCondition(bool condition)
-    {
-    }
 }
