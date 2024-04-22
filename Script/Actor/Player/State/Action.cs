@@ -39,8 +39,9 @@ public partial class Action : StaticState, IControllableState
 	public override void RunningState(double delta)
 	{
 		base.RunningState(delta);
-		Target.Body.Velocity =
-			((IDirectionalInput)Target.InputHandler).GetMovementVector(Target.Information.Direction.AsVector) *
-			MaxSpeed;
+		if (Target.InputHandler is IDirectionalInput _inputHandler)
+		{
+			Target.Body.Velocity = _inputHandler.GetMovementVector(Target.Information.Direction.AsVector) * MaxSpeed;
+		}
 	}
 }

@@ -36,7 +36,6 @@ public partial class Idle : StaticState, IControllableState
 	public override void RunningState(double delta)
 	{
 		base.RunningState(delta);
-		Target.Body.Velocity = Target.Body.Velocity.MoveToward(Target.Information.Direction.AsVector * MaxSpeed,
-			Friction * Convert.ToSingle(delta));
+		Target.Body.Velocity = Target.Body.Velocity.MoveToward(Target.Information.Direction.AsVector * MaxSpeed, Friction * Convert.ToSingle(delta));
 	}
 }

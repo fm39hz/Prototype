@@ -37,7 +37,9 @@ public partial class Walk : StaticState, IControllableState
 	public override void RunningState(double delta)
 	{
 		base.RunningState(delta);
-		Target.Body.Velocity =
-			((IDirectionalInput)Target.InputHandler).GetMovementVector(Target.Body.Velocity) * MaxSpeed;
+		if (Target.InputHandler is IDirectionalInput _inputHandler)
+		{
+			Target.Body.Velocity = _inputHandler.GetMovementVector(Target.Body.Velocity) * MaxSpeed;
+		}
 	}
 }
