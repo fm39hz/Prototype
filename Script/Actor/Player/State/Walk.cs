@@ -6,7 +6,7 @@ using GameSystem.Core.Object.Root.Concrete;
 
 namespace Attach.PlayerState;
 
-public partial class Walk : StaticState, IControllableState
+public partial class Walk : StaticState, IControllable
 {
 	public Player Target { get; private set; }
 

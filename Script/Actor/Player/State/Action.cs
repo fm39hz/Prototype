@@ -1,3 +1,4 @@
+using System;
 using GameSystem.Component.FiniteStateMachine;
 using GameSystem.Core.Component.FiniteStateMachine;
 using GameSystem.Core.Component.InputManagement;
@@ -5,7 +6,7 @@ using GameSystem.Core.Object.Root.Concrete;
 
 namespace Attach.PlayerState;
 
-public partial class Action : StaticState, IControllableState
+public partial class Action : StaticState, IControllable
 {
 	public Player Target { get; private set; }
 
@@ -16,6 +17,7 @@ public partial class Action : StaticState, IControllableState
 
 	public void SetCondition(bool condition)
 	{
+		throw new NotImplementedException();
 	}
 
 	public override void _EnterTree()
