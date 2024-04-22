@@ -15,7 +15,6 @@ height = 8.0
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("PhysicsBody")]
 script = ExtResource("1_x3qf6")
-Health = 100.0
 PhysicsBody = NodePath("Creature")
 IsFourDirection = false
 metadata/_edit_lock_ = true
