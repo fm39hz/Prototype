@@ -1,0 +1,17 @@
+{
+  "name": "prototype",
+  "module": "commitlint.config.cjs",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "husky": "^9.0.11"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install"
+  }
+}
