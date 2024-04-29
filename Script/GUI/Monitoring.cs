@@ -1,4 +1,4 @@
-using GameSystem.Core.Utils.Singleton;
+using GameSystem.Utils.Singleton;
 using Godot;
 
 namespace Attach.GUI;
